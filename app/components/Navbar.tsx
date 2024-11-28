@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,9 +29,11 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3">
-              <img 
+              <Image 
                 src="/logo.png" 
                 alt="Pamoja Twaweza Logo" 
+                width={48}
+                height={48}
                 className="h-12 w-auto"
               />
               <span className="text-xl font-bold text-gray-900">

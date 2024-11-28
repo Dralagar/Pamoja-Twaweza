@@ -210,7 +210,7 @@ export default function About() {
         <div className="max-w-3xl mx-auto">
           <h2 className="text-4xl font-bold mb-8">Join Our Mission</h2>
           <p className="text-xl text-gray-600 mb-12 leading-relaxed">
-            Whether you're looking to volunteer, partner, or support our cause, 
+            Whether you&apos;re looking to volunteer, partner, or support our cause, 
             there are many ways to get involved with Pamoja Twaweza.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

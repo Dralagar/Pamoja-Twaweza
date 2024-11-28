@@ -17,7 +17,7 @@ const teamMembers = [
   },
   {
     id: 2,
-    name: "David Kimani",
+    name: "Anneled Karemi",
     role: "Program Manager",
     image: "/team/member2.jpg",
     bio: "Specializing in youth empowerment and educational program development.",
