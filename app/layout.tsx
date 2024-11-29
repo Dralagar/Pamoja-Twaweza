@@ -25,6 +25,6 @@ export default function RootLayout({
           <p>© 2023 Pamoja Twaweza. All rights reserved.</p>
         </footer>
       </body>
-    </html>
+    </html> 
   );
 }
