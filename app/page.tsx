@@ -1,18 +1,18 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from "next/image";
 
 const teamMembers = [
   {
     id: 1,
-    name: "Sarah Johnson",
+    name: "Eric",
     role: "Executive Director",
     image: "/team/member1.jpg",
     bio: "Leading our community initiatives with over 10 years of experience in social development.",
     socialLinks: {
-      linkedin: "https://linkedin.com/in/sarah-johnson",
-      twitter: "https://twitter.com/sarahjohnson"
+      linkedin: "",
+      twitter: ""
     }
   },
   {
@@ -41,6 +41,12 @@ type TeamMember = {
 };
 
 export default function Home() {
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      // Client-side only code
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50" suppressHydrationWarning>
       {/* Hero Section */}
@@ -59,7 +65,7 @@ export default function Home() {
         </div>
         <div className="relative aspect-square">
           <Image
-            src="/community-hero.jpg"
+            src="/images/pamoj1.jpeg"
             alt="Community Impact"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
@@ -74,7 +80,7 @@ export default function Home() {
         <h2 className="text-center text-5xl font-bold mb-12">Our Impact Stories</h2>
         <div className="relative w-full h-full">
           <Image
-            src="/impact-showcase.jpg"
+            src="/images/pamoj7.jpeg"
             alt="Community Impact"
             fill
             sizes="100vw"
@@ -117,7 +123,7 @@ export default function Home() {
             <div className="space-y-8">
               <div className="relative aspect-video">
                 <Image
-                  src="/livelihoods.jpg"
+                  src="/images/pamoj5.jpeg"
                   alt="Livelihoods Program"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -139,7 +145,7 @@ export default function Home() {
               <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
                 <div className="relative aspect-video">
                   <Image
-                    src="/mental-health.jpg"
+                    src="/images/pamoj6.jpeg"
                     alt="Mental Health Programs"
                     fill
                     sizes="(max-width: 768px) 100vw, 25vw"
@@ -157,7 +163,7 @@ export default function Home() {
 
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/education.jpg"
+                  src="/images/pamoj3.jpeg"
                   alt="Education Programs"
                   fill
                   sizes="(max-width: 768px) 100vw, 25vw"
@@ -182,7 +188,7 @@ export default function Home() {
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="w-72 h-72 relative rounded-full overflow-hidden flex-shrink-0 shadow-2xl">
             <Image
-              src="/advocacy.jpg"
+              src="/images/pamoj6.jpeg"
               alt="Advocacy Initiatives"
               fill
               sizes="288px"
@@ -213,7 +219,7 @@ export default function Home() {
             </div>
             <div className="relative aspect-video">
               <Image
-                src="/outreach.jpg"
+                src="/images/pamoj2.jpeg"
                 alt="Community Outreach"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"

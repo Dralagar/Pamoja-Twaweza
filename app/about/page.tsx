@@ -54,7 +54,7 @@ export default function About() {
         </div>
         <div className="relative h-[500px] rounded-2xl overflow-hidden">
           <Image
-            src="/about-hero.jpg"
+            src="/images/pamoj2.jpeg"
             alt="Pamoja Twaweza Journey"
             fill
             sizes="100vw"

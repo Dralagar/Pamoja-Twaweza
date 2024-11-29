@@ -4,13 +4,22 @@
 
 :root {
   /* Primary Colors */
-  --primary-dark: #000B58;
-  --primary-teal: #227B94;
-  --primary-light: #ffffff;
+  --primary-yellow: #F8E19B;
+  --primary-blue: #007DBB;
+  --primary-orange: #F68B28;
+  
+  /* Secondary Colors */
+  --secondary-black: #000000;
+  --secondary-white: #FFFFFF;
+  --secondary-dark-blue: #153448;
+  
+  /* Neutral Colors */
+  --neutral-light-beige: #F5F1E5;
+  --neutral-gray: #7D7D7D;
   
   /* System Colors */
-  --background: #ffffff;
-  --foreground: #000000;
+  --background: var(--secondary-white);
+  --foreground: var(--secondary-black);
   --error: #dc2626;
   --success: #16a34a;
   --warning: #ca8a04;
@@ -21,13 +30,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #000000;
-    --foreground: #ffffff;
+    --background: var(--secondary-black);
+    --foreground: var(--secondary-white);
   }
 }
 
 * {
-  border-color: #e5e7eb; /* border-gray-200 */
+  border-color: var(--neutral-gray); /* border-gray-200 */
 }
 
 body {
@@ -49,8 +58,8 @@ p {
 
 /* Custom Utility Classes */
 .btn-primary {
-  background-color: #2563eb; /* bg-blue-600 */
-  color: #ffffff; /* text-white */
+  background-color: var(--primary-blue); /* bg-blue-600 */
+  color: var(--secondary-white); /* text-white */
   padding-left: 2rem; /* px-8 */
   padding-right: 2rem; /* px-8 */
   padding-top: 1rem; /* py-4 */
@@ -62,21 +71,21 @@ p {
 }
 
 .btn-primary:hover {
-  background-color: #1d4ed8; /* hover:bg-blue-700 */
+  background-color: #005f8a; /* hover:bg-blue-700 */
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
   transform: translateY(-0.125rem); /* -translate-y-0.5 */
 }
 
 .btn-outline {
   border-width: 2px; /* border-2 */
-  border-color: #3182ce; /* border-blue-600 */
-  color: #3182ce; /* text-blue-600 */
+  border-color: var(--primary-blue); /* border-blue-600 */
+  color: var(--primary-blue); /* text-blue-600 */
   transition: all 0.2s; /* transition-all */
 }
 
 .btn-outline:hover {
-  background-color: #3182ce; /* hover:bg-blue-600 */
-  color: #ffffff; /* hover:text-white */
+  background-color: var(--primary-blue); /* hover:bg-blue-600 */
+  color: var(--secondary-white); /* hover:text-white */
 }
 
 /* Responsive Utilities */
@@ -94,4 +103,21 @@ p {
 
 .rounded-xl {
   border-radius: 0.75rem; /* rounded-xl */
+}
+
+/* Footer Styles */
+.footer {
+  background-color: var(--secondary-dark-blue);
+  color: var(--secondary-white);
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer a {
+  color: var(--primary-yellow);
+  transition: color 0.2s;
+}
+
+.footer a:hover {
+  color: var(--primary-orange);
 }

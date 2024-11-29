@@ -29,14 +29,13 @@ export default function Navbar() {
           {/* Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-3">
-              <Image 
-                src="/logo.png" 
-                alt="Pamoja Twaweza Logo" 
-                width={48}
-                height={48}
-                className="h-12 w-auto"
-              />
-              <span className="text-xl font-bold text-gray-900">
+            <Image 
+  src="/images/PamojaTwaweza_Logo.png" 
+  alt="Pamoja Twaweza Logo" 
+  width={48}
+  height={48}
+  className="h-12 w-auto"
+/>              <span className="text-xl font-bold text-gray-900">
                 Pamoja Twaweza
               </span>
             </Link>

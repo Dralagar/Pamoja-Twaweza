@@ -17,7 +17,7 @@ const programs: Program[] = [
     id: 1,
     title: "Digital Skills Training",
     category: "Livelihoods",
-    image: "/programs/digital-skills.jpg",
+    image: "/images/pamoj5.jpeg",
     description: "Comprehensive training in digital literacy, computer skills, and online tools for youth empowerment.",
     details: [
       "Basic computer operations",
@@ -31,7 +31,7 @@ const programs: Program[] = [
     id: 2,
     title: "Mental Health Support",
     category: "Health & Wellness",
-    image: "/programs/mental-health.jpg",
+    image: "/images/pamoj6.jpeg",
     description: "Community-based mental health awareness and support programs.",
     details: [
       "Counseling services",
@@ -45,7 +45,7 @@ const programs: Program[] = [
     id: 3,
     title: "English Literacy",
     category: "Education",
-    image: "/programs/english-literacy.jpg",
+    image: "/images/pamoj4.jpeg",
     description: "English language courses for refugees and community members to enhance communication skills.",
     details: [
       "Basic English conversation",
@@ -59,7 +59,7 @@ const programs: Program[] = [
     id: 4,
     title: "Entrepreneurship Training",
     category: "Livelihoods",
-    image: "/programs/entrepreneurship.jpg",
+    image: "/images/pamoj8.jpeg",
     description: "Business skills development and entrepreneurship support for community members.",
     details: [
       "Business plan development",
@@ -73,11 +73,11 @@ const programs: Program[] = [
 
 export default function Programs() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50">
+    <main className="min-h-screen bg-gradient-to-b from-[#F5F1E5] to-[#F8E19B]">
       {/* Programs Hero Section */}
       <section className="relative h-[500px]">
         <Image
-          src="/programs/hero-programs.jpg"
+          src="/images/pamoj3.jpeg"
           alt="Our Programs"
           fill
           className="object-cover"
@@ -97,8 +97,8 @@ export default function Programs() {
       {/* Programs Overview */}
       <section className="container mx-auto px-4 py-24">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-bold mb-6">Transformative Initiatives</h2>
-          <p className="text-xl text-gray-600">
+          <h2 className="text-4xl font-bold mb-6 text-[#007DBB]">Transformative Initiatives</h2>
+          <p className="text-xl text-[#7D7D7D]">
             Our programs are designed to create lasting impact through skill development,
             education, and community support.
           </p>
@@ -116,21 +116,21 @@ export default function Programs() {
                   className="object-cover"
                 />
                 <div className="absolute top-4 left-4">
-                  <span className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm">
+                  <span className="bg-[#007DBB] text-white px-4 py-2 rounded-full text-sm">
                     {program.category}
                   </span>
                 </div>
               </div>
               <div className="p-8">
-                <h3 className="text-2xl font-bold mb-4">{program.title}</h3>
-                <p className="text-gray-600 mb-6">{program.description}</p>
+                <h3 className="text-2xl font-bold mb-4 text-[#153448]">{program.title}</h3>
+                <p className="text-[#7D7D7D] mb-6">{program.description}</p>
                 <div className="space-y-3">
                   {program.details.map((detail, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <svg className="w-5 h-5 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-5 h-5 text-[#F68B28] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-600">{detail}</span>
+                      <span className="text-[#7D7D7D]">{detail}</span>
                     </div>
                   ))}
                 </div>
@@ -143,15 +143,15 @@ export default function Programs() {
       {/* Get Involved CTA */}
       <section className="container mx-auto px-4 py-24 text-center">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-4xl font-bold mb-8">Get Involved</h2>
-          <p className="text-xl text-gray-600 mb-12">
+          <h2 className="text-4xl font-bold mb-8 text-[#007DBB]">Get Involved</h2>
+          <p className="text-xl text-[#7D7D7D] mb-12">
             Join our programs as a participant, volunteer, or supporter and help us create lasting change in our community.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-all hover:shadow-lg">
+            <button className="bg-[#007DBB] text-white px-8 py-4 rounded-full hover:bg-[#005f8a] transition-all hover:shadow-lg">
               Apply for Programs
             </button>
-            <button className="bg-gray-800 text-white px-8 py-4 rounded-full hover:bg-gray-900 transition-all hover:shadow-lg">
+            <button className="bg-[#153448] text-white px-8 py-4 rounded-full hover:bg-[#102a3a] transition-all hover:shadow-lg">
               Support Our Work
             </button>
           </div>

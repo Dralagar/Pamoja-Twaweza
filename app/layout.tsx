@@ -16,9 +16,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+      <body className={`${GeistSans.variable} ${GeistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}>
         <Navbar />
-        {children}
+        <main className="min-h-screen">
+          {children}
+        </main>
+        <footer className="footer">
+          <p>© 2023 Pamoja Twaweza. All rights reserved.</p>
+        </footer>
       </body>
     </html>
   );
