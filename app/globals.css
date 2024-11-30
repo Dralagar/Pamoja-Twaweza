@@ -4,22 +4,20 @@
 
 :root {
   /* Primary Colors */
-  --primary-yellow: #F8E19B;
-  --primary-blue: #007DBB;
-  --primary-orange: #F68B28;
+  --primary-blue: #89A8B2;
+  --primary-light-blue: #B3C8CF;
   
   /* Secondary Colors */
-  --secondary-black: #101112;
-  --secondary-white: #FFFFFF;
-  --secondary-dark-blue: #153448;
+  --secondary-dark: #101112;
+  --secondary-light: #F1F0E8;
   
   /* Neutral Colors */
-  --neutral-light-beige: #F5F1E5;
+  --neutral-light-beige: #E5E1DA;
   --neutral-gray: #7D7D7D;
   
   /* System Colors */
-  --background: var(--secondary-white);
-  --foreground: var(--secondary-black);
+  --background: var(--secondary-light);
+  --foreground: var(--secondary-dark);
   --error: #dc2626;
   --success: #16a34a;
   --warning: #ca8a04;
@@ -30,8 +28,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--secondary-black);
-    --foreground: var(--secondary-white);
+    --background: var(--secondary-dark);
+    --foreground: var(--secondary-light);
   }
 }
 
@@ -59,7 +57,7 @@ p {
 /* Button Styles */
 .btn-primary {
   background-color: var(--primary-blue);
-  color: var(--secondary-white);
+  color: var(--secondary-light);
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   transition: all 0.2s;
@@ -82,7 +80,7 @@ p {
 
 .btn-outline:hover {
   background-color: var(--primary-blue);
-  color: var(--secondary-white);
+  color: var(--secondary-light);
 }
 
 /* Layout Utilities */
@@ -103,17 +101,17 @@ p {
 
 /* Footer Styles */
 .footer {
-  background-color: var(--secondary-dark-blue);
-  color: var(--secondary-white);
+  background-color: var(--primary-light-blue);
+  color: var(--secondary-dark);
   padding: 2rem;
   text-align: center;
 }
 
 .footer a {
-  color: var(--primary-yellow);
+  color: var(--primary-blue);
   transition: color 0.2s;
 }
 
 .footer a:hover {
-  color: var(--primary-orange);
+  color: var(--neutral-light-beige);
 }
