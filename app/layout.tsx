@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font';
 import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
 import Navbar from '@/app/components/Navbar';
+import Footer from "./footer/page";
 
 export const metadata: Metadata = {
   title: "Pamoja Twaweza",
@@ -21,9 +22,7 @@ export default function RootLayout({
         <main className="min-h-screen">
           {children}
         </main>
-        <footer className="footer">
-          <p>© 2023 Pamoja Twaweza. All rights reserved.</p>
-        </footer>
+        <Footer />
       </body>
     </html> 
   );
