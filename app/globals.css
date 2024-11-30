@@ -9,12 +9,14 @@
   --primary-orange: #F68B28;
   
   /* Secondary Colors */
-  --secondary-black: #000000;
+  --secondary-black: #273b4fa4;
   --secondary-white: #FFFFFF;
   --secondary-dark-blue: #153448;
   
   /* Neutral Colors */
   --neutral-light-beige: #F5F1E5;
+  
+  
   --neutral-gray: #7D7D7D;
   
   /* System Colors */
@@ -91,14 +93,15 @@ p {
 /* Responsive Utilities */
 .container {
   margin-left: auto; /* mx-auto */
-  margin-right: auto; /* mx-auto */
+  margin-right: auto
+  ; /* mx-auto */
   padding-left: 1rem; /* px-4 */
   padding-right: 1rem; /* px-4 */
 }
 
 /* Additional Custom Styles */
 .shadow-xl {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
+  box-shadow: 0 20px 25px -5px rgba(20, 19, 19, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* shadow-xl */
 }
 
 .rounded-xl {
