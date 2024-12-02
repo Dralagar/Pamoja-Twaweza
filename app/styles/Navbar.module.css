@@ -1,0 +1,156 @@
+/* General styles for the navbar */
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: background-color 0.3s ease;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.navbarContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logoImage {
+  height: 48px;
+  width: auto;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1a202c;
+  margin-left: 0.5rem;
+}
+
+.mobileMenuButton {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  color: #4a5568;
+  background-color: transparent;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.mobileMenuButton:hover {
+  color: #2d3748;
+  background-color: #edf2f7;
+}
+
+.icon {
+  height: 24px;
+  width: 24px;
+}
+
+.desktopMenu {
+  display: none;
+}
+
+.navLink {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #4a5568;
+  transition: color 0.2s ease;
+  margin-right: 1rem;
+}
+
+.navLink:hover {
+  color: #3182ce;
+}
+
+.activeLink {
+  color: #3182ce;
+}
+
+.donateButton {
+  background-color: #3182ce;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.donateButton:hover {
+  background-color: #2b6cb0;
+}
+
+.mobileMenu {
+  display: none;
+}
+
+.mobileMenuContent {
+  padding: 0.5rem 1rem;
+}
+
+.mobileNavLink {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #4a5568;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.mobileNavLink:hover {
+  color: #3182ce;
+  background-color: #e2e8f0;
+}
+
+.activeMobileLink {
+  background-color: #e2e8f0;
+  color: #3182ce;
+}
+
+.mobileDonateButton {
+  width: 100%;
+  margin-top: 1rem;
+  background-color: #3182ce;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+.mobileDonateButton:hover {
+  background-color: #2b6cb0;
+}
+
+@media (min-width: 768px) {
+  .desktopMenu {
+    display: flex;
+    align-items: center;
+  }
+  .mobileMenu {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .desktopMenu {
+    display: none;
+  }
+  .mobileMenu {
+    display: block;
+  }
+}

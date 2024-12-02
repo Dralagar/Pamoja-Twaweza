@@ -25,6 +25,67 @@ const teamMembers = [
       linkedin: "https://linkedin.com/in/david-kimani"
     }
   },
+  {
+    id: 2,
+    name: "Anneled Karemi",
+    role: "Program Manager",
+    image: "/team/member2.jpg",
+    bio: "Specializing in youth empowerment and educational program development.",
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/david-kimani"
+    }
+  },
+  {
+    id: 2,
+    name: "Anneled Karemi",
+    role: "Program Manager",
+    image: "/team/member2.jpg",
+    bio: "Specializing in youth empowerment and educational program development.",
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/david-kimani"
+    }
+  },
+  {
+    id: 2,
+    name: "Anneled Karemi",
+    role: "Program Manager",
+    image: "/team/member2.jpg",
+    bio: "Specializing in youth empowerment and educational program development.",
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/david-kimani"
+    }
+  },
+  {
+    id: 2,
+    name: "Anneled Karemi",
+    role: "Program Manager",
+    image: "/team/member2.jpg",
+    bio: "Specializing in youth empowerment and educational program development.",
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/david-kimani"
+    }
+  },
+  {
+    id: 2,
+    name: "Anneled Karemi",
+    role: "Program Manager",
+    image: "/team/member2.jpg",
+    bio: "Specializing in youth empowerment and educational program development.",
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/david-kimani"
+    }
+  },
+  
+  {
+    id: 2,
+    name: "Anneled Karemi",
+    role: "Program Manager",
+    image: "/team/member2.jpg",
+    bio: "Specializing in youth empowerment and educational program development.",
+    socialLinks: {
+      linkedin: "https://linkedin.com/in/david-kimani"
+    }
+  },
 ] satisfies TeamMember[];
 
 // Define the type separately if you need type safety
