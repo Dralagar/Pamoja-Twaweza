@@ -1,7 +1,8 @@
 "use client";
 
 import React from 'react';
-import Image from "next/image";
+import Image from "next/image"
+import styles from '../styles/About.module.css';
 
 const teamMembers = [
   {
@@ -41,12 +42,12 @@ type TeamMember = {
 
 export default function About() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-white to-gray-50" suppressHydrationWarning>
-      {/* About Hero - More focused on organization history */}
+    <main className={styles.heroSection} suppressHydrationWarning>
+      {/* About Hero */}
       <section className="container mx-auto px-4 py-24">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <h1 className="text-5xl font-bold text-gray-800 mb-6">Our Story</h1>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <h1 className="text-5xl font-bold text-[var(--foreground)] mb-6">Our Story</h1>
+          <p className="text-xl text-[var(--foreground)] leading-relaxed">
             Since our founding in 2015, Pamoja Twaweza has been at the forefront of 
             community development in Kajiado South, bringing together people and resources 
             to create lasting positive change.
@@ -63,7 +64,7 @@ export default function About() {
           />
           <div className="absolute inset-0 bg-black/50" />
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-white text-center px-4">
+            <div className="text-[var(--secondary-light)] text-center px-4">
               <h2 className="text-4xl font-bold mb-4">8+ Years of Impact</h2>
               <p className="text-xl max-w-2xl">Transforming communities through unity and action</p>
             </div>
@@ -71,18 +72,18 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values Section - New section */}
+      {/* Values Section */}
       <section className="container mx-auto px-4 py-24">
-        <h2 className="text-4xl font-bold text-center mb-16">Our Core Values</h2>
+        <h2 className="text-4xl font-bold text-center mb-16 text-[var(--foreground)]">Our Core Values</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div className="text-center">
-            <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className={styles.iconWrapper}>
               <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold mb-4">Unity</h3>
-            <p className="text-gray-600">Working together as one community to achieve shared goals</p>
+            <h3 className="text-2xl font-bold mb-4 text-[var(--foreground)]">Unity</h3>
+            <p className="text-[var(--foreground)]">Working together as one community to achieve shared goals</p>
           </div>
           <div className="text-center">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -142,26 +143,23 @@ export default function About() {
             <p className="text-gray-600">Active Programs</p>
           </div>
           <div className="text-center">
-            <div className="text-5xl font-bold text-blue-600 mb-2">8</div>
-            <p className="text-gray-600">Years of Service</p>
+            <div className={styles.statNumber}>8</div>
+            <p className="text-[var(--foreground)]">Years of Service</p>
           </div>
           <div className="text-center">
-            <div className="text-5xl font-bold text-blue-600 mb-2">20+</div>
-            <p className="text-gray-600">Community Partners</p>
+            <div className={styles.statNumber}>20+</div>
+            <p className="text-[var(--foreground)]">Community Partners</p>
           </div>
         </div>
       </section>
 
-      {/* Team Section - Keep existing implementation */}
-      <section className="bg-gray-50 py-24">
+      {/* Team Section */}
+      <section className={styles.cardWrapper}>
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold mb-16 text-center">Leadership Team</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+          <h2 className="text-4xl font-bold mb-16 text-center text-[var(--foreground)]">Leadership Team</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             {teamMembers.map((member) => (
-              <div 
-                key={member.id}
-                className="group bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-[320px] transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl"
-              >
+              <div key={member.id} className={styles.teamCard}>
                 <div className="relative aspect-square overflow-hidden">
                   <Image
                     src={member.image}

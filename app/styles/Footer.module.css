@@ -1,0 +1,161 @@
+.footer {
+  background: var(--primary-light-blue);
+  color: var(--secondary-dark);
+  padding: 4rem 0 2rem;
+  width: 100%;
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
+
+/* Grid Layout */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.gridItem {
+  @apply flex flex-col space-y-4;
+}
+
+/* Consistent Typography */
+.gridTitle {
+  @apply text-xl font-bold;
+  color: var(--secondary-dark);
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.gridTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.5rem;
+  width: 2rem;
+  height: 2px;
+  background-color: var(--primary-blue);
+}
+
+.gridText {
+  @apply text-base leading-relaxed;
+  color: var(--neutral-gray);
+}
+
+/* Logo Styling */
+.logoWrapper {
+  @apply mb-4;
+}
+
+.logo {
+  @apply h-auto w-auto transition-transform duration-300;
+}
+
+.logo:hover {
+  transform: translateY(-2px);
+}
+
+/* Navigation Styling */
+.navList {
+  @apply space-y-3;
+}
+
+.navLink {
+  @apply text-base transition-colors duration-200 inline-block;
+  color: var(--secondary-dark);
+}
+
+.navLink:hover {
+  color: var(--primary-blue);
+}
+
+/* Social Icons */
+.socialLinks {
+  @apply flex flex-wrap gap-4;
+}
+
+.socialIcon {
+  @apply p-2 rounded-full transition-all duration-300;
+  background: var(--secondary-light);
+  color: var(--secondary-dark);
+}
+
+.socialIcon:hover {
+  @apply transform -translate-y-1;
+  background: var(--primary-blue);
+  color: var(--secondary-light);
+}
+
+/* Divider */
+.divider {
+  @apply w-full h-px my-8;
+  background: var(--neutral-gray);
+  opacity: 0.2;
+}
+
+/* Copyright Section */
+.copyright {
+  @apply flex flex-col md:flex-row justify-between items-center gap-4 pt-6;
+  color: var(--neutral-gray);
+  font-size: 0.875rem;
+}
+
+.legalLinks {
+  @apply flex gap-6;
+}
+
+.legalLink {
+  @apply transition-colors duration-200;
+  color: var(--neutral-gray);
+}
+
+.legalLink:hover {
+  color: var(--primary-blue);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .gridContainer {
+    gap: 2rem;
+  }
+
+  .gridTitle {
+    @apply text-lg;
+  }
+
+  .copyright {
+    @apply text-center;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background: var(--secondary-dark);
+  }
+
+  .gridTitle,
+  .navLink {
+    color: var(--secondary-light);
+  }
+
+  .socialIcon {
+    background: var(--primary-blue);
+    color: var(--secondary-light);
+  }
+
+  .socialIcon:hover {
+    background: var(--primary-light-blue);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .logo,
+  .socialIcon,
+  .navLink {
+    transition: none;
+  }
+}

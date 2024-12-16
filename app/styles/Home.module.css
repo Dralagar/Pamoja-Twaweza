@@ -1,0 +1,380 @@
+/* Base Styles */
+.mainContainer {
+  min-height: 100vh;
+  background: var(--background);
+  overflow-x: hidden;
+  position: relative;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+}
+
+/* Hero Section - Enhanced */
+.heroSection {
+  margin: 0 auto;
+  padding: clamp(4rem, 8vw, 8rem) 1rem;
+  max-width: min(1280px, 95%);
+  position: relative;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  animation: slideUp 0.8s ease-out;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--foreground);
+  letter-spacing: -0.02em;
+  background: linear-gradient(to right, var(--primary-blue), var(--primary-light-blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.heroText {
+  font-size: clamp(1.1rem, 2vw, 1.25rem);
+  line-height: 1.75;
+  color: var(--neutral-gray);
+  max-width: 65ch;
+}
+
+.heroButton {
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-light-blue));
+  color: var(--secondary-light);
+  font-weight: 600;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  align-self: flex-start;
+}
+
+.heroButton:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Impact Showcase - Enhanced */
+.impactShowcase {
+  position: relative;
+  height: min(700px, 80vh);
+  margin-top: 4rem;
+  overflow: hidden;
+}
+
+.impactTitle {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 800;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: var(--foreground);
+  position: relative;
+}
+
+.impactOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.4)
+  );
+  backdrop-filter: blur(2px);
+}
+
+.impactCard {
+  padding: clamp(2rem, 4vw, 3rem);
+  border-radius: 1.5rem;
+  max-width: min(32rem, 90%);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+.impactCard:hover {
+  transform: translateY(-5px);
+}
+
+/* Team Section - Enhanced */
+.teamSection {
+  background: var(--neutral-light-beige);
+  padding: clamp(4rem, 8vw, 8rem) 0;
+}
+
+.teamMemberCard {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--secondary-light);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 320px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.teamMemberCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modern Card Hover Effects */
+.programCard, .teamMemberCard {
+  isolation: isolate;
+  position: relative;
+}
+
+.programCard::after, .teamMemberCard::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-blue-rgb), 0.1),
+    rgba(var(--primary-light-blue-rgb), 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.programCard:hover::after, .teamMemberCard:hover::after {
+  opacity: 1;
+}
+
+/* Responsive Design Improvements */
+@media (max-width: 768px) {
+  .heroSection {
+    text-align: center;
+  }
+  
+  .heroButton {
+    align-self: center;
+  }
+  
+  .impactCard {
+    margin: 0 1rem;
+  }
+}
+
+/* Dark Mode Refinements */
+@media (prefers-color-scheme: dark) {
+  .impactCard {
+    background: rgba(0, 0, 0, 0.8);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  
+  .teamMemberCard {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Section Styles */
+.section {
+  @apply py-24;
+}
+
+.sectionTitle {
+  @apply text-4xl font-bold mb-10 text-center;
+  color: var(--foreground);
+  letter-spacing: -0.015em;
+}
+
+/* Programs Section */
+.programsSection {
+  background: var(--neutral-light-beige);
+  @apply py-24;
+}
+
+.programCard {
+  @apply rounded-2xl shadow-xl overflow-hidden;
+  background: var(--secondary-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.programCard:hover {
+  @apply shadow-2xl -translate-y-1;
+}
+
+/* Team Section */
+.teamSection {
+  background: var(--neutral-light-beige);
+  @apply py-24;
+}
+
+.teamMemberCard {
+  @apply rounded-xl shadow-lg overflow-hidden w-full max-w-[320px];
+  background: var(--secondary-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teamMemberCard:hover {
+  @apply shadow-xl -translate-y-1;
+}
+
+.teamMemberImage {
+  @apply relative aspect-square overflow-hidden;
+}
+
+.teamMemberContent {
+  @apply p-6;
+}
+
+.socialLinks {
+  @apply absolute bottom-0 left-0 right-0 p-4 flex gap-4 justify-center;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+}
+
+.teamMemberCard:hover .socialLinks {
+  transform: translateY(0);
+}
+
+.socialIcon {
+  @apply w-6 h-6 transition-colors;
+  color: var(--secondary-light);
+}
+
+.socialIcon:hover {
+  color: var(--primary-blue);
+}
+
+.title {
+  @apply text-xl font-bold mb-2;
+  color: var(--foreground);
+}
+
+/* Contact Section */
+.contactSection {
+  @apply container mx-auto px-4 py-24 text-center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .heroTitle {
+    @apply text-4xl;
+  }
+
+  .heroText {
+    @apply text-lg;
+  }
+
+  .impactShowcase {
+    @apply h-[500px];
+  }
+
+  .impactTitle {
+    @apply text-3xl;
+  }
+
+  .sectionTitle {
+    @apply text-3xl;
+  }
+
+  .programCard {
+    @apply mx-4;
+  }
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+  .mainContainer {
+    background: var(--secondary-dark);
+  }
+
+  .programCard,
+  .teamMemberCard,
+  .impactCard {
+    background: var(--secondary-dark);
+    border: 1px solid var(--primary-blue);
+  }
+
+  .heroButton {
+    background-color: var(--primary-blue);
+    color: var(--secondary-light);
+  }
+
+  .heroButton:hover {
+    background-color: var(--primary-light-blue);
+  }
+
+  .socialIcon {
+    color: var(--secondary-light);
+  }
+
+  .socialIcon:hover {
+    color: var(--primary-light-blue);
+  }
+
+  .programsSection,
+  .teamSection {
+    background: var(--secondary-dark);
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .heroButton,
+  .programCard,
+  .teamMemberCard,
+  .socialLinks {
+    transition: none;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .mainContainer {
+    background: white;
+  }
+
+  .heroButton,
+  .socialLinks {
+    display: none;
+  }
+}

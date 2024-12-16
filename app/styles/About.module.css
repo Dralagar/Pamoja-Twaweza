@@ -1,0 +1,40 @@
+.heroSection {
+  background: linear-gradient(to bottom, var(--secondary-light), var(--neutral-light-beige));
+  min-height: 100vh;
+}
+
+.statNumber {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary-blue);
+  margin-bottom: 0.5rem;
+}
+
+.cardWrapper {
+  background: var(--secondary-light);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgba(20, 19, 19, 0.1);
+  padding: 3rem;
+}
+
+.iconWrapper {
+  width: 5rem;
+  height: 5rem;
+  background: var(--primary-light-blue);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.teamCard {
+  background: var(--secondary-light);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.teamCard:hover {
+  transform: translateY(-0.25rem);
+}

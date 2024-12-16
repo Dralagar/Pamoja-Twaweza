@@ -28,7 +28,7 @@ export default function Contact() {
     <div className="min-h-screen relative">
       {/* Background Image */}
       <Image
-        src="/images/your-background-image.jpg" // Update with your image path
+        src="/images/image.jpg" // Update with your image path
         alt="Background"
         layout="fill"
         objectFit="cover"
@@ -39,6 +39,7 @@ export default function Contact() {
       <div className="relative z-10">
         <section className="bg-blue-600 text-white py-20">
           <div className="container mx-auto px-4 text-center">
+            
             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
             <p className="text-xl opacity-90 max-w-2xl mx-auto">
               Have questions? We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.

@@ -1,35 +1,21 @@
-"use client"
 import Image from "next/image"
 import Link from "next/link"
+import { type SanityDocument } from "next-sanity"
+import { client } from "@/sanity/lib/client"
 
-export default function Blog() {
-  // Sample blog posts data - you can replace with actual data/API
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Community Mental Health Initiatives",
-      excerpt: "Exploring the impact of our mental health programs in local communities...",
-      date: "March 15, 2024",
-      image: "/blog/mental-health.jpg",
-      category: "Mental Health"
-    },
-    {
-      id: 2,
-      title: "Educational Empowerment Programs",
-      excerpt: "How our education initiatives are transforming lives in rural areas...",
-      date: "March 10, 2024",
-      image: "/blog/education.jpg",
-      category: "Education"
-    },
-    {
-      id: 3,
-      title: "Sustainable Development Projects",
-      excerpt: "Updates on our latest community development initiatives...",
-      date: "March 5, 2024",
-      image: "/blog/development.jpg",
-      category: "Development"
-    }
-  ]
+// Sanity Query
+const POSTS_QUERY = `*[_type == "post" && defined(slug.current)]|order(publishedAt desc){
+  _id,
+  title,
+  slug,
+  publishedAt,
+  mainImage,
+  excerpt,
+  categories[]->{ title }
+}`
+
+export default async function Blog() {
+  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY)
 
   return (
     <div className="min-h-screen">
@@ -46,24 +32,30 @@ export default function Blog() {
       {/* Blog Posts Grid */}
       <section className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden">
+          {posts.map((post) => (
+            <article key={post._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="relative h-48">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                />
+                {post.mainImage && (
+                  <Image
+                    src={post.mainImage.url}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                )}
               </div>
               <div className="p-6">
-                <div className="text-sm text-blue-600 mb-2">{post.category}</div>
+                <div className="text-sm text-blue-600 mb-2">
+                  {post.categories?.map((cat: { title: string }) => cat.title).join(", ")}
+                </div>
                 <h2 className="text-xl font-bold mb-2">{post.title}</h2>
                 <p className="text-gray-600 mb-4">{post.excerpt}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-gray-500">{post.date}</span>
+                  <span className="text-sm text-gray-500">
+                    {new Date(post.publishedAt).toLocaleDateString()}
+                  </span>
                   <Link 
-                    href={`/blog/${post.id}`} 
+                    href={`/blog/${post.slug.current}`} 
                     className="text-blue-600 hover:text-blue-800"
                   >
                     Read More →

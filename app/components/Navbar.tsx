@@ -2,22 +2,28 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import styles from '../styles/Navbar.module.css';
 import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 
 export default function Navbar() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isClient, setIsClient] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    // Ensure this code runs only on the client
     setIsClient(true);
   }, []);
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+
+  const handleDonateClick = () => {
+    closeMenu();
+    router.push('/donate');
+  };
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -49,10 +55,10 @@ export default function Navbar() {
             </Link>
           </div>
           
-          {/* Mobile menu button - only visible on mobile */}
+          {/* Mobile menu button */}
           {isClient && (
             <button
-              className={`${styles.mobileMenuButton} md:hidden`} // Hide on desktop
+              className={`${styles.mobileMenuButton} md:hidden`}
               onClick={toggleMenu}
               aria-expanded={isOpen}
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -74,14 +80,17 @@ export default function Navbar() {
           <div className={styles.desktopMenu}>
             {navLinks.map((link, index) => (
               <Link
-                key={`${link.href}-${index}`} // Ensure unique keys by appending index
+                key={`${link.href}-${index}`}
                 href={link.href}
                 className={`${styles.navLink} ${isActive(link.href) ? styles.activeLink : ''}`}
               >
                 {link.label}
               </Link>
             ))}
-            <button className={styles.donateButton}>
+            <button 
+              onClick={handleDonateClick}
+              className={`${styles.donateButton} hover:bg-blue-700 transition-colors duration-200`}
+            >
               Donate
             </button>
           </div>
@@ -94,7 +103,7 @@ export default function Navbar() {
           <div className={styles.mobileMenuContent}>
             {navLinks.map((link, index) => (
               <Link
-                key={`${link.href}-${index}`} // Ensure unique keys by appending index
+                key={`${link.href}-${index}`}
                 href={link.href}
                 className={`${styles.mobileNavLink} ${isActive(link.href) ? styles.activeMobileLink : ''}`}
                 onClick={closeMenu}
@@ -102,7 +111,10 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <button className={styles.mobileDonateButton}>
+            <button 
+              onClick={handleDonateClick}
+              className={`${styles.mobileDonateButton} hover:bg-blue-700 transition-colors duration-200`}
+            >
               Donate
             </button>
           </div>
