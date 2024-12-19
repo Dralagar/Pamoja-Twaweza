@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import Link, { LinkProps } from 'next/link';
 import { useRouter } from 'next/navigation';
 import styles from '../styles/Navbar.module.css';
 import { usePathname } from 'next/navigation';
@@ -41,10 +41,10 @@ export default function Navbar() {
         <div className={styles.navbarContent}>
           {/* Logo */}
           <div className={styles.logo}>
-            <Link href="/" className={styles.logoLink}>
-              <Image 
-                src="/images/PamojaTwaweza_Logo.png" 
-                alt="Pamoja Twaweza Logo" 
+            <a href="/" className={styles.logoLink}>
+              <img
+                src="/images/PamojaTwaweza_Logo.png"
+                alt="Pamoja Twaweza Logo"
                 width={48}
                 height={48}
                 className={styles.logoImage}
@@ -52,7 +52,7 @@ export default function Navbar() {
               <span className={styles.logoText}>
                 Pamoja Twaweza
               </span>
-            </Link>
+            </a>
           </div>
           
           {/* Mobile menu button */}
@@ -79,13 +79,13 @@ export default function Navbar() {
           {/* Desktop menu */}
           <div className={styles.desktopMenu}>
             {navLinks.map((link, index) => (
-              <Link
+              <a
                 key={`${link.href}-${index}`}
-                href={link.href}
+                href={link.href.toString()}
                 className={`${styles.navLink} ${isActive(link.href) ? styles.activeLink : ''}`}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
             <button 
               onClick={handleDonateClick}
@@ -102,14 +102,14 @@ export default function Navbar() {
         <div className={styles.mobileMenu}>
           <div className={styles.mobileMenuContent}>
             {navLinks.map((link, index) => (
-              <Link
+              <a
                 key={`${link.href}-${index}`}
-                href={link.href}
+                href={link.href.toString()}
                 className={`${styles.mobileNavLink} ${isActive(link.href) ? styles.activeMobileLink : ''}`}
                 onClick={closeMenu}
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
             <button 
               onClick={handleDonateClick}

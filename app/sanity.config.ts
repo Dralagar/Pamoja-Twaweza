@@ -1,5 +1,5 @@
 import { defineConfig } from 'sanity'
-import { visionTool } from '@sanity/vision'
+import { visionTool } from '@sanity/vision '
 import { schemaTypes } from './schemas/index'
 
 export default defineConfig({

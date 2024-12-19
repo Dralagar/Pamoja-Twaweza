@@ -34,13 +34,17 @@ export default async function Blog() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
             <article key={post._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="relative h-48">
+              <div className="relative h-48 w-full">
                 {post.mainImage && (
-                  <Image
+                  <img
                     src={post.mainImage.url}
                     alt={post.title}
-                    fill
-                    className="object-cover"
+                    style={{
+                      position: 'absolute',
+                      height: '100%',
+                      width: '100%',
+                      objectFit: 'cover'
+                    }}
                   />
                 )}
               </div>
@@ -54,12 +58,7 @@ export default async function Blog() {
                   <span className="text-sm text-gray-500">
                     {new Date(post.publishedAt).toLocaleDateString()}
                   </span>
-                  <Link 
-                    href={`/blog/${post.slug.current}`} 
-                    className="text-blue-600 hover:text-blue-800"
-                  >
-                    Read More →
-                  </Link>
+              
                 </div>
               </div>
             </article>

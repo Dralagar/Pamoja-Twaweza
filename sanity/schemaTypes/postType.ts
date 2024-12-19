@@ -21,7 +21,9 @@ export const postType = defineType({
     defineField({
       name: 'author',
       type: 'reference',
-      to: {type: 'author'},
+      options: {
+        to: [{type: 'author'}]
+      },
     }),
     defineField({
       name: 'mainImage',
@@ -30,11 +32,11 @@ export const postType = defineType({
         hotspot: true,
       },
       fields: [
-        {
+        defineField({
           name: 'alt',
           type: 'string',
           title: 'Alternative text',
-        }
+        })
       ]
     }),
     defineField({

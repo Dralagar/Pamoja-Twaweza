@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
 import { paymentProviders } from '../config/paymentProviders';
 import { PaymentProvider } from '../types/payment';
 
@@ -120,28 +120,30 @@ export default function MultiPaymentDonation() {
       </motion.button>
 
       {/* Status Messages */}
-      <AnimatePresence>
-        {status !== 'idle' && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            className={`mt-4 p-4 rounded-lg text-center ${
-              status === 'success'
-                ? 'bg-green-100 text-green-700'
+      <LazyMotion features={domAnimation}>
+        <AnimatePresence>
+          {status !== 'idle' && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              className={`mt-4 p-4 rounded-lg text-center ${
+                status === 'success'
+                  ? 'bg-green-100 text-green-700'
+                  : status === 'error'
+                  ? 'bg-red-100 text-red-700'
+                  : 'bg-blue-100 text-blue-700'
+              }`}
+            >
+              {status === 'success'
+                ? 'Thank you for your donation!'
                 : status === 'error'
-                ? 'bg-red-100 text-red-700'
-                : 'bg-blue-100 text-blue-700'
-            }`}
-          >
-            {status === 'success'
-              ? 'Thank you for your donation!'
-              : status === 'error'
-              ? 'Payment failed. Please try again.'
-              : 'Processing your donation...'}
-          </motion.div>
-        )}
-      </AnimatePresence>
+                ? 'Payment failed. Please try again.'
+                : 'Processing your donation...'}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </LazyMotion>
     </div>
   );
 }

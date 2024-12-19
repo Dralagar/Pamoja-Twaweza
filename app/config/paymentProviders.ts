@@ -63,7 +63,7 @@ export const paymentProviders: PaymentProvider[] = [
     currencies: ['USD', 'KES', 'GBP'],
     minAmount: 1,
     maxAmount: 2000,
-    supportedRegions: ['GLOBAL'],
+    regions: ['GLOBAL'],
     features: ['instant', 'mobile']
   },
   {
@@ -85,7 +85,7 @@ export const paymentProviders: PaymentProvider[] = [
     currencies: ['BTC', 'ETH', 'USDT'],
     minAmount: 0.0001,
     maxAmount: 100000,
-    supportedRegions: ['GLOBAL'],
+    regions: ['GLOBAL'],
     features: ['instant', 'crypto']
   }
 ];
