@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React from 'react';
+import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import styles from './styles/Home.module.css';
-              
+
 const teamMembers = [
   {
     id: 1,
@@ -27,7 +28,7 @@ const teamMembers = [
     }
   },
   {
-    id: 2,
+    id: 3,
     name: "Ramazaan Mwalisho",
     role: "Communications Manager",
     image: "/team/member3.jpg",
@@ -37,7 +38,7 @@ const teamMembers = [
     }
   },
   {
-    id: 2,
+    id: 4,
     name: "Ramazaan Mwalisho",
     role: "Communications Manager",
     image: "/team/member3.jpg",
@@ -47,7 +48,7 @@ const teamMembers = [
     }
   },
   {
-    id: 2,
+    id: 5,
     name: "Anneled Karemi",
     role: "Program Manager",
     image: "/team/member2.jpg",
@@ -57,7 +58,7 @@ const teamMembers = [
     }
   },
   {
-    id: 2,
+    id: 6,
     name: "Ramazaan Mwalisho",
     role: "Communications Manager",
     image: "/team/member3.jpg",
@@ -67,7 +68,7 @@ const teamMembers = [
     }
   },
   {
-    id: 2,
+    id: 7,
     name: "Anneled Karemi",
     role: "Program Manager",
     image: "/team/member2.jpg",
@@ -78,7 +79,7 @@ const teamMembers = [
   },
   
   {
-    id: 2,
+    id: 8,
     name: "Anneled Karemi",
     role: "Program Manager",
     image: "/team/member2.jpg",

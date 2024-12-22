@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GeistSans } from 'geist/font';
+import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
 import Navbar from './components/Navbar';
@@ -7,23 +7,21 @@ import Footer from './footer/page';
 
 export const metadata: Metadata = {
   title: "Pamoja Twaweza",
-  description: "Pa",
+  description: "Pamoja Twaweza is a platform for youth empowerment and educational programs.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className={`${GeistSans.variable} ${GeistMono.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}>
-        <Navbar />  
-        <main className="min-h-screen">
-          {children}
-        </main>
+    <html lang="en">
+          <body>
+        <Navbar />
+        {children}
         <Footer />
       </body>
-    </html> 
+    </html>
   );
 }
