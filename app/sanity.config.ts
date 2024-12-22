@@ -5,7 +5,7 @@ import { deskTool } from 'sanity/desk'
 export default defineConfig({
   name: 'default',
   title: 'Pamoja Twaweza',
-  projectId: 'your-project-id',
+  projectId: 'boxgqwv2',
   dataset: 'production',
   basePath: '/studio',
   plugins: [deskTool()],

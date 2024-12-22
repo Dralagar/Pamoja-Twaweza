@@ -9,7 +9,8 @@
 
 'use client'
 import { NextStudio } from 'next-sanity/studio'
-import config from '../../../sanity.config'
+import config from '../../../app/sanity.config'
+import React from 'react'
 
 export const dynamic = 'force-static'
 

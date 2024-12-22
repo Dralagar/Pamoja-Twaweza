@@ -1,7 +1,8 @@
 import Image from "next/image"
 import Link from "next/link"
-import { type SanityDocument } from "next-sanity"
-import { client } from "@/sanity/lib/client"
+import { createClient } from 'next-sanity'
+import { SanityDocument } from '@sanity/client'
+import React from "react"
 
 // Sanity Query
 const POSTS_QUERY = `*[_type == "post" && defined(slug.current)]|order(publishedAt desc){
@@ -14,8 +15,25 @@ const POSTS_QUERY = `*[_type == "post" && defined(slug.current)]|order(published
   categories[]->{ title }
 }`
 
+// Add this interface
+interface Post extends SanityDocument {
+  title: string
+  slug: { current: string }
+  publishedAt: string
+  mainImage: { url: string }
+  excerpt?: string
+  categories?: { title: string }[]
+}
+
+// Initialize the Sanity client
+const client = createClient({
+  projectId: 'boxgqwv2', // replace with your actual project ID
+  dataset: 'production',     // replace with your actual dataset
+  useCdn: true,               // `false` if you want to ensure fresh data
+})
+
 export default async function Blog() {
-  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY)
+  const posts = await client.fetch<Post[]>(POSTS_QUERY)
 
   return (
     <div className="min-h-screen">
@@ -32,19 +50,16 @@ export default async function Blog() {
       {/* Blog Posts Grid */}
       <section className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map((post) => (
+          {posts.map((post: Post) => (
             <article key={post._id} className="bg-white rounded-lg shadow-lg overflow-hidden">
               <div className="relative h-48 w-full">
                 {post.mainImage && (
-                  <img
+                  <Image
                     src={post.mainImage.url}
                     alt={post.title}
-                    style={{
-                      position: 'absolute',
-                      height: '100%',
-                      width: '100%',
-                      objectFit: 'cover'
-                    }}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 )}
               </div>

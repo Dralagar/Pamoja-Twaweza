@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import { paymentProviders } from '../config/paymentProviders';
 import { PaymentProvider } from '../types/payment';
+import React from 'react';
 
 export default function MultiPaymentDonation() {
   const [amount, setAmount] = useState('');
@@ -55,7 +56,6 @@ export default function MultiPaymentDonation() {
       setIsProcessing(false);
     }
   };
-
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-lg">
       <h2 className="text-3xl font-bold text-center mb-8">Make a Donation</h2>

@@ -4,6 +4,7 @@ import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
 import Navbar from './components/Navbar';
 import Footer from './footer/page';
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Pamoja Twaweza",

@@ -5,6 +5,7 @@ import Link, { LinkProps } from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import styles from '../styles/Navbar.module.css';
 import Image from 'next/image';
+import React from 'react';
 
 export default function Navbar() {
   const router = useRouter();
