@@ -4,6 +4,8 @@ import React from 'react';
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import styles from './styles/Home.module.css';
+import MultiPaymentDonation from './components/MultiPaymentDonation';
+import OpportunitiesSection from './components/OpportunititieSectionl';
 
 const teamMembers = [
   {
@@ -104,6 +106,19 @@ type TeamMember = {
 };
 
 export default function Home() {
+  const handleJoinCause = () => {
+    // Add your navigation or modal logic here
+    window.location.href = '/join-us';  // or any desired path
+  };
+
+  const handleLearnMore = () => {
+    window.location.href = '/about';
+  };
+
+  const handleContact = () => {
+    window.location.href = '/contact';
+  };
+
   return (
     <div className={styles.mainContainer} suppressHydrationWarning>
       <div className={styles.content}>
@@ -118,7 +133,10 @@ export default function Home() {
                 At Pamoja Twaweza, we believe in the power of unity and collective action
                 to create lasting positive change in our communities.
               </p>
-              <button className={styles.heroButton}>
+              <button 
+                className={styles.heroButton}
+                onClick={handleJoinCause}
+              >
                 Join Our Cause
               </button>
             </div>
@@ -138,6 +156,12 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        {/* Add OpportunitiesSection component */}
+        <OpportunitiesSection />
+
+        {/* Add MultiPaymentDonation component */}
+        <MultiPaymentDonation />
 
         {/* Impact Showcase */}
         <section className={styles.impactShowcase}>
@@ -177,7 +201,10 @@ export default function Home() {
               communities through sustainable development initiatives, mental health
               support, and educational programs.
             </p>
-            <button className={styles.heroButton}>
+            <button 
+              className={styles.heroButton}
+              onClick={handleLearnMore}
+            >
               Learn More About Our Mission
             </button>
           </div>
@@ -322,7 +349,10 @@ export default function Home() {
               Chairman Road, Next to Best Lady<br />
               Kajiado South
             </p>
-            <button className={styles.heroButton}>
+            <button 
+              className={styles.heroButton}
+              onClick={handleContact}
+            >
               Contact Us
             </button>
           </div>

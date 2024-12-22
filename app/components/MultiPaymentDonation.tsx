@@ -1,7 +1,8 @@
 'use client';
+'use client';
 
 import { useState } from 'react';
-import { motion, AnimatePresence, LazyMotion, domAnimation } from "framer-motion";
+import { motion, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion';
 import { paymentProviders } from '../config/paymentProviders';
 import { PaymentProvider } from '../types/payment';
 

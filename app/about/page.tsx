@@ -3,6 +3,8 @@
 import React from 'react';
 import Image from "next/image"
 import styles from '../styles/About.module.css';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 const teamMembers = [
   {
@@ -39,6 +41,28 @@ type TeamMember = {
     twitter?: string;
   };
 };
+
+type Opportunity = {
+  title: string;
+  description: string;
+  link: string;
+  image: string;
+}
+
+const opportunities: Opportunity[] = [
+  {
+    title: "Volunteer With Us",
+    description: "Join our community of dedicated volunteers making a real difference in Kajiado South. Whether you have a few hours or want to commit long-term, your skills and passion can help transform lives.",
+    link: "/OpportunitiesSection",
+    image: "/images/volunteer.jpg"
+  },
+  {
+    title: "Partner With Us",
+    description: "Create lasting impact through strategic partnerships. We collaborate with organizations that share our vision for community development and sustainable change.",
+    link: "/OpportunitiesSection",
+    image: "/images/partner.jpg"
+  }
+];
 
 export default function About() {
   return (
@@ -212,12 +236,53 @@ export default function About() {
             there are many ways to get involved with Pamoja Twaweza.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-all hover:shadow-lg">
+            <Link 
+              href="/volunteer" 
+              className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 transition-all hover:shadow-lg"
+            >
               Volunteer With Us
-            </button>
-            <button className="bg-gray-800 text-white px-8 py-4 rounded-full hover:bg-gray-900 transition-all hover:shadow-lg">
+            </Link>
+            <Link 
+              href="/partner" 
+              className="bg-gray-800 text-white px-8 py-4 rounded-full hover:bg-gray-900 transition-all hover:shadow-lg"
+            >
               Partner With Us
-            </button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Opportunities Section */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-16">Ways to Get Involved</h2>
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            {opportunities.map((item) => (
+              <motion.div
+                key={item.title}
+                whileHover={{ y: -5 }}
+                className="bg-white rounded-2xl shadow-lg overflow-hidden"
+              >
+                <div className="relative h-64">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="text-2xl font-bold mb-4">{item.title}</h3>
+                  <p className="text-gray-600 mb-6">{item.description}</p>
+                  <Link 
+                    href={item.link}
+                    className="inline-block px-6 py-3 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition-colors"
+                  >
+                    Learn More
+                  </Link>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
