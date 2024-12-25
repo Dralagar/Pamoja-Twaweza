@@ -106,17 +106,8 @@ type TeamMember = {
 };
 
 export default function Home() {
-  const handleJoinCause = () => {
-    // Add your navigation or modal logic here
-    window.location.href = '/join-us';  // or any desired path
-  };
-
-  const handleLearnMore = () => {
-    window.location.href = '/about';
-  };
-
-  const handleContact = () => {
-    window.location.href = '/contact';
+  const handleNavigation = (path: string) => {
+    window.location.href = path;
   };
 
   return (
@@ -135,7 +126,7 @@ export default function Home() {
               </p>
               <button 
                 className={styles.heroButton}
-                onClick={handleJoinCause}
+                onClick={() => handleNavigation('/join-us')}
               >
                 Join Our Cause
               </button>
@@ -203,7 +194,7 @@ export default function Home() {
             </p>
             <button 
               className={styles.heroButton}
-              onClick={handleLearnMore}
+              onClick={() => handleNavigation('/about')}
             >
               Learn More About Our Mission
             </button>
@@ -351,7 +342,7 @@ export default function Home() {
             </p>
             <button 
               className={styles.heroButton}
-              onClick={handleContact}
+              onClick={() => handleNavigation('/contact')}
             >
               Contact Us
             </button>

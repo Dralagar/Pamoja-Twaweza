@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { fetchPosts } from './dataFetching';
 import { client } from './sanity';
 
 async function fetchPosts() {
@@ -22,6 +21,7 @@ function BlogPosts() {
   useEffect(() => {
     async function getPosts() {
       const data = await fetchPosts();
+      console.log("Fetched posts:", data);
       setPosts(data);
     }
     getPosts();

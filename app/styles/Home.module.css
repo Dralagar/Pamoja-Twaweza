@@ -1,28 +1,40 @@
 /* Main Container */
 .mainContainer {
   min-height: 100vh;
+  max-width: 100vw;
+  overflow-x: hidden;
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
 }
 
 .content {
+  max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 /* Hero Section */
 .heroSection {
-  padding: 4rem 1rem;
+  padding: 3rem 1.5rem;
+  max-width: 100vw;
+  overflow-x: hidden;
   background: linear-gradient(to bottom right, #eff6ff, white);
+  text-align: center;
 }
 
 .heroContent {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1.5rem;
 }
 
 .heroTitle {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text-primary);
   line-height: 1.2;
@@ -30,7 +42,7 @@
 }
 
 .heroText {
-  font-size: 1.125rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.75;
 }
@@ -40,9 +52,9 @@
   padding: 0.75rem 2rem;
   background-color: var(--primary-blue);
   color: white;
-  border-radius: 9999px;
+  border-radius: 8px;
   font-weight: 600;
-  transition: var(--transition);
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .heroButton:hover {
@@ -54,16 +66,16 @@
 /* Impact Section */
 .impactShowcase {
   position: relative;
-  padding: 6rem 0;
+  padding: 4rem 1.5rem;
   overflow: hidden;
   min-height: 60vh;
+  text-align: center;
 }
 
 .impactTitle {
-  font-size: 2.25rem;
+  font-size: 1.75rem;
   font-weight: 700;
-  text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: var(--text-primary);
 }
 
@@ -88,7 +100,7 @@
 
 /* Section Styles */
 .section {
-  padding: 4rem 0;
+  padding: 4rem 1.5rem;
 }
 
 .sectionTitle {
@@ -100,7 +112,9 @@
 
 /* Programs Section */
 .programsSection {
-  padding: 4rem 0;
+  padding: 4rem 1.5rem;
+  max-width: 100vw;
+  overflow-x: hidden;
   background: linear-gradient(to bottom right, #f8fafc, white);
 }
 
@@ -119,7 +133,9 @@
 
 /* Team Section */
 .teamSection {
-  padding: 4rem 0;
+  padding: 4rem 1.5rem;
+  max-width: 100vw;
+  overflow-x: hidden;
   background: linear-gradient(to bottom right, #eff6ff, white);
 }
 
@@ -178,18 +194,19 @@
 @media (min-width: 768px) {
   .heroSection {
     padding: 6rem 2rem;
+    text-align: left;
   }
 
   .heroTitle {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   .heroText {
     font-size: 1.25rem;
   }
 
-  .sectionTitle {
-    font-size: 3rem;
+  .impactTitle {
+    font-size: 2.25rem;
   }
 }
 
