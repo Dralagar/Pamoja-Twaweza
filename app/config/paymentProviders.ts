@@ -27,10 +27,10 @@ export const paymentProviders: PaymentProvider[] = [
     id: 'mtn',
     icon: '/icons/mtn.svg',
     isAvailable: true,
-    currencies: ['UGX', 'USD'],
+    currencies: ['KES', 'TZS', 'UGX', 'EUR', 'USD'],
     minAmount: 500,
     maxAmount: 5000000,
-    supportedRegions: ['UG'],
+    regions: ['KE', 'TZ', 'UG', 'USA', 'UK', 'GLOBAL' ],
     features: ['instant', 'mobile']
   },
   {
@@ -91,5 +91,5 @@ export const paymentProviders: PaymentProvider[] = [
 ];
 
 export type SupportedCurrencies = 'USD' | 'EUR' | 'GBP' | 'KES' | 'TZS' | 'UGX' | 'BTC' | 'ETH' | 'USDT';
-export type SupportedRegions = 'KE' | 'TZ' | 'UG' | 'GLOBAL';
+export type SupportedRegions = 'KE' | 'TZ' | 'UG' | 'GLOBAL' | 'USA' | 'UK';
 export type PaymentFeatures = 'instant' | 'mobile' | 'online' | 'cash-pickup' | 'crypto';

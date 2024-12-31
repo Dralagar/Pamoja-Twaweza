@@ -3,11 +3,24 @@ import Stripe from 'stripe';
 
 export const runtime = 'nodejs';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+
+if (!stripeSecretKey) {
+  console.error('Stripe secret key is not set. Please configure it in the environment variables.');
+}
+
+const stripe = new Stripe(stripeSecretKey || '', {
   apiVersion: '2024-12-18.acacia'
 });
 
 export async function POST(req: Request) {
+  if (!stripeSecretKey) {
+    return NextResponse.json(
+      { error: 'Stripe secret key is not configured. Please contact the administrator.' },
+      { status: 500 }
+    );
+  }
+
   try {
     const { amount, currency = 'usd' } = await req.json();
 
@@ -32,7 +45,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ sessionId: session.id });
   } catch (err) {
-    console.error('Error:', err);
+    console.error('Error creating checkout session:', err);
     return NextResponse.json(
       { error: 'Error creating checkout session' },
       { status: 500 }

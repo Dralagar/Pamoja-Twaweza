@@ -1,3 +1,5 @@
+import { SupportedRegions } from "../config/paymentProviders";
+
 export interface PaymentProvider {
   name: string;
   id: string;
@@ -6,6 +8,8 @@ export interface PaymentProvider {
   currencies: string[];
   minAmount: number;
   maxAmount: number;
+  regions: SupportedRegions[];
+  features?: string[];
 }
 
 export interface PaymentRequest {
