@@ -5,6 +5,7 @@ import { createClient } from 'next-sanity';
 import Image from "next/image"
 import Link from "next/link"
 import imageUrlBuilder from '@sanity/image-url';
+import sanityConfig from '../sanity.config';
 
 interface Post {
   _id: string;
@@ -19,12 +20,7 @@ interface Post {
   excerpt: string;
 }
 
-const client = createClient({
-  projectId: 'boxgqwv2',
-  dataset: 'production',
-  useCdn: true,
-});
-
+const client = createClient(sanityConfig);
 const builder = imageUrlBuilder(client);
 
 function urlFor(source: any) {

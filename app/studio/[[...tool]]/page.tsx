@@ -23,10 +23,10 @@ export default function StudioPage() {
   }
   useEffect(() => {
     const client = createClient({
-      projectId: 'boxgqwv2', 
+      projectId: 'boxgqwv2',
       dataset: 'production',
+      apiVersion: '2023-10-01',
       useCdn: true,
-      apiVersion: '2023-10-01', // Specify the API version
     });
     // Fetch data and log it
     client.fetch('*[_type == "post"]').then((posts: any[]) => {
