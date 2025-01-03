@@ -1,7 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { client } from './sanity';
+import React from 'react';
+import { createClient } from '@sanity/client';
+import { urlFor } from './sanityImage'; // Assuming you have a utility for image URLs
 
-async function fetchPosts() {
+const client = createClient({
+  projectId: process.env.SANITY_PROJECT_ID,
+  dataset: process.env.SANITY_DATASET,
+  apiVersion: process.env.SANITY_API_VERSION,
+  useCdn: true,
+});
+
+export async function getServerSideProps() {
   const query = `*[_type == "post" && defined(publishedDate)]{
     _id,
     title,
@@ -12,21 +20,16 @@ async function fetchPosts() {
     publishedDate,
     body
   } | order(publishedDate desc)`;
-  return await client.fetch(query);
+  const posts = await client.fetch(query);
+
+  return {
+    props: {
+      posts,
+    },
+  };
 }
 
-function BlogPosts() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    async function getPosts() {
-      const data = await fetchPosts();
-      console.log("Fetched posts:", data);
-      setPosts(data);
-    }
-    getPosts();
-  }, []);
-
+function BlogPosts({ posts }) {
   return (
     <div>
       {posts.map(post => (

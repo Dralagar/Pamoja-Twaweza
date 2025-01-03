@@ -6,4 +6,4 @@ export const sanityClient = createClient({
   dataset,
   apiVersion,
   useCdn: false,
-}); 
+});
