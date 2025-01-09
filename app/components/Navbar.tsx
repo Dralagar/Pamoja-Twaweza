@@ -47,7 +47,7 @@ export default function Navbar() {
           <div className={styles.logo}>
             <Link href="/" className={styles.logoLink}>
               <Image 
-                src="/images/PamojaTwaweza_Logo.png" 
+                src="/images/Logo.png" 
                 alt="Pamoja Twaweza Logo" 
                 width={48}
                 height={48}
