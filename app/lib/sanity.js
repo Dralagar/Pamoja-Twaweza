@@ -1,6 +1,7 @@
 import React from 'react';
 import { createClient } from '@sanity/client';
 import { urlFor } from './sanityImage'; // Assuming you have a utility for image URLs
+import Image from 'next/image';
 
 const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -35,7 +36,13 @@ function BlogPosts({ posts }) {
       {posts.map(post => (
         <div key={post._id}>
           <h2>{post.title}</h2>
-          <img src={urlFor(post.mainImage).url()} alt={post.title} />
+          <Image 
+            src={urlFor(post.mainImage).url()} 
+            alt={post.title} 
+            width={500}
+            height={300}
+            layout="responsive"
+          />
           <p>{post.author.name}</p>
           {/* Render body content here */}
         </div>

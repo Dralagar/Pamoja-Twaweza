@@ -1,4 +1,4 @@
-export default {
+const authorSchema = {
   name: 'author',
   type: 'document',
   title: 'Author',
@@ -22,4 +22,6 @@ export default {
       }
     }
   ]
-}
+};
+
+export default authorSchema;
