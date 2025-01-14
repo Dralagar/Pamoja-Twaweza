@@ -3,7 +3,6 @@
 import { useServerInsertedHTML } from 'next/navigation'
 import React from 'react'
 import { useState } from 'react'
-import { type ReactNode } from 'react'
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components'
 
 export default function StyledComponentsRegistry({

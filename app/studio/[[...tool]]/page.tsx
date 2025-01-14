@@ -18,21 +18,19 @@ export const dynamic = 'force-static'
 export default function StudioPage() {
   const [posts, setPosts] = useState<any[]>([])
 
-  // Ensure the config is correctly passed to NextStudio
-  if (!config) {
-    console.error("Sanity config is missing or not properly configured.")
-    return <div>Error: Sanity configuration is missing.</div>
-  }
-
   useEffect(() => {
+    if (!config) {
+      console.error("Sanity config is missing or not properly configured.")
+      return;
+    }
+
     const client = createClient({
       projectId: 'boxgqwv2',
       dataset: 'production',
       apiVersion: '2023-10-01',
       useCdn: true,
-    })
+    });
 
-    // Fetch data and update state
     client.fetch('*[_type == "post"]').then((fetchedPosts: any[]) => {
       console.log("Fetched posts:", fetchedPosts)
       setPosts(fetchedPosts)
@@ -42,7 +40,11 @@ export default function StudioPage() {
     }).catch((error: unknown) => {
       console.error("Error fetching posts:", error)
     })
-  }, []) // Empty dependency array ensures this runs only on the client
+  }, []); // Empty dependency array ensures this runs only on the client
+
+  if (!config) {
+    return <div>Error: Sanity configuration is missing.</div>
+  }
 
   return (
     <div>

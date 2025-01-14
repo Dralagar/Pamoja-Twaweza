@@ -6,6 +6,7 @@ import { motion, AnimatePresence, LazyMotion, domAnimation } from 'framer-motion
 import { paymentProviders } from '../config/paymentProviders';
 import { PaymentProvider } from '../types/payment';
 import React from 'react';
+import Image from 'next/image';
 
 export default function MultiPaymentDonation() {
   const [amount, setAmount] = useState('');
@@ -21,7 +22,7 @@ export default function MultiPaymentDonation() {
     setStatus('processing');
 
     try {
-      const response = await fetch('/api/process-payment', {
+      const response = await fetch('https://api.pamojatwaweza.org/api/process-payment', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -36,7 +37,7 @@ export default function MultiPaymentDonation() {
       });
 
       const data = await response.json();
-
+      console.log(data);
       if (!response.ok) {
         throw new Error(data.message || 'Payment failed');
       }
@@ -98,9 +99,11 @@ export default function MultiPaymentDonation() {
                 : 'border-gray-200'
             }`}
           >
-            <img
+            <Image
               src={provider.icon}
               alt={provider.name}
+              width={48}
+              height={48}
               className="w-12 h-12 mx-auto mb-2"
             />
             <p className="text-sm text-center font-medium">{provider.name}</p>

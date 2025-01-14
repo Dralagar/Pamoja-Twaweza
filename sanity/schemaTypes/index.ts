@@ -1,13 +1,15 @@
-// Define a custom type if CorrectTypeName is not available
-type CustomTypeName = {
-  // Define the structure of your type here
+import { blockContentType } from '../schemaTypes/blockContentType';
+import { categoryType } from '../schemaTypes/categoryType';
+import { postType } from '../schemaTypes/postType';
+import { authorType } from '../schemaTypes/authorType';
+
+type SchemaType = {
+  name: string;
+  title: string;
+  type: string;
+  fields?: any[];
 };
 
-import {blockContentType} from './blockContentType'
-import {categoryType} from './categoryType'
-import {postType} from './postType'
-import {authorType} from './authorType'
-
-export const schema: { types: CustomTypeName[] } = {
+export const schema: { types: SchemaType[] } = {
   types: [blockContentType, categoryType, postType, authorType],
-}
+};

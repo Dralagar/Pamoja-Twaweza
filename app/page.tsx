@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import styles from './styles/Home.module.css';
 import MultiPaymentDonation from './components/MultiPaymentDonation';
@@ -79,7 +78,6 @@ const teamMembers = [
       linkedin: ""
     }
   },
-  
   {
     id: 8,
     name: "Anneled Karemi",
@@ -92,7 +90,6 @@ const teamMembers = [
   },
 ] satisfies TeamMember[];
 
-// Define the type separately if you need type safety
 type TeamMember = {
   id: number;
   name: string;
@@ -132,15 +129,11 @@ export default function Home() {
               </button>
             </div>
             <div className="relative aspect-square">
-              <img
+              <Image
                 src="/images/pamoj1.jpeg"
                 alt="Community Impact"
-                style={{
-                  position: 'absolute',
-                  height: '100%',
-                  width: '100%',
-                  objectFit: 'cover'
-                }}
+                layout="fill"
+                objectFit="cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
                 className="object-cover rounded-3xl shadow-2xl"
               />
@@ -158,15 +151,11 @@ export default function Home() {
         <section className={styles.impactShowcase}>
           <h2 className={styles.impactTitle}>Our Impact Stories</h2>
           <div className="relative w-full h-full">
-            <img
+            <Image
               src="/images/pamoj7.jpeg"
               alt="Community Impact"
-              style={{
-                position: 'absolute',
-                height: '100%',
-                width: '100%',
-                objectFit: 'cover'
-              }}
+              layout="fill"
+              objectFit="cover"
               sizes="100vw"
               className="object-cover"
             />
@@ -209,15 +198,11 @@ export default function Home() {
               {/* Main Program */}
               <div className="space-y-8">
                 <div className="relative aspect-video">
-                  <img
+                  <Image
                     src="/images/pamoj5.jpeg"
                     alt="Livelihoods Program"
-                    style={{
-                      position: 'absolute',
-                      height: '100%',
-                      width: '100%',
-                      objectFit: 'cover'
-                    }}
+                    layout="fill"
+                    objectFit="cover"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     className="rounded-2xl object-cover shadow-xl"
                   />
@@ -239,15 +224,11 @@ export default function Home() {
                 {/* Mental Health Program */}
                 <div className={styles.programCard}>
                   <div className="relative aspect-video">
-                    <img
+                    <Image
                       src="/images/pamoj6.jpeg"
                       alt="Mental Health Programs"
-                      style={{
-                        position: 'absolute',
-                        height: '100%',
-                        width: '100%',
-                        objectFit: 'cover'
-                      }}
+                      layout="fill"
+                      objectFit="cover"
                       sizes="(max-width: 768px) 100vw, 25vw"
                       className="object-cover"
                     />
@@ -263,15 +244,11 @@ export default function Home() {
 
                 {/* Education Program */}
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                  <img
+                  <Image
                     src="/images/pamoj3.jpeg"
                     alt="Education Programs"
-                    style={{
-                      position: 'absolute',
-                      height: '100%',
-                      width: '100%',
-                      objectFit: 'cover'
-                    }}
+                    layout="fill"
+                    objectFit="cover"
                     sizes="(max-width: 768px) 100vw, 25vw"
                     className="object-cover"
                   />
@@ -296,15 +273,11 @@ export default function Home() {
               {teamMembers.map((member) => (
                 <div key={member.id} className={styles.teamMemberCard}>
                   <div className="relative aspect-square overflow-hidden">
-                    <img
+                    <Image
                       src={member.image}
                       alt={member.name}
-                      style={{
-                        position: 'absolute',
-                        height: '100%',
-                        width: '100%',
-                        objectFit: 'cover'
-                      }}
+                      layout="fill"
+                      objectFit="cover"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
                     />

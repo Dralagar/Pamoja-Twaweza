@@ -14,7 +14,7 @@ export const paymentProviders: PaymentProvider[] = [
   {
     name: 'PayPal',
     id: 'paypal',
-    icon: '/icons/paypal.svg',
+    icon: '/images/paypal.png',
     isAvailable: true,
     currencies: ['USD', 'EUR', 'GBP'],
     minAmount: 1,
@@ -25,7 +25,7 @@ export const paymentProviders: PaymentProvider[] = [
   {
     name: 'MTN Mobile Money',
     id: 'mtn',
-    icon: '/icons/mtn.svg',
+    icon: '/images/mtn.png',
     isAvailable: true,
     currencies: ['KES', 'TZS', 'UGX', 'EUR', 'USD'],
     minAmount: 500,

@@ -10,6 +10,7 @@ export const categoryType = defineType({
     {
       name: 'title',
       type: 'string',
+      title: 'Title',
     },
     {
       name: 'slug',
@@ -21,6 +22,7 @@ export const categoryType = defineType({
     {
       name: 'description',
       type: 'text',
+      title: 'Description',
     },
   ],
 })

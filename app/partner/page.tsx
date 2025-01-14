@@ -36,7 +36,7 @@ export default function Partner() {
           <div className={styles.header}>
             <h1 className={styles.title}>Partner with Us</h1>
             <p className={styles.subtitle}>
-              We are looking for partners who share our vision and values. Let's work together to make a difference.
+              We are looking for partners who share our vision and values. Let&apos;s work together to make a difference.
             </p>
           </div>
 

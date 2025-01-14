@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 export const authorType = createSchema({
   name: 'author',
-  // title: 'Author',
+  title: 'Author',
   types: [
     {
       name: 'author',
@@ -14,10 +14,12 @@ export const authorType = createSchema({
         {
           name: 'name',
           type: 'string',
+          title: 'Name',
         },
         {
           name: 'slug',
           type: 'slug',
+          title: 'Slug',
           options: {
             source: 'name',
           },
@@ -25,6 +27,7 @@ export const authorType = createSchema({
         {
           name: 'image',
           type: 'image',
+          title: 'Image',
           options: {
             hotspot: true,
           },
@@ -32,6 +35,7 @@ export const authorType = createSchema({
         {
           name: 'bio',
           type: 'array',
+          title: 'Biography',
           of: [
             {
               type: 'block',
