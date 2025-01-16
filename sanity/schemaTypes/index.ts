@@ -10,6 +10,9 @@ type SchemaType = {
   fields?: any[];
 };
 
-export const schema: { types: SchemaType[] } = {
-  types: [blockContentType, categoryType, postType, authorType],
+export const schema = {
+  types: [blockContentType, categoryType, postType, authorType].map(type => ({
+    ...type,
+    title: type.title || type.name // Ensure title exists, fallback to name if not provided
+  }))
 };
