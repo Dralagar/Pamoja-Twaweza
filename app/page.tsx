@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './styles/Home.module.css';
+import axios from 'axios';
 import MultiPaymentDonation from './components/MultiPaymentDonation';
 import OpportunitiesSection from './components/OpportunititieSectionl';
 
