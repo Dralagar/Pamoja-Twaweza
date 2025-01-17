@@ -17,16 +17,20 @@ export const dynamic = 'force-static'
 
 export default function StudioPage() {
   const [posts, setPosts] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     if (!config) {
       console.error("Sanity config is missing or not properly configured.")
+      setError("Sanity configuration is missing.")
+      setLoading(false)
       return;
     }
 
     const client = createClient({
-      projectId: 'boxgqwv2',
-      dataset: 'production',
+      projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'boxgqwv2',
+      dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
       apiVersion: '2023-10-01',
       useCdn: true,
     });
@@ -39,21 +43,28 @@ export default function StudioPage() {
       }
     }).catch((error: unknown) => {
       console.error("Error fetching posts:", error)
+      setError("Error fetching posts.")
+    }).finally(() => {
+      setLoading(false)
     })
-  }, []); // Empty dependency array ensures this runs only on the client
+  }, []);
 
-  if (!config) {
-    return <div>Error: Sanity configuration is missing.</div>
+  if (error) {
+    return <div>Error: {error}</div>
   }
 
   return (
     <div>
       <NextStudio config={config} />
       <div>
-        {posts.length > 0 ? (
-          posts.map((post, index) => <p key={index}>{post.title}</p>)
-        ) : (
+        {loading ? (
           <p>Loading posts...</p>
+        ) : (
+          posts.length > 0 ? (
+            posts.map((post, index) => <p key={index}>{post.title}</p>)
+          ) : (
+            <p>No posts available.</p>
+          )
         )}
       </div>
     </div>
