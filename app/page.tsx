@@ -10,10 +10,10 @@ import OpportunitiesSection from './components/OpportunititieSectionl';
 const teamMembers = [
   {
     id: 1,
-    name: "Eric",
-    role: "Executive Director",
+    name: "Eric Kimararungu",
+    role: "Founder and CEO",
     image: "/team/member1.jpg",
-    bio: "Leading our community initiatives with over 10 years of experience in social development.",
+    bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
       linkedin: "",
       twitter: ""
@@ -21,20 +21,20 @@ const teamMembers = [
   },
   {
     id: 2,
-    name: "Anneled Karemi",
+    name: "Annled Karimi",
     role: "Program Manager",
     image: "/team/member2.jpg",
-    bio: "Specializing in youth empowerment and educational program development.",
+    bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
     socialLinks: {
       linkedin: ""
     }
   },
   {
     id: 3,
-    name: "Ramazaan Mwalisho",
-    role: "",
+    name: "Ramazani Mulisho",
+    role: "Finance Lead",
     image: "/team/member3.jpg",
-    bio: "Specializing in youth empowerment and educational program development.",
+    bio: "Ramazani, the organization's Finance lead, oversees all financial matters. He also supports advocacy and resource mobilization.",
     socialLinks: {
       linkedin: ""
     }
@@ -140,6 +140,31 @@ export default function Home() {
               />
             </div>
           </div>
+        </section>
+
+        {/* Vision and Mission Section */}
+        <section className="py-16 bg-gray-100 text-center">
+          <h1 className="text-4xl font-bold mb-4">Our Vision</h1>
+          <p className="text-lg mb-8">
+            To ensure all marginalized, and vulnerable persons with disability and youth in our community have access to quality vocational training, resulting in self-reliance.
+          </p>
+          <h1 className="text-4xl font-bold mb-4">Our Mission</h1>
+          <p className="text-lg">
+            To identify and support marginalized, and vulnerable persons with disability and youth in our community become self-reliant through facilitating timely access to quality vocational skills and livelihood opportunities.
+          </p>
+        </section>
+
+        {/* Core Values Section */}
+        <section className="py-16 bg-white text-center">
+          <h2 className="text-3xl font-bold mb-6">Our Core Values</h2>
+          <ul className="list-disc list-inside text-lg">
+            <li>Integrity and ethics: Valuing honesty and openness and taking responsibility and accountability for our actions.</li>
+            <li>Inclusion: Supporting beneficiaries without discrimination.</li>
+            <li>Transparency: Embracing honesty and open communication.</li>
+            <li>Excellence: Striving to give the best.</li>
+            <li>Teamwork: Collaboration, open communication coordinated by a leader who motivates and initiates connections rather than dictates.</li>
+            <li>Sustainability: Ensuring equitable and inclusive communities as well as responsible resource management for long-term economic resilience.</li>
+          </ul>
         </section>
 
         {/* Add OpportunitiesSection component */}

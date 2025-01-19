@@ -40,6 +40,30 @@ export default function Partner() {
             </p>
           </div>
 
+          {/* Vision and Mission Section */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Our Vision</h2>
+            <p className={styles.text}>
+              To ensure all marginalized, and vulnerable persons with disability and youth in our community have access to quality vocational training, resulting in self-reliance.
+            </p>
+            <h2 className={styles.sectionTitle}>Our Mission</h2>
+            <p className={styles.text}>
+              To identify and support marginalized, and vulnerable persons with disability and youth in our community become self-reliant through facilitating timely access to quality vocational skills and livelihood opportunities.
+            </p>
+          </section>
+
+          {/* Program Areas Section */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionTitle}>Program Areas</h2>
+            <ul className={styles.list}>
+              <li>Livelihood and Economic Empowerment</li>
+              <li>Advocacy and Rights Awareness</li>
+              <li>Mental Health and Psycho-social Support</li>
+              <li>Youth Empowerment</li>
+              <li>Support for Persons with Disability</li>
+            </ul>
+          </section>
+
           <div className={styles.grid}>
             <div className={styles.imageWrapper}>
               <Image
@@ -123,6 +147,29 @@ export default function Partner() {
               </form>
             </div>
           </div>
+
+          {/* Partners Section */}
+          <section className="py-16 bg-gray-100 text-center">
+            <h2 className="text-3xl font-bold mb-6">Our Partners</h2>
+            <ul className="list-disc list-inside text-lg">
+              <li>Youth Voices Community</li>
+              <li>Pamoja Trust</li>
+              <li>Refugepoint</li>
+            </ul>
+          </section>
+
+          {/* Contact Information Section */}
+          <section className="py-16 bg-white text-center">
+            <h2 className="text-3xl font-bold mb-6">Contact Information</h2>
+            <ul className="list-none text-lg">
+              <li><a href="https://web.facebook.com/profile.php?id=100095464061098&_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+              <li><a href="https://x.com/PamojaTwaw37933" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+              <li><a href="https://www.linkedin.com/in/pamoja-twaweza-6146232a2/?originalSubdomain=ke" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://www.youtube.com/channel/UCsBqWgvlTqposqFuwF5zUpg" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+              <li><a href="https://www.instagram.com/pamojatwawezacbo?igsh=YzljYTk1ODg3Zg==" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+            </ul>
+            <p className="mt-4">Email: <a href="mailto:info@pamojatwaweza.org">info@pamojatwaweza.org</a></p>
+          </section>
         </div>
       </div>
     </>

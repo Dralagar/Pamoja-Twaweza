@@ -25,7 +25,7 @@ const SOCIAL_LINKS: SocialLink[] = [
   {
     id: 'linkedin',
     platform: 'LinkedIn',
-    url: 'https://linkedin.com/company/pamoja-twaweza',
+    url: 'https://www.linkedin.com/in/pamoja-twaweza-6146232a2/?originalSubdomain=ke',
     icon: <FaLinkedin className="w-6 h-6" />,
     ariaLabel: 'Visit our LinkedIn page'
   },
@@ -33,27 +33,27 @@ const SOCIAL_LINKS: SocialLink[] = [
     id: 'x',
     platform: 'X',
     url: 'https://x.com/PamojaTwaw37933',
-    icon: <Image src="/images/X.png" alt="" width={24} height={24} />,
+    icon: <Image src="/images/X.png" alt="X" width={24} height={24} />,
     ariaLabel: 'Follow us on X'
   },
   {
     id: 'facebook',
     platform: 'Facebook',
-    url: 'https://facebook.com/pamojatwaweza',
+    url: 'https://web.facebook.com/profile.php?id=100095464061098&_rdc=1&_rdr#',
     icon: <FaFacebook className="w-6 h-6" />,
     ariaLabel: 'Visit our Facebook page'
   },
   {
     id: 'youtube',
     platform: 'YouTube',
-    url: 'https://youtube.com/@pamojatwaweza',
+    url: 'https://www.youtube.com/channel/UCsBqWgvlTqposqFuwF5zUpg',
     icon: <FaYoutube className="w-6 h-6" />,
     ariaLabel: 'Subscribe to our YouTube channel'
   },
   {
     id: 'instagram',
     platform: 'Instagram',
-    url: 'https://instagram.com/pamojatwaweza',
+    url: 'https://www.instagram.com/pamojatwawezacbo?igsh=YzljYTk1ODg3Zg==',
     icon: <FaInstagram className="w-6 h-6" />,
     ariaLabel: 'Follow us on Instagram'
   }
