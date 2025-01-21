@@ -148,7 +148,7 @@ const programs: Program[] = [
 const programAreas = [
   {
     title: "Livelihood and Economic Empowerment",
-    icon: "/images/livelihood.jpg",
+    icon: "/images/livelihood-icon.png",
     details: [
       "Implementing skills development programs tailored to local market demands.",
       "Supporting entrepreneurship initiatives through training, mentorship, and access to resources.",
@@ -157,7 +157,7 @@ const programAreas = [
   },
   {
     title: "Advocacy and Rights Awareness",
-    icon: "/images/advocacy.png",
+    icon: "/images/Advocacy.png",
     details: [
       "Amplifying the voices of refugees and vulnerable groups through policy advocacy.",
       "Promoting the inclusion and participation of marginalized groups in decision-making processes.",
@@ -166,7 +166,7 @@ const programAreas = [
   },
   {
     title: "Mental Health and Psycho-social Support",
-    icon: "/images/MentalHealth.png",
+    icon: "/images/mental-health-icon.png",
     details: [
       "Training community members to offer peer-to-peer psycho-social support.",
       "Raising awareness about mental health to reduce stigma and promote well-being.",
@@ -175,14 +175,14 @@ const programAreas = [
   },
   {
     title: "Youth Empowerment",
-    icon: "/images/YouthEmpowerment.jpg",
+    icon: "/images/youth-empowerment-icon.png",
     details: [
       "Engaging youth in leadership, education, and skills development activities."
     ]
   },
   {
     title: "Support for Persons with Disability",
-    icon: "/images/disability_support.jpg",
+    icon: "/images/disability-support-icon.png",
     details: [
       "Ensuring accessibility and inclusivity in all organizational programs."
     ]
