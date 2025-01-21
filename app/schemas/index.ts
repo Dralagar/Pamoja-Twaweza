@@ -1,13 +1,5 @@
 import author from './author';
 import blockContent from './blockContent';
-import { createClient } from '@sanity/client';
-
-const client = createClient({
-  projectId: 'boxgqwv2',
-  dataset: 'production',
-  useCdn: true,
-  apiVersion: '2024-12-18'
-});
 
 const postSchema = {
   name: 'post',

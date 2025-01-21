@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { GeistSans } from 'geist/font/sans';
-import { GeistMono } from 'geist/font/mono';
+// Removed unused imports
+// import { GeistSans } from 'geist/font/sans';
+// import { GeistMono } from 'geist/font/mono';
 import "./globals.css";
 import Navbar from './components/Navbar';
 import Footer from './footer/page';
@@ -18,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-          <body>
+      <body>
         <Navbar />
         {children}
         <Footer />
