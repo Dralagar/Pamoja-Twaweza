@@ -10,7 +10,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@next/swc-win32-x64-msvc": "^15.1.2",
     "@sanity/client": "^6.24.1",
     "@sanity/icons": "^3.5.5",
     "@sanity/image-url": "^1.1.0",
