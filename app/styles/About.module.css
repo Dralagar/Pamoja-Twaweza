@@ -1,5 +1,5 @@
 .heroSection {
-  background: linear-gradient(to bottom, var(--secondary-light), var(--neutral-light-beige));
+  background: linear-gradient(to bottom, var(--primary-blue), var(--accent-yellow));
   min-height: 100vh;
 }
 
@@ -11,16 +11,16 @@
 }
 
 .cardWrapper {
-  background: var(--secondary-light);
+  background: var(--background-white);
   border-radius: 0.75rem;
-  box-shadow: 0 20px 25px -5px rgba(20, 19, 19, 0.1);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
   padding: 3rem;
 }
 
 .iconWrapper {
   width: 5rem;
   height: 5rem;
-  background: var(--primary-light-blue);
+  background: var(--accent-orange);
   border-radius: 9999px;
   display: flex;
   align-items: center;
@@ -29,7 +29,7 @@
 }
 
 .teamCard {
-  background: var(--secondary-light);
+  background: var(--background-white);
   border-radius: 0.75rem;
   overflow: hidden;
   transition: transform 0.3s;
@@ -37,4 +37,68 @@
 
 .teamCard:hover {
   transform: translateY(-0.25rem);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: var(--primary-blue);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.bg-primary {
+  background-color: var(--primary-blue);
+}
+
+.bg-secondary {
+  background-color: var(--accent-yellow);
+}
+
+.bg-white {
+  background-color: var(--background-white);
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.md\:grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.md\:grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+@media (max-width: 768px) {
+  .heroSection {
+    padding: 1rem;
+  }
+
+  .cardWrapper {
+    padding: 2rem;
+  }
 }

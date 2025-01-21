@@ -33,7 +33,7 @@ const SOCIAL_LINKS: SocialLink[] = [
     id: 'x',
     platform: 'X',
     url: 'https://x.com/PamojaTwaw37933',
-    icon: <Image src="/images/X.png" alt="X" width={24} height={24} />,
+    icon: <img src="/images/X.png" alt="X" width={24} height={24} />,
     ariaLabel: 'Follow us on X'
   },
   {

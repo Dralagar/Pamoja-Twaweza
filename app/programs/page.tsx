@@ -145,53 +145,67 @@ const programs: Program[] = [
   }
 ];
 
-export default function ProgramsPage() {
+const programAreas = [
+  {
+    title: "Livelihood and Economic Empowerment",
+    icon: "/images/livelihood.jpg",
+    details: [
+      "Implementing skills development programs tailored to local market demands.",
+      "Supporting entrepreneurship initiatives through training, mentorship, and access to resources.",
+      "Facilitating training to enhance self-sufficiency and income generation."
+    ]
+  },
+  {
+    title: "Advocacy and Rights Awareness",
+    icon: "/images/advocacy.png",
+    details: [
+      "Amplifying the voices of refugees and vulnerable groups through policy advocacy.",
+      "Promoting the inclusion and participation of marginalized groups in decision-making processes.",
+      "Educating communities on their rights and available resources."
+    ]
+  },
+  {
+    title: "Mental Health and Psycho-social Support",
+    icon: "/images/MentalHealth.png",
+    details: [
+      "Training community members to offer peer-to-peer psycho-social support.",
+      "Raising awareness about mental health to reduce stigma and promote well-being.",
+      "Providing referral services to beneficiaries."
+    ]
+  },
+  {
+    title: "Youth Empowerment",
+    icon: "/images/YouthEmpowerment.jpg",
+    details: [
+      "Engaging youth in leadership, education, and skills development activities."
+    ]
+  },
+  {
+    title: "Support for Persons with Disability",
+    icon: "/images/disability_support.jpg",
+    details: [
+      "Ensuring accessibility and inclusivity in all organizational programs."
+    ]
+  }
+];
+
+export default function Programs() {
   return (
     <>
       <Head>
-        <title>Our Programs - Pamoja Twaweza</title>
-        <meta name="description" content="Explore the diverse programs offered by Pamoja Twaweza, aimed at empowering communities and fostering sustainable development." />
+        <title>Programs - Pamoja Twaweza</title>
+        <meta name="description" content="Explore our diverse programs aimed at empowering communities and fostering sustainable development." />
       </Head>
-      <nav>
-        {/* Add your Navbar content here if needed */}
-      </nav>
-      <main className="min-h-screen bg-gradient-to-b from-[#F5F1E5] to-[#F8E19B]">
-        {/* Programs Hero Section */}
-        <section className="relative h-[500px]">
-          <Image
-            src="/images/pamoj3.jpeg"
-            alt="Our Programs"
-            layout="fill"
-            objectFit="cover"
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center text-white px-4">
-              <h1 className="text-5xl font-bold mb-6">Our Programs</h1>
-              <p className="text-xl max-w-2xl mx-auto">
-                Empowering communities through comprehensive development initiatives
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Programs Overview */}
+      <main className="bg-gray-100">
         <section className="container mx-auto px-4 py-24">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-[#007DBB]">Transformative Initiatives</h2>
-            <p className="text-xl text-[#7D7D7D]">
-              Our programs are designed to create lasting impact through skill development,
-              education, and community support.
-            </p>
-          </div>
-
-          {/* Detailed Program Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <h1 className="text-5xl font-bold mb-8 text-center text-[var(--primary-blue)]">Our Programs</h1>
+          <p className="text-xl text-center text-[var(--text-secondary)] mb-12">
+            Discover the various programs we offer to support and empower our community.
+          </p>
+          <div className={styles.programGrid}>
             {programs.map((program) => (
               <div key={program.id} className={styles.programCard}>
-                <div className="relative h-64">
+                <div className="relative">
                   <Image
                     src={program.image}
                     alt={program.title}
@@ -201,8 +215,8 @@ export default function ProgramsPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h2 className="text-2xl font-bold mb-4">{program.title}</h2>
-                  <p className="text-gray-600">{program.description}</p>
+                  <h2 className="text-2xl font-bold mb-4 text-[var(--primary-blue)]">{program.title}</h2>
+                  <p className="text-[var(--text-secondary)]">{program.description}</p>
                 </div>
               </div>
             ))}
@@ -212,61 +226,38 @@ export default function ProgramsPage() {
         {/* Get Involved CTA */}
         <section className="container mx-auto px-4 py-24 text-center">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-4xl font-bold mb-8 text-[#007DBB]">Get Involved</h2>
-            <p className="text-xl text-[#7D7D7D] mb-12">
+            <h2 className="text-4xl font-bold mb-8 text-[var(--primary-blue)]">Get Involved</h2>
+            <p className="text-xl text-[var(--text-secondary)] mb-12">
               Join our programs as a participant, volunteer, or supporter and help us create lasting change in our community.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-[#007DBB] text-white px-8 py-4 rounded-full hover:bg-[#005f8a] transition-all hover:shadow-lg">
+              <button className="bg-[var(--primary-blue)] text-white px-8 py-4 rounded-full hover:bg-[var(--accent-orange)] transition-all hover:shadow-lg">
                 Apply for Programs
               </button>
-              <button className="bg-[#153448] text-white px-8 py-4 rounded-full hover:bg-[#102a3a] transition-all hover:shadow-lg">
+              <button className="bg-[var(--accent-yellow)] text-[var(--text-black)] px-8 py-4 rounded-full hover:bg-[var(--accent-orange)] transition-all hover:shadow-lg">
                 Support Our Work
               </button>
             </div>
           </div>
         </section>
 
-        {/* Programs Section */}
+        {/* Program Areas Section */}
         <section className="py-16 bg-gray-100 text-center">
-          <h2 className="text-3xl font-bold mb-6">Our Program Areas</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-bold">Livelihood and Economic Empowerment</h3>
-              <ul className="list-disc list-inside text-lg">
-                <li>Implementing skills development programs tailored to local market demands.</li>
-                <li>Supporting entrepreneurship initiatives through training, mentorship, and access to resources.</li>
-                <li>Facilitating training to enhance self-sufficiency and income generation.</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold">Advocacy and Rights Awareness</h3>
-              <ul className="list-disc list-inside text-lg">
-                <li>Amplifying the voices of refugees and vulnerable groups through policy advocacy.</li>
-                <li>Promoting the inclusion and participation of marginalized groups in decision-making processes.</li>
-                <li>Educating communities on their rights and available resources.</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold">Mental Health and Psycho-social Support</h3>
-              <ul className="list-disc list-inside text-lg">
-                <li>Training community members to offer peer-to-peer psycho-social support.</li>
-                <li>Raising awareness about mental health to reduce stigma and promote well-being.</li>
-                <li>Providing referral services to beneficiaries.</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold">Youth Empowerment</h3>
-              <ul className="list-disc list-inside text-lg">
-                <li>Engaging youth in leadership, education, and skills development activities.</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold">Support for Persons with Disability</h3>
-              <ul className="list-disc list-inside text-lg">
-                <li>Ensuring accessibility and inclusivity in all organizational programs.</li>
-              </ul>
-            </div>
+          <h2 className="text-3xl font-bold mb-6 text-[var(--primary-blue)]">Our Program Areas</h2>
+          <div className={styles.programAreasGrid}>
+            {programAreas.map((area, index) => (
+              <div key={index} className={`${styles.programAreaCard} ${index === 0 ? styles.fullRow : index === 1 ? styles.halfRow : styles.singleRow}`}>
+                <div className="flex items-center mb-4">
+                  <Image src={area.icon} alt={`${area.title} icon`} width={24} height={24} className="mr-2" />
+                  <h3 className="text-xl font-bold text-[var(--primary-blue)]">{area.title}</h3>
+                </div>
+                <ul className="list-disc list-inside text-lg text-[var(--text-secondary)]">
+                  {area.details.map((detail, i) => (
+                    <li key={i}>{detail}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </section>
       </main>

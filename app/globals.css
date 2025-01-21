@@ -4,50 +4,40 @@
 
 :root {
   /* Primary Colors */
-  --primary-blue: #2563eb;
-  --primary-dark: #1e40af;
-  --primary-light-blue: #B3C8CF;
-  
-  /* Secondary Colors */
-  --secondary-dark: #1e293b;
-  --secondary-light: #f8fafc;
-  
-  /* Neutral Colors */
-  --neutral-light-beige: #E5E1DA;
-  --neutral-gray: #7D7D7D;
-  
+  --primary-blue: #0089C7; /* From the person on the right */
+  --accent-yellow: #FFE66D; /* Background of the logo */
+  --accent-orange: #F26522; /* From the girl's dress */
+  --text-black: #000000; /* Text and star */
+  --background-white: #FFFFFF; /* White */
+
   /* System Colors */
-  --background: var(--secondary-light);
-  --foreground: var(--secondary-dark);
+  --background: var(--background-white);
+  --foreground: var(--text-black);
   --error: #dc2626;
   --success: #16a34a;
   --warning: #ca8a04;
-  
+
   /* Typography */
   --font-sans: 'Inter', Arial, sans-serif;
-  
-  /* Accent Colors */
-  --accent: #f59e0b;
-  
-  /* Text Colors */
-  --text-primary: #1e293b;
-  --text-secondary: #64748b;
-  
+  --font-size-base: 16px;
+  --line-height-base: 1.5;
+
   /* Transition */
   --transition: all 0.3s ease;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: var(--secondary-dark);
-    --foreground: var(--secondary-light);
+    --background: #1e293b;
+    --foreground: #f8fafc;
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
   }
 }
 
 * {
-  border-color: var(--neutral-gray);
+  box-sizing: border-box;
+  border-color: var(--text-black);
 }
 
 body {
@@ -56,13 +46,55 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-sans);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
   letter-spacing: -0.015em;
+  margin: 0;
 }
 
 p {
-  line-height: 1.625;
+  margin: 0 0 1em;
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--accent-orange);
+}
+
+button {
+  font-family: var(--font-sans);
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-size-base: 14px;
+  }
 }

@@ -49,46 +49,8 @@ const teamMembers = [
       linkedin: ""
     }
   },
-  {
-    id: 5,
-    name: "Anneled Karemi",
-    role: "Program Manager",
-    image: "/team/member2.jpg",
-    bio: "Specializing in youth empowerment and educational program development.",
-    socialLinks: {
-      linkedin: ""
-    }
-  },
-  {
-    id: 6,
-    name: "Ramazaan Mwalisho",
-    role: "Communications Manager",
-    image: "/team/member3.jpg",
-    bio: "Specializing in youth empowerment and educational program development.",
-    socialLinks: {
-      linkedin: ""
-    }
-  },
-  {
-    id: 7,
-    name: "Anneled Karemi",
-    role: "Program Manager",
-    image: "/team/member2.jpg",
-    bio: "Specializing in youth empowerment and educational program development.",
-    socialLinks: {
-      linkedin: ""
-    }
-  },
-  {
-    id: 8,
-    name: "Anneled Karemi",
-    role: "Program Manager",
-    image: "/team/member2.jpg",
-    bio: "Specializing in youth empowerment and educational program development.",
-    socialLinks: {
-      linkedin: "https://linkedin.com/in/david-kimani"
-    }
-  },
+  
+  
 ] satisfies TeamMember[];
 
 type TeamMember = {
@@ -144,27 +106,67 @@ export default function Home() {
 
         {/* Vision and Mission Section */}
         <section className="py-16 bg-gray-100 text-center">
-          <h1 className="text-4xl font-bold mb-4">Our Vision</h1>
-          <p className="text-lg mb-8">
-            To ensure all marginalized, and vulnerable persons with disability and youth in our community have access to quality vocational training, resulting in self-reliance.
-          </p>
-          <h1 className="text-4xl font-bold mb-4">Our Mission</h1>
-          <p className="text-lg">
-            To identify and support marginalized, and vulnerable persons with disability and youth in our community become self-reliant through facilitating timely access to quality vocational skills and livelihood opportunities.
-          </p>
+          <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-8">
+            {/* Vision Card */}
+            <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
+              <div className="text-4xl mb-4">
+                <i className="fas fa-eye"></i> {/* Vision Icon */}
+              </div>
+              <h1 className="text-2xl font-bold mb-4">Our Vision</h1>
+              <p className="text-lg">
+                To ensure all marginalized, and vulnerable persons with disability and youth in our community have access to quality vocational training, resulting in self-reliance.
+              </p>
+            </div>
+
+            {/* Mission Card */}
+            <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
+              <div className="text-4xl mb-4">
+                <i className="fas fa-bullseye"></i> {/* Mission Icon */}
+              </div>
+              <h1 className="text-2xl font-bold mb-4">Our Mission</h1>
+              <p className="text-lg">
+                To identify and support marginalized, and vulnerable persons with disability and youth in our community become self-reliant through facilitating timely access to quality vocational skills and livelihood opportunities.
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* Core Values Section */}
-        <section className="py-16 bg-white text-center">
-          <h2 className="text-3xl font-bold mb-6">Our Core Values</h2>
-          <ul className="list-disc list-inside text-lg">
-            <li>Integrity and ethics: Valuing honesty and openness and taking responsibility and accountability for our actions.</li>
-            <li>Inclusion: Supporting beneficiaries without discrimination.</li>
-            <li>Transparency: Embracing honesty and open communication.</li>
-            <li>Excellence: Striving to give the best.</li>
-            <li>Teamwork: Collaboration, open communication coordinated by a leader who motivates and initiates connections rather than dictates.</li>
-            <li>Sustainability: Ensuring equitable and inclusive communities as well as responsible resource management for long-term economic resilience.</li>
-          </ul>
+        <section className={styles.coreValuesSection}>
+          <h2 className={styles.sectionTitle}>Our Core Values</h2>
+          <div className={styles.coreValuesGrid}>
+            {[
+              {
+                title: "Integrity and Ethics",
+                description: "Valuing honesty and openness and taking responsibility and accountability for our actions.",
+              },
+              {
+                title: "Inclusion",
+                description: "Supporting beneficiaries without discrimination.",
+              },
+              {
+                title: "Transparency",
+                description: "Embracing honesty and open communication.",
+              },
+              {
+                title: "Excellence",
+                description: "Striving to give the best.",
+              },
+              {
+                title: "Teamwork",
+                description: "Collaboration, open communication coordinated by a leader who motivates and initiates connections rather than dictates.",
+              },
+              {
+                title: "Sustainability",
+                description: "Ensuring equitable and inclusive communities as well as responsible resource management for long-term economic resilience.",
+              },
+            ].map((value, index) => (
+              <div key={index} className={styles.coreValueCard}>
+                <h3 className={styles.coreValueTitle}>{value.title}</h3>
+                <p className={styles.coreValueText}>{value.description}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Add OpportunitiesSection component */}
@@ -186,15 +188,7 @@ export default function Home() {
               className="object-cover"
             />
             <div className={styles.impactOverlay} />
-            <div className="absolute inset-0 flex items-center justify-center p-4">
-              <div className={styles.impactCard}>
-                <h3 className={styles.sectionTitle}>Creating Lasting Change</h3>
-                <p className={styles.heroText}>
-                  Through dedicated community engagement and sustainable programs,
-                  we&apos;re building a brighter future for all.
-                </p>
-              </div>
-            </div>
+            
           </div>
         </section>
 
@@ -348,6 +342,13 @@ export default function Home() {
               Contact Us
             </button>
           </div>
+        </section>
+
+        <section className={`${styles.creatingChangeSection} ${styles.section}`}>
+          <h2 className={styles.creatingChangeTitle}>Creating Lasting Change</h2>
+          <p className={styles.creatingChangeText}>
+            Through dedicated community engagement and sustainable programs, we're building a brighter future for all.
+          </p>
         </section>
       </div>
     </div>
