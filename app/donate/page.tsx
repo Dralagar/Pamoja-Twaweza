@@ -1,14 +1,7 @@
 'use client';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import {
-  PaymentElement,
-  Elements,
-  useStripe,
-  useElements,
-  
-} from '@stripe/react-stripe-js';
+import { PaymentElement, Elements, useStripe, useElements } from '@stripe/react-stripe-js';
 import { motion } from 'framer-motion';
 import MultiPaymentDonation from '../components/MultiPaymentDonation';
 import Image from 'next/image';
@@ -200,42 +193,17 @@ export default function DonatePage() {
           <div className="mt-8">
             <h2 className="text-2xl font-bold mb-4">Volunteering Opportunities</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                {
-                  title: 'Community Outreach',
-                  description: 'Help spread awareness in local communities',
-                  icon: '🤝'
-                },
-                {
-                  title: 'Event Organization',
-                  description: 'Assist in planning and running fundraising events',
-                  icon: '📅'
-                },
-                {
-                  title: 'Social Media Management',
-                  description: 'Help manage our social media presence',
-                  icon: '📱'
-                },
-                {
-                  title: 'Skills Training',
-                  description: 'Share your expertise with beneficiaries',
-                  icon: '📚'
-                },
-                {
-                  title: 'Administrative Support',
-                  description: 'Help with day-to-day operations',
-                  icon: '📋'
-                },
-                {
-                  title: 'Project Coordination',
-                  description: 'Coordinate specific projects or initiatives',
-                  icon: '🎯'
-                }
+              {[ 
+                { title: 'Community Outreach', description: 'Help spread awareness in local communities', icon: '🤝' },
+                { title: 'Event Organization', description: 'Assist in planning and running fundraising events', icon: '📅' },
+                { title: 'Social Media Management', description: 'Help manage our social media presence', icon: '📱' },
+                { title: 'Skills Training', description: 'Share your expertise with beneficiaries', icon: '📚' },
+                { title: 'Administrative Support', description: 'Help with day-to-day operations', icon: '📋' },
+                { title: 'Project Coordination', description: 'Coordinate specific projects or initiatives', icon: '🎯' }
               ].map((item, index) => (
                 <div
                   key={`volunteer-${index}`}
-                  className="p-4 border rounded-lg hover:shadow-lg transition-all cursor-pointer
-                             hover:bg-blue-50 active:bg-blue-100"
+                  className="p-4 border rounded-lg hover:shadow-lg transition-all cursor-pointer hover:bg-blue-50 active:bg-blue-100"
                   onClick={() => {/* Add your click handler */}}
                 >
                   <div className="text-3xl mb-2">{item.icon}</div>
@@ -250,42 +218,17 @@ export default function DonatePage() {
           <div className="mt-8">
             <h2 className="text-2xl font-bold mb-4">Creative Fundraising Ideas</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {[
-                {
-                  title: 'Virtual Events',
-                  description: 'Online concerts, workshops, and webinars',
-                  icon: '🎥'
-                },
-                {
-                  title: 'Merchandise Sales',
-                  description: 'Custom t-shirts, mugs, and accessories',
-                  icon: '👕'
-                },
-                {
-                  title: 'Skill Auctions',
-                  description: 'Auction services or skills for donations',
-                  icon: '🎨'
-                },
-                {
-                  title: 'Challenge Events',
-                  description: 'Sponsored walks, runs, or unique challenges',
-                  icon: '🏃'
-                },
-                {
-                  title: 'Digital Content',
-                  description: 'Exclusive content for supporters',
-                  icon: '📱'
-                },
-                {
-                  title: 'Partnership Programs',
-                  description: 'Collaborate with businesses for donations',
-                  icon: '🤝'
-                }
+              {[ 
+                { title: 'Virtual Events', description: 'Online concerts, workshops, and webinars', icon: '🎥' },
+                { title: 'Merchandise Sales', description: 'Custom t-shirts, mugs, and accessories', icon: '👕' },
+                { title: 'Skill Auctions', description: 'Auction services or skills for donations', icon: '🎨' },
+                { title: 'Challenge Events', description: 'Sponsored walks, runs, or unique challenges', icon: '🏃' },
+                { title: 'Digital Content', description: 'Exclusive content for supporters', icon: '📱' },
+                { title: 'Partnership Programs', description: 'Collaborate with businesses for donations', icon: '🤝' }
               ].map((item, index) => (
                 <div
                   key={`fundraising-${index}`}
-                  className="p-4 border rounded-lg hover:shadow-lg transition-all cursor-pointer
-                             hover:bg-green-50 active:bg-green-100"
+                  className="p-4 border rounded-lg hover:shadow-lg transition-all cursor-pointer hover:bg-green-50 active:bg-green-100"
                   onClick={() => {/* Add your click handler */}}
                 >
                   <div className="text-3xl mb-2">{item.icon}</div>
