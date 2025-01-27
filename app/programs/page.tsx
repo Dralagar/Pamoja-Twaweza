@@ -175,7 +175,7 @@ const programAreas = [
   },
   {
     title: "Youth Empowerment",
-    icon: "/images/youth-empowerment-icon.png",
+    icon: "/images/empower.png",
     details: [
       "Engaging youth in leadership, education, and skills development activities."
     ]
