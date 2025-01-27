@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
+import { NextResponse } from 'next/server';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
   apiVersion: '2024-12-18.acacia',
@@ -7,7 +8,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
 
 console.log('Stripe Secret Key:', process.env.STRIPE_SECRET_KEY);
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   if (req.method === 'POST') {
     try {
       const { amount } = req.body;
@@ -29,9 +30,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     res.status(405).end('Method Not Allowed');
   }
 }
-import { NextResponse } from 'next/server';
 
-export async function OPTIONS() {
+export async function OPTIONS(): Promise<NextResponse> {
   return NextResponse.json(
     {},
     {
