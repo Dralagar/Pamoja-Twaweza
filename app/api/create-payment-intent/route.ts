@@ -17,7 +17,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const paymentIntent = await stripe.paymentIntents.create({
         amount,
         currency: 'usd',
-        // Verify your integration in this guide by including this parameter
         metadata: { integration_check: 'accept_a_payment' },
       });
 
