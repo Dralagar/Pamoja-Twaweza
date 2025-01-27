@@ -1,37 +1,59 @@
-import { NextApiRequest, NextApiResponse } from 'next';
-import Stripe from 'stripe';
 import { NextResponse } from 'next/server';
+import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
-  apiVersion: '2024-12-18.acacia',
+export const runtime = 'nodejs';
+
+const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+
+if (!stripeSecretKey) {
+  console.error('Stripe secret key is not set. Please configure it in the environment variables.');
+}
+
+const stripe = new Stripe(stripeSecretKey || '', {
+  apiVersion: '2024-12-18.acacia'
 });
 
-console.log('Stripe Secret Key:', process.env.STRIPE_SECRET_KEY);
+export async function POST(req: Request) {
+  if (!stripeSecretKey) {
+    return NextResponse.json(
+      { error: 'Stripe secret key is not configured. Please contact the administrator.' },
+      { status: 500 }
+    );
+  }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
-  if (req.method === 'POST') {
-    try {
-      const { amount } = req.body;
+  try {
+    const { amount, currency = 'usd' } = await req.json();
 
-      // Create a PaymentIntent with the order amount and currency
-      const paymentIntent = await stripe.paymentIntents.create({
-        amount,
-        currency: 'usd',
-        metadata: { integration_check: 'accept_a_payment' },
-      });
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: currency,
+            product_data: {
+              name: 'Donation',
+            },
+            unit_amount: amount * 100, // Convert to cents
+          },
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${req.headers.get('origin')}/canceled`,
+    });
 
-      res.status(200).json({ clientSecret: paymentIntent.client_secret });
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
-      res.status(500).json({ error: errorMessage });
-    }
-  } else {
-    res.setHeader('Allow', 'POST');
-    res.status(405).end('Method Not Allowed');
+    return NextResponse.json({ sessionId: session.id });
+  } catch (err) {
+    console.error('Error creating checkout session:', err);
+    return NextResponse.json(
+      { error: 'Error creating checkout session' },
+      { status: 500 }
+    );
   }
 }
 
-export async function OPTIONS(): Promise<NextResponse> {
+export async function OPTIONS() {
   return NextResponse.json(
     {},
     {
