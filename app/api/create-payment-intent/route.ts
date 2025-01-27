@@ -5,6 +5,8 @@ export const runtime = 'nodejs';
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
+console.log('Stripe Secret Key:', stripeSecretKey);
+
 if (!stripeSecretKey) {
   console.error('Stripe secret key is not set. Please configure it in the environment variables.');
 }
