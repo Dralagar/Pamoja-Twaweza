@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import styles from './styles/Home.module.css';
-import axios from 'axios';
 import MultiPaymentDonation from './components/MultiPaymentDonation';
 import OpportunitiesSection from './components/OpportunititieSectionl';
 
@@ -49,7 +48,6 @@ const teamMembers = [
       linkedin: ""
     }
   },
-  
   
 ] satisfies TeamMember[];
 
@@ -347,7 +345,7 @@ export default function Home() {
         <section className={`${styles.creatingChangeSection} ${styles.section}`}>
           <h2 className={styles.creatingChangeTitle}>Creating Lasting Change</h2>
           <p className={styles.creatingChangeText}>
-            Through dedicated community engagement and sustainable programs, we're building a brighter future for all.
+            Through dedicated community engagement and sustainable programs, we&apos;re building a brighter future for all.
           </p>
         </section>
       </div>
