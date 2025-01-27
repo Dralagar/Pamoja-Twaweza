@@ -1,57 +1,35 @@
-import { NextResponse } from 'next/server';
+import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 
-export const runtime = 'nodejs';
-
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-
-if (!stripeSecretKey) {
-  console.error('Stripe secret key is not set. Please configure it in the environment variables.');
-}
-
-const stripe = new Stripe(stripeSecretKey || '', {
-  apiVersion: '2024-12-18.acacia'
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
+  apiVersion: '2024-12-18.acacia',
 });
 
-export async function POST(req: Request) {
-  if (!stripeSecretKey) {
-    return NextResponse.json(
-      { error: 'Stripe secret key is not configured. Please contact the administrator.' },
-      { status: 500 }
-    );
-  }
+console.log('Stripe Secret Key:', process.env.STRIPE_SECRET_KEY);
 
-  try {
-    const { amount, currency = 'usd' } = await req.json();
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method === 'POST') {
+    try {
+      const { amount } = req.body;
 
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price_data: {
-            currency: currency,
-            product_data: {
-              name: 'Donation',
-            },
-            unit_amount: amount * 100, // Convert to cents
-          },
-          quantity: 1,
-        },
-      ],
-      mode: 'payment',
-      success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.get('origin')}/canceled`,
-    });
+      // Create a PaymentIntent with the order amount and currency
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount,
+        currency: 'usd',
+        // Verify your integration in this guide by including this parameter
+        metadata: { integration_check: 'accept_a_payment' },
+      });
 
-    return NextResponse.json({ sessionId: session.id });
-  } catch (err) {
-    console.error('Error creating checkout session:', err);
-    return NextResponse.json(
-      { error: 'Error creating checkout session' },
-      { status: 500 }
-    );
+      res.status(200).json({ clientSecret: paymentIntent.client_secret });
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  } else {
+    res.setHeader('Allow', 'POST');
+    res.status(405).end('Method Not Allowed');
   }
 }
+import { NextResponse } from 'next/server';
 
 export async function OPTIONS() {
   return NextResponse.json(
