@@ -175,7 +175,7 @@ const programAreas = [
   },
   {
     title: "Youth Empowerment",
-    icon: "/images/empower.png",
+    images: "/images/empower.png",
     details: [
       "Engaging youth in leadership, education, and skills development activities."
     ]
@@ -205,7 +205,7 @@ export default function Programs() {
           <div className={styles.programGrid}>
             {programs.map((program) => (
               <div key={program.id} className={styles.programCard}>
-                <div className="relative">
+                <div className="relative w-full h-64"> {/* Set a height to the container */}
                   <Image
                     src={program.image}
                     alt={program.title}
