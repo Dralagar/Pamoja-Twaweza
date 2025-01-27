@@ -22,7 +22,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       res.status(200).json({ clientSecret: paymentIntent.client_secret });
     } catch (err) {
-      res.status(500).json({ error: err.message });
+      const errorMessage = err instanceof Error ? err.message : 'An unknown error occurred';
+      res.status(500).json({ error: errorMessage });
     }
   } else {
     res.setHeader('Allow', 'POST');

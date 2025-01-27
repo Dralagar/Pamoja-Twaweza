@@ -248,7 +248,7 @@ export default function Programs() {
             {programAreas.map((area, index) => (
               <div key={index} className={`${styles.programAreaCard} ${index === 0 ? styles.fullRow : index === 1 ? styles.halfRow : styles.singleRow}`}>
                 <div className="flex items-center mb-4">
-                  <Image src={area.icon} alt={`${area.title} icon`} width={24} height={24} className="mr-2" />
+                  <Image src={area.icon || ''} alt={`${area.title} icon`} width={24} height={24} className="mr-2" />
                   <h3 className="text-xl font-bold text-[var(--primary-blue)]">{area.title}</h3>
                 </div>
                 <ul className="list-disc list-inside text-lg text-[var(--text-secondary)]">
