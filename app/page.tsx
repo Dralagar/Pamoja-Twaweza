@@ -11,43 +11,37 @@ const teamMembers = [
     id: 1,
     name: "Eric Kimararungu",
     role: "Founder and CEO",
-    image: "/team/member1.jpg",
+    image: "/images/Eric.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
       linkedin: "",
       twitter: ""
     }
+
   },
   {
     id: 2,
     name: "Annled Karimi",
     role: "Program Manager",
-    image: "/team/member2.jpg",
+    image: "/images/annled.jpg",
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
     socialLinks: {
       linkedin: ""
     }
+
+
   },
   {
     id: 3,
     name: "Ramazani Mulisho",
     role: "Finance Lead",
-    image: "/team/member3.jpg",
+    image: "/images/Mwalisho.jpg",
     bio: "Ramazani, the organization's Finance lead, oversees all financial matters. He also supports advocacy and resource mobilization.",
     socialLinks: {
       linkedin: ""
     }
-  },
-  {
-    id: 4,
-    name: "Ramazaan Mwalisho",
-    role: "Communications Manager",
-    image: "/team/member3.jpg",
-    bio: "Specializing in youth empowerment and educational program development.",
-    socialLinks: {
-      linkedin: ""
-    }
-  },
+
+  }, 
   
 ] satisfies TeamMember[];
 

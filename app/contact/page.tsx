@@ -32,7 +32,7 @@ export default function Contact() {
         alt="Background"
         layout="fill"
         objectFit="cover"
-        className="z-0"
+        className="z-0 opacity-50"
       />
       
       {/* Content */}

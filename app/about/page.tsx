@@ -12,18 +12,20 @@ const teamMembers = [
     id: 1,  
     name: "Eric Kimararungu",
     role: "Founder and CEO",
-    image: "/team/member1.jpg",
+    image: "/images/Eric.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
       linkedin: "https://linkedin.com/in/eric-kimararungu",
     }
+
   },
   {
     id: 2,
     name: "Annled Karimi",
     role: "Programs and Communications",
-    image: "/team/member2.jpg",
+    image: "/images/annled.jpg",
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
+
     socialLinks: {
       linkedin: "https://linkedin.com/in/annled-karimi",
     }
@@ -32,7 +34,7 @@ const teamMembers = [
     id: 3,
     name: "Ramazani Mulisho",
     role: "Finance Lead",
-    image: "/team/member3.jpg",
+    image: "/images/Mwalisho.jpg",
     bio: "Ramazani, the organization's Finance lead, oversees all organization's financial matters. He also supports Advocacy and resource mobilization.",
     socialLinks: {
       linkedin: "https://linkedin.com/in/ramazani-mulisho",
@@ -64,13 +66,13 @@ const opportunities: Opportunity[] = [
     title: "Volunteer With Us",
     description: "Join our community of dedicated volunteers making a real difference in Kajiado South. Whether you have a few hours or want to commit long-term, your skills and passion can help transform lives.",
     link: "/OpportunitiesSection",
-    image: "/images/volunteer.jpg"
+    image: "/images/Volunteer.png"
   },
   {
     title: "Partner With Us",
     description: "Create lasting impact through strategic partnerships. We collaborate with organizations that share our vision for community development and sustainable change.",
     link: "/OpportunitiesSection",
-    image: "/images/partner.jpg"
+    image: "/images/partnership.jpg"
   }
 ];
 
@@ -276,6 +278,7 @@ export default function About() {
                       alt={item.title}
                       fill
                       className="object-cover"
+
                     />
                   </div>
                   <div className="p-8">

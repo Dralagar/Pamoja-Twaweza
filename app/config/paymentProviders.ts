@@ -23,28 +23,6 @@ export const paymentProviders: PaymentProvider[] = [
     features: ['instant', 'online']
   },
   {
-    name: 'MTN Mobile Money',
-    id: 'mtn',
-    icon: '/images/mtn.png',
-    isAvailable: true,
-    currencies: ['KES', 'TZS', 'UGX', 'EUR', 'USD'],
-    minAmount: 500,
-    maxAmount: 5000000,
-    regions: ['KE', 'TZ', 'UG', 'USA', 'UK', 'GLOBAL' ],
-    features: ['instant', 'mobile']
-  },
-  {
-    name: 'Western Union',
-    id: 'western-union',
-    icon: '/icons/western-union.svg',
-    isAvailable: true,
-    currencies: ['USD', 'EUR', 'GBP'],
-    minAmount: 1,
-    maxAmount: 5000,
-    regions: ['GLOBAL'],
-    features: ['cash-pickup']
-  },
-  {
     name: 'SendWave',
     id: 'sendwave',
     icon: '/icons/sendwave.svg',
@@ -66,28 +44,7 @@ export const paymentProviders: PaymentProvider[] = [
     regions: ['GLOBAL'],
     features: ['instant', 'mobile']
   },
-  {
-    name: 'Dahabshiil',
-    id: 'dahabshiil',
-    icon: '/icons/dahabshiil.svg',
-    isAvailable: true,
-    currencies: ['USD', 'EUR', 'GBP'],
-    minAmount: 1,
-    maxAmount: 3000,
-    regions: ['GLOBAL'],
-    features: ['cash-pickup']
-  },
-  {
-    name: 'Cryptocurrency',
-    id: 'crypto',
-    icon: '/icons/crypto.svg',
-    isAvailable: true,
-    currencies: ['BTC', 'ETH', 'USDT'],
-    minAmount: 0.0001,
-    maxAmount: 100000,
-    regions: ['GLOBAL'],
-    features: ['instant', 'crypto']
-  }
+    
 ];
 
 export type SupportedCurrencies = 'USD' | 'EUR' | 'GBP' | 'KES' | 'TZS' | 'UGX' | 'BTC' | 'ETH' | 'USDT';

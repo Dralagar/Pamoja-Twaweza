@@ -4,6 +4,7 @@ import React from 'react';
 import Image from "next/image";
 import Head from 'next/head';
 import styles from '../styles/Program.module.css';
+import Link from 'next/link';
 
 type Program = {
   id: number;
@@ -76,7 +77,7 @@ const programs: Program[] = [
     title: "Livelihood and Economic Empowerment",
     category: "Livelihoods",
     description: "Implementing skills development programs tailored to local market demands. Supporting entrepreneurship initiatives through training, mentorship, and access to resources. Facilitating training to enhance self-sufficiency and income generation.",
-    image: "/images/livelihood.jpg",
+    image: "/images/pamoj7.jpeg",
     details: [
       "Skills development training",
       "Business mentorship",
@@ -90,7 +91,7 @@ const programs: Program[] = [
     title: "Advocacy and Rights Awareness", 
     category: "Advocacy",
     description: "Amplifying the voices of refugees and vulnerable groups through policy advocacy. Promoting the inclusion and participation of marginalized groups in decision-making processes. Educating communities on their rights and available resources.",
-    image: "/images/advocacy.jpg",
+    image: "/images/pamoj1.jpeg",
     details: [
       "Policy advocacy training",
       "Community rights education",
@@ -106,7 +107,7 @@ const programs: Program[] = [
     category: "Mental Health",
     title: "Mental Health and Psycho-social Support", 
     description: "Training community members to offer peer-to-peer psycho-social support. Raising awareness about mental health to reduce stigma and promote well-being. Providing referral services to beneficiaries.",
-    image: "/images/mental_health.jpg",
+    image: "/images/MentalHealth.png",
     details: [
       "Peer support training",
       "Mental health awareness",
@@ -120,7 +121,7 @@ const programs: Program[] = [
     category: "Youth Development",
     title: "Youth Empowerment",
     description: "Engaging youth in leadership, education, and skills development activities.",
-    image: "/images/youth_empowerment.jpg",
+    image: "/images/empower.png",
     details: [
       "Leadership training",
       "Educational support",
@@ -134,7 +135,7 @@ const programs: Program[] = [
     category: "Inclusion",
     title: "Support for Persons with Disability",
     description: "Ensuring accessibility and inclusivity in all organizational programs.",
-    image: "/images/disability_support.jpg",
+    image: "/images/Pwd.jpg",
     details: [
       "Accessibility improvements",
       "Inclusive programming",
@@ -166,23 +167,23 @@ const programAreas = [
   },
   {
     title: "Mental Health and Psycho-social Support",
-    icon: "/images/mental-health-icon.png",
+    icon: "/images/mental.png",
     details: [
       "Training community members to offer peer-to-peer psycho-social support.",
       "Raising awareness about mental health to reduce stigma and promote well-being.",
       "Providing referral services to beneficiaries."
     ]
   },
-  {
+  { 
     title: "Youth Empowerment",
-    images: "/images/empower.png",
+    icon: "/images/empowerement.jpeg",
     details: [
       "Engaging youth in leadership, education, and skills development activities."
     ]
   },
   {
     title: "Support for Persons with Disability",
-    icon: "/images/disability-support-icon.png",
+    icon: "/images/ pwd.jpg",
     details: [
       "Ensuring accessibility and inclusivity in all organizational programs."
     ]
@@ -234,9 +235,11 @@ export default function Programs() {
               <button className="bg-[var(--primary-blue)] text-white px-8 py-4 rounded-full hover:bg-[var(--accent-orange)] transition-all hover:shadow-lg">
                 Apply for Programs
               </button>
-              <button className="bg-[var(--accent-yellow)] text-[var(--text-black)] px-8 py-4 rounded-full hover:bg-[var(--accent-orange)] transition-all hover:shadow-lg">
-                Support Our Work
-              </button>
+              <Link href="/donate">
+                <button className="bg-[var(--accent-yellow)] text-[var(--text-black)] px-8 py-4 rounded-full hover:bg-[var(--accent-orange)] transition-all hover:shadow-lg">
+                  Support Our Work
+                </button>
+              </Link>
             </div>
           </div>
         </section>

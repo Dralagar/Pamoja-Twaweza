@@ -23,7 +23,7 @@ export default function DonatePage() {
         <section className={styles.heroSection}>
           <div className={styles.heroImageWrapper}>
             <Image
-              src="/images/download.png"
+              src="/images/Donate.png"
               alt="Donation Hero"
               fill
               priority
@@ -68,14 +68,54 @@ export default function DonatePage() {
                     <span>Goal: $100,000</span>
                   </div>
                 </div>
+
+                {/* Digital Livelihood Campaign */}
+                <div className={styles.progressCard}>
+                  <h3 className={styles.progressTitle}>Digital Livelihood Campaign</h3>
+                  <div className={styles.progressBar}>
+                    <div 
+                      className={styles.progressFill} 
+                      style={{ width: '60%' }}
+                    />
+                  </div>
+                  <div className={styles.progressStats}>
+                    <span>$30,000 Raised</span>
+                    <span>Goal: $50,000</span>
+                  </div>
+                </div>
+
+                {/* Mental Health Drive */}
+                <div className={styles.progressCard}>
+                  <h3 className={styles.progressTitle}>Mental Health Drive</h3>
+                  <div className={styles.progressBar}>
+                    <div 
+                      className={styles.progressFill} 
+                      style={{ width: '40%' }}
+                    />
+                  </div>
+                  <div className={styles.progressStats}>
+                    <span>$20,000 Raised</span>
+                    <span>Goal: $50,000</span>
+                  </div>
+                </div>
+
+                {/* Entrepreneurship Kit */}
+                <div className={styles.progressCard}>
+                  <h3 className={styles.progressTitle}>Entrepreneurship Kit</h3>
+                  <div className={styles.progressBar}>
+                    <div 
+                      className={styles.progressFill} 
+                      style={{ width: '50%' }}
+                    />
+                  </div>
+                  <div className={styles.progressStats}>
+                    <span>$25,000 Raised</span>
+                    <span>Goal: $50,000</span>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
-
-          {/* Footer */}
-          <footer className="mt-16 p-6 bg-blue-600 text-white">
-            <p className="text-center">&copy; {new Date().getFullYear()} Nonprofit Name. All Rights Reserved.</p>
-          </footer>
         </div>
       </main>
     </Elements>
