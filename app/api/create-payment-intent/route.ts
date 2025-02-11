@@ -3,26 +3,15 @@ import Stripe from 'stripe';
 
 export const runtime = 'nodejs';
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-
-console.log('Stripe Secret Key:', stripeSecretKey);
-
-if (!stripeSecretKey) {
-  console.error('Stripe secret key is not set. Please configure it in the environment variables.');
+if (!process.env.STRIPE_SECRET_KEY) {
+  throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
 }
 
-const stripe = new Stripe(stripeSecretKey || '', {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: '2024-12-18.acacia'
 });
 
 export async function POST(req: Request) {
-  if (!stripeSecretKey) {
-    return NextResponse.json(
-      { error: 'Stripe secret key is not configured. Please contact the administrator.' },
-      { status: 500 }
-    );
-  }
-
   try {
     const { amount, currency = 'usd' } = await req.json();
 
@@ -33,9 +22,9 @@ export async function POST(req: Request) {
           price_data: {
             currency: currency,
             product_data: {
-              name: 'Donation',
+              name: 'Donation to Pamoja Twaweza',
             },
-            unit_amount: amount * 100, // Convert to cents
+            unit_amount: amount,
           },
           quantity: 1,
         },

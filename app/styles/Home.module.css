@@ -592,3 +592,27 @@
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   font-weight: 500;
 }
+
+.programHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.programIcon {
+  background-color: var(--primary-blue);
+  padding: 1rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.programIcon img {
+  filter: brightness(0) invert(1);
+  width: 48px;
+  height: 48px;
+}

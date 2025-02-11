@@ -73,9 +73,13 @@ export default function Home() {
               </p>
               <button 
                 className={styles.heroButton}
-                onClick={() => handleNavigation('/join-us')}
+                onClick={() => {
+                  document.querySelector('#contact-section')?.scrollIntoView({ 
+                    behavior: 'smooth' 
+                  });
+                }}
               >
-                Join Our Cause
+                Get Involved
               </button>
             </div>
             <div className="relative aspect-square">
@@ -193,12 +197,23 @@ export default function Home() {
         </section>
 
         {/* Programs Section */}
-        <section className={styles.programsSection}>
+        <section id="donation-section" className={styles.programsSection}>
           <div className="container mx-auto px-4">
             <h2 className={styles.sectionTitle}>Our Programs</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Main Program */}
               <div className="space-y-8">
+                <div className={styles.programHeader}>
+                  <div className={styles.programIcon}>
+                    <Image
+                      src="/icons/youth-empowerment.svg"
+                      alt="Youth Empowerment"
+                      width={48}
+                      height={48}
+                    />
+                  </div>
+                  <h3 className={styles.sectionTitle}>Livelihoods</h3>
+                </div>
                 <div className="relative aspect-video">
                   <Image
                     src="/images/pamoj5.jpeg"
@@ -211,7 +226,6 @@ export default function Home() {
                 </div>
                 <div className={styles.programCard}>
                   <div className="p-8">
-                    <h3 className={styles.sectionTitle}>Livelihoods</h3>
                     <p className={styles.heroText}>
                       We offer digital skills training for youth, tailoring and dressmaking
                       courses, entrepreneurship training, and promote financial inclusion
@@ -332,6 +346,13 @@ export default function Home() {
             Through dedicated community engagement and sustainable programs, we&apos;re building a brighter future for all.
           </p>
         </section>
+
+        <button 
+          className={styles.heroButton}
+          onClick={() => handleNavigation('/join-us')}
+        >
+          Join Our Cause
+        </button>
       </div>
     </div>
   );
