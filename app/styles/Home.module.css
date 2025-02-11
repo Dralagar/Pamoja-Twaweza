@@ -244,44 +244,119 @@
 
 /* Team Section */
 .teamSection {
-  padding: 4rem 1.5rem;
-  max-width: 100vw;
-  overflow-x: hidden;
-  background: linear-gradient(to bottom right, #eff6ff, #ffffff);
+  padding: 4rem 0;
+  background-color: var(--background-light);
+  width: 100%;
+}
+
+.teamSection .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .teamMemberCard {
-  background-color: #ffffff;
+  background: white;
   border-radius: 1rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  max-width: 24rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+.teamMemberCard:hover {
+  transform: translateY(-5px);
+}
+
+/* Image container styles */
+.teamMemberCard > div:first-child {
+  position: relative;
   width: 100%;
+  height: 300px;
+  background-color: #f8fafc;
+}
+
+.teamMemberCard img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.05) contrast(1.05);
+}
+
+/* Remove or adjust overlay for team member images */
+.teamMemberCard .impactOverlay {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(0, 0, 0, 0.2)
+  );
+  opacity: 0.3;
+  transition: opacity 0.3s ease;
+}
+
+.teamMemberCard:hover .impactOverlay {
+  opacity: 0.4;
 }
 
 .socialLinks {
   position: absolute;
   bottom: 1rem;
-  left: 1rem;
+  right: 1rem;
   display: flex;
-  gap: 1rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.teamMemberCard:hover .socialLinks {
-  opacity: 1;
+  gap: 0.5rem;
+  z-index: 3;
 }
 
 .socialIcon {
-  color: #ffffff;
-  transition: color 0.2s ease;
+  background: white;
+  color: var(--primary-blue);
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .socialIcon:hover {
-  color: #3b82f6;
+  background: var(--primary-blue);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* Grid layout for team members */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+  
+  .teamMemberCard {
+    margin: 0.5rem 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .teamGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .teamGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /* Animations */
@@ -386,18 +461,35 @@
 .impactShowcase {
   position: relative;
   width: 100%;
-  padding: 4rem 2rem;
-  background-color: var(--background-white);
-  overflow: hidden;
+  padding: 6rem 2rem;
   text-align: center;
   margin: 4rem 0;
+  background-image: url('/images/pamoj7.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: white;
 }
 
 .impactTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary-blue);
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
   margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.impactShowcase p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 }
 
 .impactOverlay {
@@ -406,7 +498,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(
+    to bottom,
+    rgba(37, 99, 235, 0.9),
+    rgba(29, 78, 216, 0.95)
+  );
   z-index: 1;
 }
 
@@ -425,13 +521,6 @@
 .impactCard:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.heroText {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  line-height: 1.75;
-  margin-top: 1rem;
 }
 
 .creatingChangeSection {
@@ -467,4 +556,39 @@
 .section {
   padding: 4rem 0;
   margin-bottom: 4rem;
+}
+
+/* Who We Are Section */
+.whoWeAreSection {
+  position: relative;
+  padding: 6rem 2rem;
+  background-image: url('/images/pamoj1.jpeg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.whoWeAreContent {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.whoWeAreTitle {
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.whoWeAreText {
+  font-size: 1.25rem;
+  color: white;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  font-weight: 500;
 }

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Slider from 'react-slick';
 import styles from './styles/Home.module.css';
 import MultiPaymentDonation from './components/MultiPaymentDonation';
 import OpportunitiesSection from './components/OpportunititieSectionl';
@@ -17,7 +18,6 @@ const teamMembers = [
       linkedin: "",
       twitter: ""
     }
-
   },
   {
     id: 2,
@@ -28,8 +28,6 @@ const teamMembers = [
     socialLinks: {
       linkedin: ""
     }
-
-
   },
   {
     id: 3,
@@ -40,9 +38,7 @@ const teamMembers = [
     socialLinks: {
       linkedin: ""
     }
-
-  }, 
-  
+  }
 ] satisfies TeamMember[];
 
 type TeamMember = {
@@ -60,6 +56,16 @@ type TeamMember = {
 export default function Home() {
   const handleNavigation = (path: string) => {
     window.location.href = path;
+  };
+
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
 
   return (
@@ -169,26 +175,21 @@ export default function Home() {
 
         {/* Impact Showcase */}
         <section className={styles.impactShowcase}>
-          <h2 className={styles.impactTitle}>Our Impact Stories</h2>
-          <div className="relative w-full h-full">
-            <Image
-              src="/images/pamoj7.jpeg"
-              alt="Community Impact"
-              layout="fill"
-              objectFit="cover"
-              sizes="100vw"
-              className="object-cover"
-            />
-            <div className={styles.impactOverlay} />
-            
+          <div className={styles.impactOverlay} />
+          <div className={styles.container}>
+            <h2 className={styles.impactTitle}>Our Impact Stories</h2>
+            <p className={styles.heroText}>
+              Making a difference in our community through sustainable development and empowerment.
+            </p>
           </div>
         </section>
 
         {/* Who We Are */}
-        <section className={`${styles.section} container mx-auto px-4 py-24`}>
-          <h2 className={styles.sectionTitle}>Who We Are</h2>
-          <div className="max-w-2xl">
-            <p className={styles.heroText}>
+        <section className={styles.whoWeAreSection}>
+          <div className={styles.impactOverlay} />
+          <div className={styles.whoWeAreContent}>
+            <h2 className={styles.whoWeAreTitle}>Who We Are</h2>
+            <p className={styles.whoWeAreText}>
               Pamoja Twaweza is a community-based organization dedicated to empowering
               communities through sustainable development initiatives, mental health
               support, and educational programs.
@@ -281,9 +282,9 @@ export default function Home() {
 
         {/* Team Section */}
         <section className={styles.teamSection}>
-          <div className="container mx-auto px-4">
+          <div className={styles.container}>
             <h2 className={styles.sectionTitle}>Meet the Team</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
+            <div className={styles.teamGrid}>
               {teamMembers.map((member) => (
                 <div key={member.id} className={styles.teamMemberCard}>
                   <div className="relative aspect-square overflow-hidden">
