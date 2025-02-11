@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import { useState } from 'react';
 
 export default function MPESADonation() {
@@ -22,6 +23,7 @@ export default function MPESADonation() {
       });
       
       const data = await response.json();
+      console.log(data);
       // Handle STK push response
     } catch (error) {
       console.error('MPESA payment failed:', error);

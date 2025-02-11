@@ -1,5 +1,6 @@
 "use client";
 
+import React from 'react';
 import { useState } from 'react';
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 
@@ -16,7 +17,7 @@ export default function PayPalDonation() {
   const [error, setError] = useState('');
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleCreateOrder = async (_, actions) => {
+  const handleCreateOrder = async (event: any, actions: any) => {
     if (!amount || isNaN(parseFloat(amount))) {
       setError('Please enter a valid amount');
       return;
@@ -39,10 +40,11 @@ export default function PayPalDonation() {
     }
   };
 
-  const handleApprove = async (_, actions) => {
+  const handleApprove = async (_: any, actions: any) => {
     setIsProcessing(true);
     try {
       const order = await actions.order!.capture();
+      console.log(order);
       alert("Thank you for your donation!");
       setAmount('10.00');
       setError('');
@@ -53,9 +55,8 @@ export default function PayPalDonation() {
       setIsProcessing(false);
     }
   };
-
   return (
-    <PayPalScriptProvider options={initialOptions}>
+    <PayPalScriptProvider options={{ clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!, currency: "USD", intent: "capture", components: "buttons", "disable-funding": "credit,card" }}>
       <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-4 text-center">Donate via PayPal</h2>
         

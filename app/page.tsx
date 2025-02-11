@@ -203,29 +203,19 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               {/* Main Program */}
               <div className="space-y-8">
-                <div className={styles.programHeader}>
-                  <div className={styles.programIcon}>
+                <div className={styles.programCard}>
+                  <div className="relative aspect-video">
                     <Image
-                      src="/icons/youth-empowerment.svg"
-                      alt="Youth Empowerment"
-                      width={48}
-                      height={48}
+                      src="/images/pamoj5.jpeg"
+                      alt="Livelihoods Program"
+                      layout="fill"
+                      objectFit="cover"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="rounded-2xl object-cover shadow-xl"
                     />
                   </div>
-                  <h3 className={styles.sectionTitle}>Livelihoods</h3>
-                </div>
-                <div className="relative aspect-video">
-                  <Image
-                    src="/images/pamoj5.jpeg"
-                    alt="Livelihoods Program"
-                    layout="fill"
-                    objectFit="cover"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="rounded-2xl object-cover shadow-xl"
-                  />
-                </div>
-                <div className={styles.programCard}>
                   <div className="p-8">
+                    <h3 className={styles.sectionTitle}>Livelihoods</h3>
                     <p className={styles.heroText}>
                       We offer digital skills training for youth, tailoring and dressmaking
                       courses, entrepreneurship training, and promote financial inclusion
@@ -346,13 +336,6 @@ export default function Home() {
             Through dedicated community engagement and sustainable programs, we&apos;re building a brighter future for all.
           </p>
         </section>
-
-        <button 
-          className={styles.heroButton}
-          onClick={() => handleNavigation('/join-us')}
-        >
-          Join Our Cause
-        </button>
       </div>
     </div>
   );
