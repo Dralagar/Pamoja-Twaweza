@@ -19,12 +19,14 @@ export default function JoinUs() {
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="relative h-48">
+            <div className="relative w-full h-64">
               <Image
                 src="/images/pamoj5.jpeg"
                 alt="Volunteer"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
               />
             </div>
             <div className="p-6">
@@ -43,12 +45,14 @@ export default function JoinUs() {
           </div>
 
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="relative h-48">
+            <div className="relative w-full h-64">
               <Image
                 src="/images/pamoj3.jpeg"
                 alt="Partner"
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
               />
             </div>
             <div className="p-6">
