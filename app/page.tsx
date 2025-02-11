@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from 'next/image';
-import Slider from 'react-slick';
 import styles from './styles/Home.module.css';
 import MultiPaymentDonation from './components/MultiPaymentDonation';
 import OpportunitiesSection from './components/OpportunititieSectionl';
@@ -56,16 +55,6 @@ type TeamMember = {
 export default function Home() {
   const handleNavigation = (path: string) => {
     window.location.href = path;
-  };
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
   };
 
   return (
