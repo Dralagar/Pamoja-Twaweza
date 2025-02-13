@@ -11,23 +11,32 @@ const client = createClient({
 });
 
 export async function getServerSideProps() {
-  const query = `*[_type == "post" && defined(publishedDate)]{
-    _id,
-    title,
-    mainImage,
-    author->{
-      name
-    },
-    publishedDate,
-    body
-  } | order(publishedDate desc)`;
-  const posts = await client.fetch(query);
+  try {
+    const query = `*[_type == "post" && defined(publishedDate)]{
+      _id,
+      title,
+      mainImage,
+      author->{
+        name
+      },
+      publishedDate,
+      body
+    } | order(publishedDate desc)`;
+    const posts = await client.fetch(query);
 
-  return {
-    props: {
-      posts,
-    },
-  };
+    return {
+      props: {
+        posts,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    return {
+      props: {
+        posts: [],
+      },
+    };
+  }
 }
 
 function BlogPosts({ posts }) {
