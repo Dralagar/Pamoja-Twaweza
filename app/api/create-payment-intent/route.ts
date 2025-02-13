@@ -3,12 +3,14 @@ import Stripe from 'stripe';
 
 export const runtime = 'nodejs';
 
+// Ensure the secret key is set
 if (!process.env.STRIPE_SECRET_KEY) {
   throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
 }
 
+// Initialize Stripe with the correct API version
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-12-18.acacia'
+  apiVersion: '2025-01-27.acacia'
 });
 
 export async function POST(req: Request) {
