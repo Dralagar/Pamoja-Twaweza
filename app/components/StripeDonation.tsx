@@ -1,6 +1,6 @@
 "use client";
 import React from 'react';
-import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 const stripePromise = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
   ? loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
@@ -19,10 +19,9 @@ export default function StripeDonation() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ amount: 1099, currency: 'usd' }),
     });
-
-    const data = await response.json();
+    const data = await response.json() as { error?: string; sessionId?: string };
     if (data.error) throw new Error(data.error);
-
+    if (!data.sessionId) throw new Error('Session ID is undefined');
     const result = await stripe.redirectToCheckout({
       sessionId: data.sessionId,
     });

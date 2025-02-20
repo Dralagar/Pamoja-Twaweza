@@ -79,7 +79,7 @@ export default function DonatePage() {
                     />
                   </div>
                   <div className={styles.progressStats}>
-                    <span>$30,000 Raised</span>
+                    <span>$15 Raised</span>
                     <span>Goal: $50,000</span>
                   </div>
                 </div>
@@ -94,7 +94,7 @@ export default function DonatePage() {
                     />
                   </div>
                   <div className={styles.progressStats}>
-                    <span>$20,000 Raised</span>
+                    <span>$10 Raised</span>
                     <span>Goal: $50,000</span>
                   </div>
                 </div>
@@ -109,7 +109,7 @@ export default function DonatePage() {
                     />
                   </div>
                   <div className={styles.progressStats}>
-                    <span>$25,000 Raised</span>
+                    <span>$60 Raised</span>
                     <span>Goal: $50,000</span>
                   </div>
                 </div>

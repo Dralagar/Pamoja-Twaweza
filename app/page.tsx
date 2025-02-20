@@ -54,9 +54,14 @@ type TeamMember = {
 
 export default function Home() {
   const handleNavigation = (path: string) => {
-    window.location.href = path;
-  };
-
+    if (typeof window !== 'undefined') {
+      window.location.href = path;
+    } else {
+      // Assuming navigate is a function imported or defined elsewhere in the application
+      // If navigate is not defined, consider importing it or defining it in the application
+      // navigate(path);
+    }
+    }
   return (
     <div className={styles.mainContainer} suppressHydrationWarning>
       <div className={styles.content}>
