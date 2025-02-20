@@ -5,42 +5,28 @@ export const runtime = 'nodejs';
 
 // Ensure the secret key is set
 if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
+  throw new Error('STRIPE_SECRET_KEY is not set');
 }
 
 // Initialize Stripe with the correct API version
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2025-01-27.acacia',
+  apiVersion: '2025-01-27.acacia'
 });
 
 export async function POST(req: Request) {
   try {
-    const { amount, currency = 'usd' } = await req.json();
+    const { amount } = await req.json();
 
-    const session = await stripe.checkout.sessions.create({
-      payment_method_types: ['card'],
-      line_items: [
-        {
-          price_data: {
-            currency: currency,
-            product_data: {
-              name: 'Donation to Pamoja Twaweza',
-            },
-            unit_amount: amount,
-          },
-          quantity: 1,
-        },
-      ],
-      mode: 'payment',
-      success_url: `${req.headers.get('origin')}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.get('origin')}/canceled`,
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency: 'usd',
     });
 
-    return NextResponse.json({ sessionId: session.id });
-  } catch (err) {
-    console.error('Error creating checkout session:', err);
+    return NextResponse.json({ sessionId: paymentIntent.client_secret });
+  } catch (error) {
+    console.error('Error:', error);
     return NextResponse.json(
-      { error: 'Error creating checkout session' },
+      { error: 'Error creating payment intent' },
       { status: 500 }
     );
   }
