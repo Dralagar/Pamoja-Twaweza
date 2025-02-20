@@ -1,18 +1,10 @@
-import { blockContentType } from '../schemaTypes/blockContentType';
-import { categoryType } from '../schemaTypes/categoryType';
-import { postType } from '../schemaTypes/postType';
-import { authorType } from '../schemaTypes/authorType';
+import { type SchemaTypeDefinition } from 'sanity'
 
-type SchemaType = {
-  name: string;
-  title: string;
-  type: string;
-  fields?: any[];
-};
+import {blockContentType} from './blockContentType'
+import {categoryType} from './categoryType'
+import {postType} from './postType'
+import {authorType} from './authorType'
 
-export const schema = {
-  types: [blockContentType, categoryType, postType, authorType].map(type => ({
-    ...type,
-    title: type.title || type.name // Ensure title exists, fallback to name if not provided
-  }))
-};
+export const schema: { types: SchemaTypeDefinition[] } = {
+  types: [blockContentType, categoryType, postType, authorType],
+}

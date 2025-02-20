@@ -1,11 +1,14 @@
+import { defineConfig } from 'sanity';
+import { deskTool } from 'sanity/desk';
 
-// This file is auto-generated on 'sanity dev'
-// Modifications to this file are automatically discarded
-import {renderStudio} from "sanity"
-import studioConfig from "../app/sanity.config"
-
-renderStudio(
-  document.getElementById("sanity"),
-  studioConfig,
-)
-// The selected code is redundant and contains syntax errors. It should be removed.
+export default defineConfig({
+  name: 'default',
+  title: 'Pamoja Twaweza',
+  basePath: '/studio',
+  projectId: 'your-project-id', // Replace with your actual project ID
+  dataset: 'production', // Replace with your dataset name
+  plugins: [deskTool()],
+  schema: {
+    types: [], // Empty array until schemas are defined
+  },
+});

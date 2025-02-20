@@ -105,7 +105,7 @@ export default function About() {
             />
             <div className="absolute inset-0 bg-black/50" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-[var(--secondary-light)] text-center px-4">
+              <div className="text-white text-center px-4">
                 <h2 className="text-4xl font-bold mb-4">8+ Years of Impact</h2>
                 <p className="text-xl max-w-2xl">Transforming communities through unity and action</p>
               </div>
