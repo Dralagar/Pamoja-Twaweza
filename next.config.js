@@ -1,11 +1,13 @@
 /** @type {import('next').NextConfig} */
+require('dotenv').config();
+
 const nextConfig = {
   compiler: {
     styledComponents: true, // Enables styled-components support
   },
   reactStrictMode: true, // Ensures React best practices
   images: {
-    domains: ['example.com'], // Add domains for optimized images
+    domains: ['cdn.sanity.io'], // Add domains for optimized images
   },
 };
 

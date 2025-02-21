@@ -11,7 +11,7 @@
 import React, { useEffect, useState } from 'react'
 import { NextStudio } from 'next-sanity/studio'
 import config from '../../../app/sanity.config'
-import { createClient } from '@sanity/client'
+import createClient from '@sanity/client'
 
 export const dynamic = 'force-static'
 
@@ -55,7 +55,7 @@ export default function StudioPage() {
 
   return (
     <div>
-      <NextStudio config={config} />
+      <NextStudio {...config} />
       <div>
         {loading ? (
           <p>Loading posts...</p>

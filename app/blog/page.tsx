@@ -6,30 +6,6 @@ import Link from "next/link";
 import imageUrlBuilder from '@sanity/image-url';
 import sanityConfig from '../../sanity.config';
 
-try {
-  require.resolve('@sanity/image-url');
-} catch(e) {
-  console.error("Cannot find module 'next-sanity' or its corresponding type declarations.");
-}
-
-try {
-  require.resolve('@sanity/image-url');
-} catch(e) {
-  console.error("Cannot find module '@sanity/image-url' or its corresponding type declarations.");
-}
-
-try {
-  require.resolve('@sanity/image-url');
-} catch(e) {
-  console.error("Cannot find module 'next-sanity' or its corresponding type declarations.");
-}
-
-try {
-  require.resolve('@sanity/image-url');
-} catch(e) {
-  console.error("Cannot find module '@sanity/image-url' or its corresponding type declarations.");
-}
-
 interface Post {
   _id: string;
   title: string;

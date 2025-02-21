@@ -13,3 +13,5 @@ export default defineConfig({
     types: schemaTypes,
   },
 })
+  // The selection is a duplicate and should be removed as it is already defined in the export default defineConfig block.
+// End of Selection
