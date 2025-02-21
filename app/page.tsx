@@ -7,7 +7,7 @@ import styles from './styles/Home.module.css';
 import MultiPaymentDonation from './components/MultiPaymentDonation';
 import OpportunitiesSection from './components/OpportunititieSectionl';
 
-const teamMembers = [
+  const teamMembers = [
   {
     id: 1,
     name: "Eric Kimararungu",
@@ -179,8 +179,8 @@ export default function Home() {
           {/* Add OpportunitiesSection component */}
           <OpportunitiesSection />
 
-          {/* Add MultiPaymentDonation component */}
-          <MultiPaymentDonation />
+          {/* Commenting out MultiPaymentDonation component temporarily */}
+          {/* <MultiPaymentDonation /> */}
 
           {/* Impact Showcase */}
           <section className={styles.impactShowcase}>

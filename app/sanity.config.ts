@@ -1,7 +1,7 @@
-import { defineConfig } from 'sanity'
-import { schemaTypes } from './schemas'
-import { deskTool } from 'sanity/desk'
-import { visionTool } from '@sanity/vision'
+import { defineConfig } from 'sanity';
+import { schemaTypes } from './schemas';
+import { structure } from 'sanity/structure'; // Updated import
+import { visionTool } from '@sanity/vision';
 
 export default defineConfig({
   name: 'default',
@@ -9,8 +9,8 @@ export default defineConfig({
   basePath: '/studio',
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '',
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || '',
-  plugins: [deskTool(), visionTool()],
+  plugins: [structure({}), visionTool()], // Updated plugin
   schema: {
     types: schemaTypes,
   },
-})
+});
