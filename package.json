@@ -34,7 +34,10 @@
     "sanity": "^2.36.6",
     "slick-carousel": "^1.8.1",
     "stripe": "^12.18.0",
-    "styled-components": "^6.1.15"
+    "styled-components": "^6.1.15",
+    "@sanity/base": "^2.36.2",
+    "@sanity/ui": "^2.14.0",
+    "@floating-ui/react-dom": "^2.1.2"
   },
   "devDependencies": {
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
