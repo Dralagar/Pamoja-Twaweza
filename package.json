@@ -11,9 +11,10 @@
   },
   "dependencies": {
     "@paypal/react-paypal-js": "^8.8.2",
+    "@sanity/desk-tool": "^2.36.2",
     "@sanity/icons": "^3.6.0",
     "@sanity/image-url": "^1.1.0",
-    "@sanity/vision": "^3.76.1",
+    "@sanity/vision": "^3.76.3",
     "@stripe/react-stripe-js": "^1.16.5",
     "@stripe/stripe-js": "^1.54.2",
     "@types/styled-components": "^5.1.34",

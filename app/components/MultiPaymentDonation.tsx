@@ -1,65 +1,92 @@
-"use client";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-import React, { useState, Suspense } from 'react';
-import dynamic from 'next/dynamic';
+const MultiPaymentDonation = () => {
+  const [status, setStatus] = useState<string | null>(null);
+  const [paypalLoaded, setPaypalLoaded] = useState<boolean>(false);
 
-const PayPalDonation = dynamic(() => import('./PayPalDonation'), {
-  loading: () => <div>Loading PayPal...</div>,
-  ssr: false
-});
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://www.paypal.com/sdk/js?currency=USD&intent=capture&components=buttons&disable-funding=credit,card";
+    script.async = true;
+    script.onload = () => setPaypalLoaded(true);
+    script.onerror = () => console.error('Failed to load the PayPal JS SDK script.');
+    document.body.appendChild(script);
 
-const MPESADonation = dynamic(() => import('./MPESADonation'), {
-  loading: () => <div>Loading M-PESA...</div>,
-  ssr: false
-});
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
 
-const StripeDonation = dynamic(() => import('./StripeDonation'), {
-  loading: () => <div>Loading Stripe...</div>,
-  ssr: false
-});
+  const handlePayment = async () => {
+    if (!paypalLoaded) {
+      console.error('PayPal SDK not loaded.');
+      setStatus('error');
+      return;
+    }
+    try {
+      const response = await axios.post('/api/payment', { /* payment data */ });
+      if (response.status === 200) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+        console.error('Payment error: Unexpected response status', response.status);
+      }
+    } catch (err) {
+      setStatus('error');
+      if (axios.isAxiosError(err)) {
+        console.error('Payment error:', err.message);
+        if (err.response) {
+          console.error('Response data:', err.response.data);
+          console.error('Response status:', err.response.status);
+          console.error('Response headers:', err.response.headers);
+        } else if (err.request) {
+          console.error('Request data:', err.request);
+        } else {
+          console.error('Error message:', err.message);
+        }
+      } else {
+        console.error('Payment error:', err);
+      }
+    }
+  };
 
-type PaymentMethod = 'paypal' | 'mpesa' | 'card';
-
-export default function MultiPaymentDonation() {
-  const [selectedMethod, setSelectedMethod] = useState<PaymentMethod>('card');
+  const handleMpesaPayment = async () => {
+    try {
+      const response = await axios.post('/api/mpesa-payment', { /* M-Pesa payment data */ });
+      if (response.status === 200) {
+        setStatus('success');
+      } else {
+        setStatus('error');
+        console.error('M-Pesa payment error: Unexpected response status', response.status);
+      }
+    } catch (err) {
+      setStatus('error');
+      if (axios.isAxiosError(err)) {
+        console.error('M-Pesa payment error:', err.message);
+        if (err.response) {
+          console.error('Response data:', err.response.data);
+          console.error('Response status:', err.response.status);
+          console.error('Response headers:', err.response.headers);
+        } else if (err.request) {
+          console.error('Request data:', err.request);
+        } else {
+          console.error('Error message:', err.message);
+        }
+      } else {
+        console.error('M-Pesa payment error:', err);
+      }
+    }
+  };
 
   return (
-    <div className="max-w-xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-6 text-center">Make a Donation</h2>
-      
-      {/* Payment Method Selector */}
-      <div className="flex justify-center gap-4 mb-6">
-        <button
-          onClick={() => setSelectedMethod('card')}
-          className={`px-4 py-2 rounded ${
-            selectedMethod === 'card' ? 'bg-blue-600 text-white' : 'bg-gray-200'
-          }`}
-        >
-          Credit Card
-        </button>
-        <button
-          onClick={() => setSelectedMethod('paypal')}
-          className={`px-4 py-2 rounded ${
-            selectedMethod === 'paypal' ? 'bg-blue-600 text-white' : 'bg-gray-200'
-          }`}
-        >
-          PayPal
-        </button>
-        <button
-          onClick={() => setSelectedMethod('mpesa')}
-          className={`px-4 py-2 rounded ${
-            selectedMethod === 'mpesa' ? 'bg-blue-600 text-white' : 'bg-gray-200'
-          }`}
-        >
-          M-PESA
-        </button>
-      </div>
-
-      <Suspense fallback={<div>Loading payment method...</div>}>
-        {selectedMethod === 'paypal' && <PayPalDonation />}
-        {selectedMethod === 'mpesa' && <MPESADonation />}
-        {selectedMethod === 'card' && <StripeDonation />}
-      </Suspense>
+    <div>
+      <button onClick={handlePayment}>Make a Donation with PayPal</button>
+      <button onClick={handleMpesaPayment}>Make a Donation with M-Pesa</button>
+      {status === 'success' && <p>Payment successful!</p>}
+      {status === 'error' && <p>Payment failed. Please try again.</p>}
     </div>
   );
-}
+};
+
+export default MultiPaymentDonation; 

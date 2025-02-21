@@ -196,6 +196,11 @@ export default function Programs() {
       <Head>
         <title>Programs - Pamoja Twaweza</title>
         <meta name="description" content="Explore our diverse programs aimed at empowering communities and fostering sustainable development." />
+        <meta property="og:title" content="Programs - Pamoja Twaweza" />
+        <meta property="og:description" content="Explore our diverse programs aimed at empowering communities." />
+        <meta property="og:image" content="/images/pamoj5.jpeg" />
+        <meta property="og:url" content="https://pamojatwaweza.org/programs" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <main className="bg-gray-100">
         <section className="container mx-auto px-4 py-24">
