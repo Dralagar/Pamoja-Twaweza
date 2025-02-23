@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 const MultiPaymentDonation: React.FC = () => {
-  const [paypalLoaded, setPaypalLoaded] = useState(false);
-
   useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID';
     script.async = true;
     
-    script.onload = () => setPaypalLoaded(true);
+    script.onload = () => console.log('PayPal JS SDK script loaded.');
     script.onerror = () => console.error('Failed to load the PayPal JS SDK script.');
     document.body.appendChild(script);
 

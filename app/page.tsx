@@ -4,14 +4,13 @@ import React from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from './styles/Home.module.css';
-import MultiPaymentDonation from './components/MultiPaymentDonation';
 import OpportunitiesSection from './components/OpportunititieSectionl';
 
-  const teamMembers = [
+const teamMembers = [
   {
     id: 1,
     name: "Eric Kimararungu",
-    role: "Founder and CEO",
+    role: "Founder and Executive Director",
     image: "/images/Eric.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
@@ -62,7 +61,8 @@ export default function Home() {
       // If navigate is not defined, consider importing it or defining it in the application
       // navigate(path);
     }
-    }
+  }
+
   return (
     <>
       <Head>

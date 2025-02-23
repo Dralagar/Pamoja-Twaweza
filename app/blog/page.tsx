@@ -1,11 +1,9 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { createClient } from 'next-sanity';
 import Image from "next/image";
 import Link from "next/link";
-import imageUrlBuilder from '@sanity/image-url';
-import sanityConfig from '../../sanity.config';
 
+// Define the Post interface without Sanity-specific fields
 interface Post {
   _id: string;
   title: string;
@@ -19,20 +17,19 @@ interface Post {
   excerpt: string;
 }
 
-const client = createClient(sanityConfig);
-const builder = imageUrlBuilder(client);
-
-function urlFor(source: any) {
-  return builder.image(source);
+// Placeholder function for fetching posts
+async function fetchPosts() {
+  // Replace this with your own data fetching logic
+  return [];
 }
 
 export default function Blog() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    const loadPosts = async () => {
       try {
-        const data = await client.fetch(`*[_type == "post" && defined(publishedAt) && !(_id in path("drafts.**"))]`);
+        const data = await fetchPosts();
         console.log("Fetched posts:", data);
         if (data.length === 0) {
           console.warn("No posts found.");
@@ -43,7 +40,7 @@ export default function Blog() {
       }
     };
 
-    fetchPosts();
+    loadPosts();
   }, []);
 
   if (posts.length === 0) {
@@ -61,7 +58,7 @@ export default function Blog() {
               <div className="relative h-48 w-full">
                 {post.mainImage && (
                   <Image
-                    src={urlFor(post.mainImage.asset._ref).url()}
+                    src={post.mainImage.asset._ref} // Adjust this line based on your image handling
                     alt={post.title}
                     layout="fill"
                     objectFit="cover"
@@ -81,4 +78,4 @@ export default function Blog() {
       </section>
     </div>
   );
-} 
+}
