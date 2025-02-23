@@ -5,14 +5,17 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from './components/Navbar';
 import Footer from './footer/page';
+import PrivacyPolicy from './privacy/privacy';
+import { Analytics } from '@vercel/analytics/react';
 import React from "react";
+import GoogleAnalyticsClient from './components/GoogleAnalyticsClient';
 
 export const metadata: Metadata = {
   title: "Pamoja Twaweza",
   description: "Pamoja Twaweza is a platform for youth empowerment and educational programs.",
 };
 
-export default function RootLayout({
+export default function RootLayout({  
   children,
 }: {
   children: React.ReactNode;
@@ -23,6 +26,8 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Analytics />
+        <GoogleAnalyticsClient />
       </body>
     </html>
   );
