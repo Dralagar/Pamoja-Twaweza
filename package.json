@@ -10,11 +10,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "@floating-ui/react-dom": "^2.1.2",
     "@paypal/react-paypal-js": "^8.8.2",
-    "@sanity/desk-tool": "^2.36.2",
-    "@sanity/icons": "^3.6.0",
-    "@sanity/image-url": "^1.1.0",
-    "@sanity/vision": "^3.76.3",
     "@stripe/react-stripe-js": "^1.16.5",
     "@stripe/stripe-js": "^1.54.2",
     "@types/styled-components": "^5.1.34",
@@ -31,13 +28,9 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.4.0",
     "react-slick": "^0.30.3",
-    "sanity": "^2.36.6",
     "slick-carousel": "^1.8.1",
     "stripe": "^12.18.0",
-    "styled-components": "^6.1.15",
-    "@sanity/base": "^2.36.2",
-    "@sanity/ui": "^2.14.0",
-    "@floating-ui/react-dom": "^2.1.2"
+    "styled-components": "^6.1.15"
   },
   "devDependencies": {
     "@tailwindcss/nesting": "0.0.0-insiders.565cd3e",
