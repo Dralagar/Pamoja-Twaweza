@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from './components/Navbar';
 import Footer from './footer/page';
-import PrivacyPolicy from './privacy/privacy';
 import { Analytics } from '@vercel/analytics/react';
 import React from "react";
 import GoogleAnalyticsClient from './components/GoogleAnalyticsClient';
