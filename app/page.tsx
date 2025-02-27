@@ -66,10 +66,11 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Pamoja Twaweza - Transforming Lives Through Community Action</title>
-        <meta name="description" content="Pamoja Twaweza is dedicated to empowering communities through sustainable development initiatives, mental health support, and educational programs." />
-        <meta property="og:title" content="Pamoja Twaweza - Transforming Lives Through Community Action" />
-        <meta property="og:description" content="Empowering communities through sustainable development initiatives." />
+        <title>Pamoja Twaweza - Empowering Refugees in Kitengela</title>
+        <meta name="description" content="Discover how Pamoja Twaweza, a refugee-led organization in Kitengela, empowers communities through sustainable development and education." />
+        <meta name="keywords" content="Refugee-led organization in Kitengela, Refugee empowerment, Sustainable development for refugees, Refugee education and skills training, Mental health support for refugees, Digital skills training for refugees" />
+        <meta property="og:title" content="Pamoja Twaweza - Empowering Refugees in Kitengela" />
+        <meta property="og:description" content="Empowering communities through sustainable development and education." />
         <meta property="og:image" content="/images/pamoj1.jpeg" />
         <meta property="og:url" content="https://pamojatwaweza.org" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -220,7 +221,7 @@ export default function Home() {
                 {/* Main Program */}
                 <div className="space-y-8">
                   <div className={styles.programCard}>
-                    <div className="relative aspect-video">
+                    <div className={styles.programImage}>
                       <Image
                         src="/images/pamoj5.jpeg"
                         alt="Livelihoods Program"
@@ -268,7 +269,7 @@ export default function Home() {
                   <div className={styles.programCard}>
                     <div className={styles.programImage}>
                       <Image
-                        src="/images/pamoj3.jpeg"
+                        src="/images/education.jpg"
                         alt="Education Programs"
                         layout="fill"
                         objectFit="cover"
@@ -281,6 +282,64 @@ export default function Home() {
                       <p className={styles.programText}>
                         English literacy classes for refugees to enhance their
                         communication skills and integration.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Advocacy, Peace, and Video Placeholder */}
+                <div className={styles.advocacyPeaceRow}>
+                  {/* Video Placeholder */}
+                  <div className={styles.programCard}>
+                    <div className="relative aspect-video bg-gray-200 flex items-center justify-center">
+                      <span className="text-xl font-bold text-gray-500">Video Placeholder</span>
+                    </div>
+                    <div className="p-8">
+                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Spotlight of Our Impact</h3>
+                      <p className={styles.heroText}>
+                        Discover the stories and achievements that highlight our impact in the community.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Advocacy Program */}
+                  <div className={styles.programCard}>
+                    <div className="relative aspect-video">
+                      <Image
+                        src="/images/advocacy.jpg"
+                        alt="Advocacy Programs"
+                        layout="fill"
+                        objectFit="cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-8">
+                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Advocacy</h3>
+                      <p className={styles.heroText}>
+                        We engage in advocacy to promote the rights and well-being of refugees
+                        and marginalized communities.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Peace Program */}
+                  <div className={styles.programCard}>
+                    <div className="relative aspect-video">
+                      <Image
+                        src="/images/peace.jpg"
+                        alt="Peace Programs"
+                        layout="fill"
+                        objectFit="cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="p-8">
+                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Peace</h3>
+                      <p className={styles.heroText}>
+                        Our peace programs aim to foster harmony and understanding within
+                        diverse communities.
                       </p>
                     </div>
                   </div>
@@ -335,7 +394,7 @@ export default function Home() {
               <p className={styles.heroText}>
                 Pamoja Twaweza CBO<br />
                 Chairman Road, Next to Best Lady<br />
-                Kajiado South
+                Kajiado East, Kitengela, , Kenya,
               </p>
               <button 
                 className={styles.heroButton}

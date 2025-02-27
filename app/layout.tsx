@@ -10,8 +10,9 @@ import React from "react";
 import GoogleAnalyticsClient from './components/GoogleAnalyticsClient';
 
 export const metadata: Metadata = {
-  title: "Pamoja Twaweza",
-  description: "Pamoja Twaweza is a platform for youth empowerment and educational programs.",
+  title: "Pamoja Twaweza - Refugee-led Organization in Kitengela",
+  description: "Pamoja Twaweza is a refugee-led organization in Kitengela, empowering communities through sustainable development, education, and mental health support.",
+  keywords: "Refugee-led organization in Kitengela, Pamoja Twaweza refugee empowerment, Community-based organization Kitengela, Refugee support services Kenya, Refugee livelihoods and self-reliance",
 };
 
 export default function RootLayout({  

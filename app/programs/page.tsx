@@ -195,9 +195,10 @@ export default function Programs() {
     <>
       <Head>
         <title>Programs - Pamoja Twaweza</title>
-        <meta name="description" content="Explore our diverse programs aimed at empowering communities and fostering sustainable development." />
+        <meta name="description" content="Explore our diverse programs aimed at empowering refugees in Kitengela through vocational training, mental health support, and digital education." />
+        <meta name="keywords" content="Refugee vocational training Kitengela, Mental health support for refugees, Digital skills training for refugees, Vocational training programs for refugees in Kenya, How refugee-led organizations empower communities in Kenya" />
         <meta property="og:title" content="Programs - Pamoja Twaweza" />
-        <meta property="og:description" content="Explore our diverse programs aimed at empowering communities." />
+        <meta property="og:description" content="Empowering refugees in Kitengela through vocational training and mental health support." />
         <meta property="og:image" content="/images/pamoj5.jpeg" />
         <meta property="og:url" content="https://pamojatwaweza.org/programs" />
         <meta name="twitter:card" content="summary_large_image" />
