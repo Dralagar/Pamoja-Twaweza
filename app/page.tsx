@@ -230,7 +230,7 @@ export default function Home() {
                     </div>
                     <div className="p-8">
                       <h3 className={styles.sectionTitle}>Livelihoods</h3>
-                      <p className={styles.heroText}>
+                      <p className={styles.programTextBlack}>
                         We offer digital skills training for youth, tailoring and dressmaking
                         courses, entrepreneurship training, and promote financial inclusion
                         through savings and loans associations.
@@ -250,12 +250,12 @@ export default function Home() {
                         layout="fill"
                         objectFit="cover"
                         sizes="(max-width: 768px) 100vw, 25vw"
-                        className="object-cover"
+                        className="rounded-2xl object-cover"
                       />
                     </div>
                     <div className="p-8">
                       <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Mental Health</h3>
-                      <p className={styles.heroText}>
+                      <p className={styles.programTextBlack}>
                         We conduct awareness programs to support mental health within
                         the community.
                       </p>
@@ -271,70 +271,70 @@ export default function Home() {
                         layout="fill"
                         objectFit="cover"
                         sizes="(max-width: 768px) 100vw, 25vw"
-                        className="object-cover"
+                        className="rounded-2xl object-cover"
                       />
                     </div>
                     <div className={styles.programContent}>
                       <h3 className={styles.programTitle}>Education</h3>
-                      <p className={styles.programText}>
+                      <p className={styles.programTextBlack}>
                         English literacy classes for refugees to enhance their
                         communication skills and integration.
                       </p>
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Advocacy, Peace, and Video Placeholder */}
-                <div className={styles.advocacyPeaceRow}>
-                  {/* Advocacy Program Card */}
-                  <div className={styles.programCard}>
-                    <Image
-                      src="/images/advocacy.jpg"
-                      alt="Advocacy Programs"
-                      layout="responsive"
-                      width={500}
-                      height={300}
-                      objectFit="cover"
-                      className="rounded-t-lg"
-                    />
-                    <div className="p-4">
-                      <h3 className={styles.programTitle}>Advocacy</h3>
-                      <p className={styles.programText}>
-                        We engage in advocacy to promote the rights and well-being of refugees and marginalized communities.
-                      </p>
-                    </div>
+              {/* Advocacy, Peace, and Video Placeholder */}
+              <div className="flex gap-8 mt-12">
+                {/* Advocacy Program Card */}
+                <div className={`${styles.programCard} flex-[3]`}>
+                  <Image
+                    src="/images/advocacy.jpg"
+                    alt="Advocacy Programs"
+                    layout="responsive"
+                    width={500}
+                    height={300}
+                    objectFit="cover"
+                    className="rounded-t-lg"
+                  />
+                  <div className="p-4">
+                    <h3 className={styles.programTitle}>Advocacy</h3>
+                    <p className={styles.programTextBlack}>
+                      We engage in advocacy to promote the rights and well-being of refugees and marginalized communities.
+                    </p>
                   </div>
+                </div>
 
-                  {/* Video Placeholder Card */}
-                  <div className={styles.programCard}>
-                    <div className="relative aspect-video bg-gray-200 flex items-center justify-center">
-                      <span className="text-xl font-bold text-gray-500">Video Placeholder</span>
-                    </div>
-                    <div className="p-4">
-                      <h3 className={styles.programTitle}>Spotlight of Our Impact</h3>
-                      <p className={styles.programText}>
-                        Discover the stories and achievements that highlight our impact in the community.
-                      </p>
-                    </div>
+                {/* Video Placeholder Card */}
+                <div className={`${styles.programCard} flex-[6]`}>
+                  <div className="relative aspect-video bg-gray-200 flex items-center justify-center">
+                    <span className="text-xl font-bold text-gray-500">Video Placeholder</span>
                   </div>
+                  <div className="p-4">
+                    <h3 className={styles.programTitle}>Spotlight of Our Impact</h3>
+                    <p className={styles.programTextBlack}>
+                      Discover the stories and achievements that highlight our impact in the community.
+                    </p>
+                  </div>
+                </div>
 
-                  {/* Peace Program Card */}
-                  <div className={styles.programCard}>
-                    <Image
-                      src="/images/peace.jpg"
-                      alt="Peace Programs"
-                      layout="responsive"
-                      width={500}
-                      height={300}
-                      objectFit="cover"
-                      className="rounded-t-lg"
-                    />
-                    <div className="p-4">
-                      <h3 className={styles.programTitle}>Peace</h3>
-                      <p className={styles.programText}>
-                        Our peace programs aim to foster harmony and understanding within diverse communities.
-                      </p>
-                    </div>
+                {/* Peace Program Card */}
+                <div className={`${styles.programCard} flex-[3]`}>
+                  <Image
+                    src="/images/peace.jpg"
+                    alt="Peace Programs"
+                    layout="responsive"
+                    width={500}
+                    height={300}
+                    objectFit="cover"
+                    className="rounded-t-lg"
+                  />
+                  <div className="p-4">
+                    <h3 className={styles.programTitle}>Peace</h3>
+                    <p className={styles.programTextBlack}>
+                      Our peace programs aim to foster harmony and understanding within diverse communities.
+                    </p>
                   </div>
                 </div>
               </div>
