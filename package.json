@@ -32,7 +32,7 @@
     "react-slick": "^0.30.3",
     "slick-carousel": "^1.8.1",
     "stripe": "^12.18.0",
-    "styled-components": "^6.1.15",
+    "styled-components": "^5.2.0",
     "@sanity/base": "^2.36.2",
     "@sanity/desk-tool": "^2.36.2"
   },
