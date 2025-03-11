@@ -90,7 +90,7 @@ const Footer = () => {
             <div className={styles.logoWrapper}>
               <Link href="/" aria-label="Pamoja Twaweza - Return to homepage">
                 <Image
-                  src="/images/PamojaTwaweza_Logo.png"
+                  src="/images/Logo.png"
                   alt="Pamoja Twaweza Logo"
                   width={150}
                   height={50}
