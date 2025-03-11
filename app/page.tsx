@@ -11,7 +11,7 @@ const teamMembers = [
     id: 1,
     name: "Eric Kimararungu",
     role: "Founder and Executive Director",
-    image: "/images/Eric.jpeg",
+    image: "/images/eric.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
       linkedin: "",
@@ -22,7 +22,7 @@ const teamMembers = [
     id: 2,
     name: "Annled Karimi",
     role: "Program Manager",
-    image: "/images/annled.jpg",
+    image: "/images/Annled.jpg",
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
     socialLinks: {
       linkedin: ""
@@ -32,7 +32,7 @@ const teamMembers = [
     id: 3,
     name: "Ramazani Mulisho",
     role: "Finance Lead",
-    image: "/images/Mwalisho.jpg",
+    image: "/images/mwalisho.jpg",
     bio: "Ramazani, the organization's Finance lead, oversees all financial matters. He also supports advocacy and resource mobilization.",
     socialLinks: {
       linkedin: ""
@@ -56,10 +56,6 @@ export default function Home() {
   const handleNavigation = (path: string) => {
     if (typeof window !== 'undefined') {
       window.location.href = path;
-    } else {
-      // Assuming navigate is a function imported or defined elsewhere in the application
-      // If navigate is not defined, consider importing it or defining it in the application
-      // navigate(path);
     }
   }
 
@@ -99,14 +95,15 @@ export default function Home() {
                   Get Involved
                 </button>
               </div>
-              <div className="relative aspect-square">
+              <div className={styles.imageContainer}>
                 <Image
                   src="/images/pamoj1.jpeg"
                   alt="Community Impact"
-                  layout="fill"
+                  layout="responsive"
+                  width={500}
+                  height={500}
                   objectFit="cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover rounded-3xl shadow-2xl"
+                  className="rounded-3xl shadow-2xl"
                 />
               </div>
             </div>
@@ -223,7 +220,7 @@ export default function Home() {
                   <div className={styles.programCard}>
                     <div className={styles.programImage}>
                       <Image
-                        src="/images/pamoj5.jpeg"
+                        src="/images/Pamoj5.jpeg"
                         alt="Livelihoods Program"
                         layout="fill"
                         objectFit="cover"
@@ -248,7 +245,7 @@ export default function Home() {
                   <div className={styles.programCard}>
                     <div className="relative aspect-video">
                       <Image
-                        src="/images/pamoj6.jpeg"
+                        src="/images/Pamoj6.jpeg"
                         alt="Mental Health Programs"
                         layout="fill"
                         objectFit="cover"
@@ -289,57 +286,53 @@ export default function Home() {
 
                 {/* Advocacy, Peace, and Video Placeholder */}
                 <div className={styles.advocacyPeaceRow}>
-                  {/* Video Placeholder */}
+                  {/* Advocacy Program Card */}
+                  <div className={styles.programCard}>
+                    <Image
+                      src="/images/advocacy.jpg"
+                      alt="Advocacy Programs"
+                      layout="responsive"
+                      width={500}
+                      height={300}
+                      objectFit="cover"
+                      className="rounded-t-lg"
+                    />
+                    <div className="p-4">
+                      <h3 className={styles.programTitle}>Advocacy</h3>
+                      <p className={styles.programText}>
+                        We engage in advocacy to promote the rights and well-being of refugees and marginalized communities.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Video Placeholder Card */}
                   <div className={styles.programCard}>
                     <div className="relative aspect-video bg-gray-200 flex items-center justify-center">
                       <span className="text-xl font-bold text-gray-500">Video Placeholder</span>
                     </div>
-                    <div className="p-8">
-                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Spotlight of Our Impact</h3>
-                      <p className={styles.heroText}>
+                    <div className="p-4">
+                      <h3 className={styles.programTitle}>Spotlight of Our Impact</h3>
+                      <p className={styles.programText}>
                         Discover the stories and achievements that highlight our impact in the community.
                       </p>
                     </div>
                   </div>
 
-                  {/* Advocacy Program */}
+                  {/* Peace Program Card */}
                   <div className={styles.programCard}>
-                    <div className="relative aspect-video">
-                      <Image
-                        src="/images/advocacy.jpg"
-                        alt="Advocacy Programs"
-                        layout="fill"
-                        objectFit="cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-8">
-                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Advocacy</h3>
-                      <p className={styles.heroText}>
-                        We engage in advocacy to promote the rights and well-being of refugees
-                        and marginalized communities.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Peace Program */}
-                  <div className={styles.programCard}>
-                    <div className="relative aspect-video">
-                      <Image
-                        src="/images/peace.jpg"
-                        alt="Peace Programs"
-                        layout="fill"
-                        objectFit="cover"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="p-8">
-                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Peace</h3>
-                      <p className={styles.heroText}>
-                        Our peace programs aim to foster harmony and understanding within
-                        diverse communities.
+                    <Image
+                      src="/images/peace.jpg"
+                      alt="Peace Programs"
+                      layout="responsive"
+                      width={500}
+                      height={300}
+                      objectFit="cover"
+                      className="rounded-t-lg"
+                    />
+                    <div className="p-4">
+                      <h3 className={styles.programTitle}>Peace</h3>
+                      <p className={styles.programText}>
+                        Our peace programs aim to foster harmony and understanding within diverse communities.
                       </p>
                     </div>
                   </div>
@@ -409,6 +402,12 @@ export default function Home() {
             <h2 className={styles.creatingChangeTitle}>Creating Lasting Change</h2>
             <p className={styles.creatingChangeText}>
               Through dedicated community engagement and sustainable programs, we&apos;re building a brighter future for all.
+            </p>
+          </section>
+          <section className={styles.impactSection}>
+            <h2 className={styles.sectionTitle}>Our Impact</h2>
+            <p className={styles.heroText}>
+              Making a difference in our community through sustainable development and empowerment.
             </p>
           </section>
         </div>

@@ -12,7 +12,7 @@ const teamMembers = [
     id: 1,  
     name: "Eric Kimararungu",
     role: "Founder and CEO",
-    image: "/images/Eric.jpeg",
+    image: "/images/eric.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
       linkedin: "https://linkedin.com/in/eric-kimararungu",
@@ -23,21 +23,21 @@ const teamMembers = [
     id: 2,
     name: "Annled Karimi",
     role: "Programs and Communications",
-    image: "/images/annled.jpg",
+    image: "/images/Annled.jpg",
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
 
     socialLinks: {
-      linkedin: "https://linkedin.com/in/annled-karimi",
+      linkedin: "",
     }
   },
   {
     id: 3,
     name: "Ramazani Mulisho",
     role: "Finance Lead",
-    image: "/images/Mwalisho.jpg",
+    image: "/images/mwalisho.jpg",
     bio: "Ramazani, the organization's Finance lead, oversees all organization's financial matters. He also supports Advocacy and resource mobilization.",
     socialLinks: {
-      linkedin: "https://linkedin.com/in/ramazani-mulisho",
+      linkedin: "",
     }
   },
 ] satisfies TeamMember[];
@@ -65,7 +65,7 @@ const opportunities: Opportunity[] = [
   {
     title: "Volunteer With Us",
     description: "Join our community of dedicated volunteers making a real difference in Kajiado South. Whether you have a few hours or want to commit long-term, your skills and passion can help transform lives.",
-    link: "/OpportunitiesSection",
+    link: "/volunteer",
     image: "/images/Volunteer.png"
   },
   {
