@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  font-family: var(--font-family);
+  font-family: var(--font-sans);
   background-color: var(--primary-blue); /* App background */
 }
 
@@ -196,29 +196,29 @@
 /* Programs Section */
 .programsSection {
   padding: 4rem 1.5rem;
-  background-color: var(--background-white); /* White background for Programs section */
+  background-color: var(--background-white);
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  border-radius: 8px; /* Optional: Add rounded corners for aesthetic */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for depth */
+  padding: 0 1.5rem;
+}
+
+.programsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
 }
 
 .programCard {
-  background-color: var(--background-white);
-  border-radius: 8px;
+  background-color: #ffffff;
+  border-radius: 1rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-width: 0;
-  padding: 1.5rem;
-  text-align: center;
 }
 
 .programCard:hover {
@@ -241,26 +241,29 @@
 .programTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--text-black);
+  color: #1f2937;
   margin-bottom: 1rem;
 }
 
-.programTextBlack {
+.programText {
   font-size: 1rem;
-  color: var(--text-black);
+  color: #4b5563;
   line-height: 1.5;
 }
 
-/* Bottom Row for Advocacy, Video Placeholder, and Peace */
+/* Container for the three specific sections */
 .advocacyPeaceRow {
   display: grid;
-  grid-template-columns: 3fr 6fr 3fr;
+  grid-template-columns: 1fr 2fr 1fr; /* Adjusts the width of each column */
   gap: 2rem;
-  width: 100%;
   margin-top: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.advocacyPeaceRow .programCard {
+/* New class for specific cards */
+.specificProgramCard {
   background-color: #ffffff;
   border-radius: 1rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -274,21 +277,21 @@
   text-align: center;
 }
 
-.advocacyPeaceRow .programCard:hover {
+.specificProgramCard:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 }
 
-.advocacyPeaceRow .programTitle {
-  font-size: 1.75rem;
-  font-weight: 800;
+.specificProgramTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
   color: #1f2937;
   margin-bottom: 1rem;
 }
 
-.advocacyPeaceRow .programText {
+.specificProgramText {
   font-size: 1rem;
-  color: #1f2937;
+  color: #ffffff;
   line-height: 1.5;
 }
 
@@ -446,15 +449,11 @@
     grid-template-columns: 1fr;
   }
 
-  .advocacyPeaceRow {
-    grid-template-columns: 1fr;
-  }
-
   .programTitle {
     font-size: 1.25rem;
   }
 
-  .programTextBlack {
+  .programText {
     font-size: 0.875rem;
   }
 }
@@ -498,7 +497,7 @@
     border: 1px solid #4b5563;
   }
 
-  .programTitle, .programTextBlack, .teamBioText {
+  .programTitle, .programText {
     color: #f8fafc;
   }
 }
@@ -713,7 +712,7 @@
 
 .programText {
   font-size: 1rem;
-  color: #ffffff;
+  color: #4b5563;
   line-height: 1.5;
 }
 
