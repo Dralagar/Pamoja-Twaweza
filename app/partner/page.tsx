@@ -67,7 +67,7 @@ export default function Partner() {
           <div className={styles.grid}>
             <div className={styles.imageWrapper}>
               <Image
-                src="/images/partner.jpg"
+                src="/images/Partnership.jpg"
                 alt="Partner with Us"
                 width={500}
                 height={500}
@@ -151,10 +151,37 @@ export default function Partner() {
           {/* Partners Section */}
           <section className="py-16 bg-gray-100 text-center">
             <h2 className="text-3xl font-bold mb-6">Our Partners</h2>
-            <ul className="list-disc list-inside text-lg">
-              <li>Youth Voices Community</li>
-              <li>Pamoja Trust</li>
-              <li>Refugepoint</li>
+            <ul className="list-none text-lg flex justify-center gap-8">
+              <li className="flex flex-col items-center">
+                <Image
+                  src="/images/youth-voices-logo.png"
+                  alt="Youth Voices Community"
+                  width={100}
+                  height={100}
+                  className="mb-2"
+                />
+                Youth Voices Community
+              </li>
+              <li className="flex flex-col items-center">
+                <Image
+                  src="/images/pamoja-trust-logo.png"
+                  alt="Pamoja Trust"
+                  width={100}
+                  height={100}
+                  className="mb-2"
+                />
+                Pamoja Trust
+              </li>
+              <li className="flex flex-col items-center">
+                <Image
+                  src="/images/refugepoint-logo.png"
+                  alt="Refugepoint"
+                  width={100}
+                  height={100}
+                  className="mb-2"
+                />
+                Refugepoint
+              </li>
             </ul>
           </section>
 

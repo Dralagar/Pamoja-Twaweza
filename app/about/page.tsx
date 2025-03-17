@@ -12,7 +12,7 @@ const teamMembers = [
     id: 1,  
     name: "Eric Kimararungu",
     role: "Founder and CEO",
-    image: "/images/Eric.jpeg",
+    image: "/images/eric.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
       linkedin: "https://linkedin.com/in/eric-kimararungu",
@@ -65,13 +65,13 @@ const opportunities: Opportunity[] = [
   {
     title: "Volunteer With Us",
     description: "Join our community of dedicated volunteers making a real difference in Kajiado South. Whether you have a few hours or want to commit long-term, your skills and passion can help transform lives.",
-    link: "/OpportunitiesSection",
+    link: "/volunteer",
     image: "/images/Volunteer.png"
   },
   {
     title: "Partner With Us",
     description: "Create lasting impact through strategic partnerships. We collaborate with organizations that share our vision for community development and sustainable change.",
-    link: "/OpportunitiesSection",
+    link: "/partner",
     image: "/images/partnership.jpg"
   }
 ];
