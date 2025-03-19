@@ -83,19 +83,14 @@ type IntersectionObserverInit = {
   threshold?: number | number[];
 };
 
-type IntersectionObserverCallback = (
-  _entries: IntersectionObserverEntry[],
-  _observer: IntersectionObserver
-) => void;
-
 const options: IntersectionObserverInit = {
   root: null,
   rootMargin: "0px",
   threshold: 0.1,
 };
 
-const callback: IntersectionObserverCallback = (_entries, _observer) => {
-  _entries.forEach((entry) => {
+const callback = (entries: IntersectionObserverEntry[]) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       const target = entry.target as HTMLElement;
       const targetValue = parseInt(target.getAttribute("data-target") || "0", 10);
@@ -118,7 +113,6 @@ const callback: IntersectionObserverCallback = (_entries, _observer) => {
       };
 
       updateCount();
-      _observer.unobserve(target);
     }
   });
 };
