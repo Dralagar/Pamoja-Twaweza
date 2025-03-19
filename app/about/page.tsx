@@ -76,15 +76,26 @@ const opportunities: Opportunity[] = [
   }
 ];
 
-// Ensure IntersectionObserver types are defined
+// Explicitly define IntersectionObserver types (if needed)
+type IntersectionObserverInit = {
+  root?: Element | Document | null;
+  rootMargin?: string;
+  threshold?: number | number[];
+};
+
+type IntersectionObserverCallback = (
+  entries: IntersectionObserverEntry[],
+  observer: IntersectionObserver
+) => void;
+
 const options: IntersectionObserverInit = {
   root: null,
   rootMargin: "0px",
   threshold: 0.1,
 };
 
-const callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-  entries.forEach((entry: IntersectionObserverEntry) => {
+const callback: IntersectionObserverCallback = (entries, observer) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       const target = entry.target as HTMLElement;
       const targetValue = parseInt(target.getAttribute("data-target") || "0", 10);
