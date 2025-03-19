@@ -76,6 +76,42 @@ const opportunities: Opportunity[] = [
   }
 ];
 
+// Ensure IntersectionObserver types are defined
+const options: IntersectionObserverInit = {
+  root: null,
+  rootMargin: "0px",
+  threshold: 0.1,
+};
+
+const callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+  entries.forEach((entry: IntersectionObserverEntry) => {
+    if (entry.isIntersecting) {
+      const target = entry.target as HTMLElement;
+      const targetValue = parseInt(target.getAttribute("data-target") || "0", 10);
+
+      if (isNaN(targetValue)) {
+        console.error(`Invalid target value for element: ${target.textContent}`);
+        return;
+      }
+
+      const increment = Math.ceil(targetValue / 100);
+
+      const updateCount = () => {
+        const currentValue = parseInt(target.innerText, 10);
+        if (currentValue < targetValue) {
+          target.innerText = `${currentValue + increment}`;
+          setTimeout(updateCount, 10);
+        } else {
+          target.innerText = `${targetValue}`;
+        }
+      };
+
+      updateCount();
+      observer.unobserve(target);
+    }
+  });
+};
+
 export default function About() {
   useEffect(() => {
     console.log("useEffect is running");
@@ -86,42 +122,6 @@ export default function About() {
       console.error("No metric elements found");
       return;
     }
-
-    const options: IntersectionObserverInit = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.1, // Trigger when 10% of the element is visible
-    };
-
-    const callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
-      entries.forEach((entry: IntersectionObserverEntry) => {
-        if (entry.isIntersecting) {
-          const target = entry.target as HTMLElement;
-          const targetValue = parseInt(target.getAttribute("data-target") || "0", 10);
-          console.log(`Target value for ${target.textContent}: ${targetValue}`);
-
-          if (isNaN(targetValue)) {
-            console.error(`Invalid target value for element: ${target.textContent}`);
-            return;
-          }
-
-          const increment = Math.ceil(targetValue / 100); // Adjust speed here
-
-          const updateCount = () => {
-            const currentValue = parseInt(target.innerText, 10);
-            if (currentValue < targetValue) {
-              target.innerText = `${currentValue + increment}`;
-              setTimeout(updateCount, 10); // Adjust speed here
-            } else {
-              target.innerText = `${targetValue}`; // Ensure it stops at the target value
-            }
-          };
-
-          updateCount();
-          observer.unobserve(target); // Stop observing after animation starts
-        }
-      });
-    };
 
     const observer = new IntersectionObserver(callback, options);
 

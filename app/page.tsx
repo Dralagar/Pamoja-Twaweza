@@ -54,7 +54,6 @@ type TeamMember = {
 };
 
 export default function Home() {
-  const [showMore, setShowMore] = useState(false);
   const [activeCard, setActiveCard] = useState<string | null>(null);
 
   const handleNavigation = (path: string) => {
@@ -131,6 +130,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 onClick={() => handleCardClick('advocacy')}
               >
+                <h3 className="text-xl font-bold mb-2">Advocacy</h3>
                 <div className="relative h-48 mb-4">
                   <Image
                     src="/images/Advocacy.png"
@@ -140,7 +140,6 @@ export default function Home() {
                     className="rounded-lg"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Advocacy</h3>
                 <p>
                   We engage in advocacy to promote the rights and well-being of refugees and marginalized communities. Our efforts include policy influence, community mobilization, and awareness campaigns.
                 </p>
@@ -157,6 +156,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 onClick={() => handleCardClick('video')}
               >
+                <h3 className="text-xl font-bold mb-2">Video Content</h3>
                 <div className="bg-gray-200 h-48 flex items-center justify-center mb-4">
                   {activeCard === 'video' ? (
                     <iframe
@@ -172,8 +172,6 @@ export default function Home() {
                     <span className="text-gray-500">Video Placeholder</span>
                   )}
                 </div>
-                
-                <h3 className="text-xl font-bold mb-2">A spotlight on our work</h3>
                 <p>
                   Explore our video content showcasing the impact of our programs and the stories of those we serve. These videos highlight our initiatives and the positive changes in the community.
                 </p>
@@ -197,7 +195,9 @@ export default function Home() {
                 className="md:col-span-3 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 onClick={() => handleCardClick('peace')}
-              ><div className="relative h-48 mb-4">
+              >
+                <h3 className="text-xl font-bold mb-2">Peace</h3>
+                <div className="relative h-48 mb-4">
                   <Image
                     src="/images/Peace.jpeg"
                     alt="Peace"
@@ -206,9 +206,6 @@ export default function Home() {
                     className="rounded-lg"
                   />
                 </div>
-               
-                <h3 className="text-xl font-bold mb-2">Peace</h3>
-                
                 <p>
                   Our peace programs aim to foster harmony and understanding within diverse communities. We conduct workshops, dialogues, and activities that promote peaceful coexistence and conflict resolution.
                 </p>
