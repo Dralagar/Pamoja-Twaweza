@@ -37,7 +37,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "types/**/*.d.ts",
-    "global.d.ts"
+    "global.d.ts",
+    "app/global.t.ts",
+    "pamoja-twaweza/**/*"
   ],
   "exclude": [
     "node_modules"

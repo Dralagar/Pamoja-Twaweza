@@ -93,8 +93,8 @@ export default function About() {
       threshold: 0.1, // Trigger when 10% of the element is visible
     };
 
-    const callback: IntersectionObserverCallback = (entries, observer) => {
-      entries.forEach((entry) => {
+    const callback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+      entries.forEach((entry: IntersectionObserverEntry) => {
         if (entry.isIntersecting) {
           const target = entry.target as HTMLElement;
           const targetValue = parseInt(target.getAttribute("data-target") || "0", 10);
