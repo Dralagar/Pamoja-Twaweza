@@ -642,11 +642,10 @@
 
 .advocacyPeaceRow {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 3fr 6fr 3fr;
   gap: 2rem;
-  margin-top: 2rem;
   width: 100%;
-  margin: 0 auto;
+  margin-top: 2rem;
 }
 
 .programCard {
@@ -677,7 +676,7 @@
 
 .programText {
   font-size: 1rem;
-  color: #ffffff;
+  color: #1f2937;
   line-height: 1.5;
 }
 
@@ -698,4 +697,192 @@
   background-color: #f0f0f0;
   padding: 10px;
   border-radius: 5px;
+}
+
+.card {
+  background: var(--background-white);
+  border-radius: 0.75rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: var(--text-black);
+  text-align: left;
+  margin: 1rem;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-black);
+  margin-bottom: 1rem;
+}
+
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-black);
+  margin-bottom: 0;
+  word-wrap: break-word;
+}
+
+/* Example of other styles that might be in the file */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 0;
+  background-color: var(--primary-blue);
+  color: var(--background-white);
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  background-color: var(--accent-yellow);
+  color: var(--text-black);
+}
+
+/* Updated card styles */
+.card {
+  background: var(--background-white); /* Consistent background color */
+  border-radius: 0.75rem; /* Rounded corners for all cards */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1); /* Consistent shadow for depth */
+  padding: 2rem; /* Consistent padding for spacing */
+  transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+  color: var(--text-black); /* Use global variable for text color */
+  text-align: left; /* Consistent text alignment */
+  margin: 1rem; /* Add margin for spacing between cards */
+  max-width: 300px; /* Ensure consistent width for all cards */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Align items vertically */
+  justify-content: space-between; /* Space out content evenly */
+  align-items: flex-start; /* Align items to the start for consistency */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 25px 30px -5px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.card h3 {
+  font-size: 1.5rem; /* Consistent heading size */
+  font-weight: bold; /* Bold heading for emphasis */
+  color: var(--text-black); /* Use global variable for heading color */
+  margin-bottom: 1rem; /* Space below heading */
+}
+
+.card p {
+  font-size: 1rem; /* Consistent paragraph size */
+  line-height: 1.5; /* Improved readability */
+  color: var(--text-black); /* Use global variable for paragraph color */
+  margin-bottom: 0; /* Remove bottom margin for consistency */
+  word-wrap: break-word; /* Ensure long words break to fit within the card */
+}
+
+/* Add any additional styles below as needed for other components or elements */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Space between team members */
+  padding: 2rem; /* Padding around the container */
+  max-width: 600px; /* Limit the width for better readability */
+  margin: 0 auto; /* Center the container */
+}
+
+.member {
+  background-color: var(--background-white);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.position {
+  font-size: 1rem;
+  color: var(--primary-blue);
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-black);
+}
+
+/* New styles for the grid layout */
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.grid-cols-12 {
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.col-span-3 {
+  grid-column: span 3 / span 3;
+}
+
+.col-span-6 {
+  grid-column: span 6 / span 6;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.shadow-md {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.font-bold {
+  font-weight: bold;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.bg-gray-200 {
+  background-color: #e5e7eb;
+}
+
+.h-48 {
+  height: 12rem;
+}
+
+.text-gray-500 {
+  color: #6b7280;
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from "next/image"
 import styles from '../styles/About.module.css';
 import Link from 'next/link';
@@ -23,18 +23,18 @@ const teamMembers = [
     id: 2,
     name: "Annled Karimi",
     role: "Programs and Communications",
-    image: "/images/annled.jpg",
+    image: "/images/Annled.jpg",
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
 
     socialLinks: {
-      linkedin: "https://linkedin.com/in/annled-karimi",
+      linkedin: "https://linkedin.com/in/Annled-karimi",
     }
   },
   {
     id: 3,
     name: "Ramazani Mulisho",
     role: "Finance Lead",
-    image: "/images/Mwalisho.jpg",
+    image: "/images/mwalisho.jpg",
     bio: "Ramazani, the organization's Finance lead, oversees all organization's financial matters. He also supports Advocacy and resource mobilization.",
     socialLinks: {
       linkedin: "https://linkedin.com/in/ramazani-mulisho",
@@ -77,6 +77,64 @@ const opportunities: Opportunity[] = [
 ];
 
 export default function About() {
+  useEffect(() => {
+    console.log("useEffect is running");
+
+    const metrics = document.querySelectorAll<HTMLElement>(".metricValue");
+
+    if (metrics.length === 0) {
+      console.error("No metric elements found");
+      return;
+    }
+
+    const options: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1, // Trigger when 10% of the element is visible
+    };
+
+    const callback: IntersectionObserverCallback = (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const targetValue = parseInt(target.getAttribute("data-target") || "0", 10);
+          console.log(`Target value for ${target.textContent}: ${targetValue}`);
+
+          if (isNaN(targetValue)) {
+            console.error(`Invalid target value for element: ${target.textContent}`);
+            return;
+          }
+
+          const increment = Math.ceil(targetValue / 100); // Adjust speed here
+
+          const updateCount = () => {
+            const currentValue = parseInt(target.innerText, 10);
+            if (currentValue < targetValue) {
+              target.innerText = `${currentValue + increment}`;
+              setTimeout(updateCount, 10); // Adjust speed here
+            } else {
+              target.innerText = `${targetValue}`; // Ensure it stops at the target value
+            }
+          };
+
+          updateCount();
+          observer.unobserve(target); // Stop observing after animation starts
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    metrics.forEach((metric) => {
+      observer.observe(metric);
+    });
+
+    // Cleanup function to disconnect the observer when the component unmounts
+    return () => {
+      metrics.forEach((metric) => observer.unobserve(metric));
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -106,7 +164,7 @@ export default function About() {
             <div className="absolute inset-0 bg-black/50" />
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="text-white text-center px-4">
-                <h2 className="text-4xl font-bold mb-4">8+ Years of Impact</h2>
+                <h2 className="text-4xl font-bold mb-4">3+ Years of Impact</h2>
                 <p className="text-xl max-w-2xl">Transforming communities through unity and action</p>
               </div>
             </div>
@@ -132,8 +190,8 @@ export default function About() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-4">Sustainability</h3>
-              <p className="text-gray-600">Creating long-lasting positive impact in our communities</p>
+              <h3 className="text-2xl font-bold mb-4 text-[var(--foreground)]">Sustainability</h3>
+              <p className="text-[var(--foreground)]">Creating long-lasting positive impact in our communities</p>
             </div>
             <div className="text-center">
               <div className="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -174,22 +232,22 @@ export default function About() {
         {/* Impact Numbers - New section */}
         <section className="container mx-auto px-4 py-24">
           <h2 className="text-4xl font-bold text-center mb-16">Our Impact in Numbers</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-5xl font-bold text-blue-600 mb-2">1000+</div>
-              <p className="text-gray-600">Community Members Served</p>
+          <div className={styles.metricsSection}>
+            <div className={styles.metric}>
+              <span className="metricValue" data-target="1000">0</span>+
+              <p>Community Members Served</p>
             </div>
-            <div className="text-center">
-              <div className="text-5xl font-bold text-blue-600 mb-2">15+</div>
-              <p className="text-gray-600">Active Programs</p>
+            <div className={styles.metric}>
+              <span className="metricValue" data-target="6">0</span>+
+              <p>Active Programs</p>
             </div>
-            <div className="text-center">
-              <div className={styles.statNumber}>8</div>
-              <p className="text-[var(--foreground)]">Years of Service</p>
+            <div className={styles.metric}>
+              <span className="metricValue" data-target="4">0</span>
+              <p>Years of Service</p>
             </div>
-            <div className="text-center">
-              <div className={styles.statNumber}>20+</div>
-              <p className="text-[var(--foreground)]">Community Partners</p>
+            <div className={styles.metric}>
+              <span className="metricValue" data-target="5">0</span>+
+              <p>Community Partners</p>
             </div>
           </div>
         </section>

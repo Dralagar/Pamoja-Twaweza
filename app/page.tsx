@@ -284,57 +284,30 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Advocacy, Peace, and Video Placeholder */}
-                <div className="flex flex-col md:flex-row gap-8 w-full">
+                {/* New Layout for Advocacy, Video, and Peace */}
+                <div className="grid grid-cols-12 gap-4 w-full">
                   {/* Advocacy Program Card */}
-                  <div className={`${styles.programCard} md:flex-1 md:basis-3/12 w-full`}>
-                    <Image
-                      src="/images/advocacy.jpg"
-                      alt="Advocacy Programs"
-                      layout="responsive"
-                      width={500}
-                      height={300}
-                      objectFit="cover"
-                      className="rounded-t-lg"
-                    />
-                    <div className="p-4">
-                      <h3 className={styles.programTitle}>Advocacy</h3>
-                      <p className={styles.programText}>
-                        We engage in advocacy to promote the rights and well-being of refugees and marginalized communities.
-                      </p>
-                    </div>
+                  <div className="col-span-3 bg-white p-4 rounded-lg shadow-md">
+                    <h3 className="text-xl font-bold mb-2">Advocacy</h3>
+                    <p>
+                      We engage in advocacy to promote the rights and well-being of refugees and marginalized communities.
+                    </p>
                   </div>
 
                   {/* Video Placeholder Card */}
-                  <div className={`${styles.programCard} md:flex-1 md:basis-6/12 w-full`}>
-                    <div className="relative aspect-video bg-gray-200 flex items-center justify-center">
-                      <span className="text-xl font-bold text-gray-500">Video Placeholder</span>
-                    </div>
-                    <div className="p-4">
-                      <h3 className={styles.programTitle}>Spotlight of Our Impact</h3>
-                      <p className={styles.programText}>
-                        Discover the stories and achievements that highlight our impact in the community.
-                      </p>
+                  <div className="col-span-6 bg-white p-4 rounded-lg shadow-md">
+                    <h3 className="text-xl font-bold mb-2">Video Placeholder</h3>
+                    <div className="bg-gray-200 h-48 flex items-center justify-center">
+                      <span className="text-gray-500">Video Content</span>
                     </div>
                   </div>
 
                   {/* Peace Program Card */}
-                  <div className={`${styles.programCard} md:flex-1 md:basis-3/12 w-full`}>
-                    <Image
-                      src="/images/Peace.jpeg"
-                      alt="Peace Programs"
-                      layout="responsive"
-                      width={500}
-                      height={300}
-                      objectFit="cover"
-                      className="rounded-t-lg"
-                    />
-                    <div className="p-4">
-                      <h3 className={styles.programTitle}>Peace</h3>
-                      <p className={styles.programText}>
-                        Our peace programs aim to foster harmony and understanding within diverse communities.
-                      </p>
-                    </div>
+                  <div className="col-span-3 bg-white p-4 rounded-lg shadow-md">
+                    <h3 className="text-xl font-bold mb-2">Peace</h3>
+                    <p>
+                      Our peace programs aim to foster harmony and understanding within diverse communities.
+                    </p>
                   </div>
                 </div>
               </div>
