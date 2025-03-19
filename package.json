@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
-    "install": "npm install --legacy-peer-deps"
+    "test": "jest"
   },
   "dependencies": {
     "@floating-ui/react-dom": "^2.1.2",
