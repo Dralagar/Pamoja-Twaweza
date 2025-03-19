@@ -1,15 +1,16 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from './styles/Home.module.css';
 import OpportunititieSectionl from './components/OpportunititieSectionl';
+import { motion } from 'framer-motion';
 
 const teamMembers = [
   {
     id: 1,
-    name: "Eric Kimararungu",
+    name: "Eric Kimararungu", 
     role: "Founder and Executive Director",
     image: "/images/eric.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
@@ -53,10 +54,17 @@ type TeamMember = {
 };
 
 export default function Home() {
+  const [showMore, setShowMore] = useState(false);
+  const [activeCard, setActiveCard] = useState<string | null>(null);
+
   const handleNavigation = (path: string) => {
     if (typeof window !== 'undefined') {
       window.location.href = path;
     }
+  }
+
+  const handleCardClick = (card: string) => {
+    setActiveCard(card === activeCard ? null : card);
   }
 
   return (
@@ -74,7 +82,12 @@ export default function Home() {
       <div className={styles.mainContainer} suppressHydrationWarning>
         <div className={styles.content}>
           {/* Hero Section */}
-          <section className={styles.heroSection}>
+          <motion.section 
+            className={styles.heroSection}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div className={styles.heroContent}>
                 <h1 className={styles.heroTitle}>
@@ -107,13 +120,112 @@ export default function Home() {
                 />
               </div>
             </div>
+          </motion.section>
+
+          {/* New Layout for Advocacy, Video, and Peace */}
+          <section className="py-16">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-4">
+              {/* Advocacy Program Card */}
+              <motion.div 
+                className="md:col-span-3 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                onClick={() => handleCardClick('advocacy')}
+              >
+                <div className="relative h-48 mb-4">
+                  <Image
+                    src="/images/Advocacy.png"
+                    alt="Advocacy"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-lg"
+                  />
+                </div>
+                <h3 className="text-xl font-bold mb-2">Advocacy</h3>
+                <p>
+                  We engage in advocacy to promote the rights and well-being of refugees and marginalized communities. Our efforts include policy influence, community mobilization, and awareness campaigns.
+                </p>
+                {activeCard === 'advocacy' && (
+                  <div className="mt-4">
+                    <p>More detailed information about our advocacy efforts...</p>
+                  </div>
+                )}
+              </motion.div>
+
+              {/* Video Content Card */}
+              <motion.div 
+                className="md:col-span-6 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                onClick={() => handleCardClick('video')}
+              >
+                <div className="bg-gray-200 h-48 flex items-center justify-center mb-4">
+                  {activeCard === 'video' ? (
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      src="https://www.youtube.com/embed/x3_XElV6fbU"
+                      title="YouTube video player"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  ) : (
+                    <span className="text-gray-500">Video Placeholder</span>
+                  )}
+                </div>
+                
+                <h3 className="text-xl font-bold mb-2">A spotlight on our work</h3>
+                <p>
+                  Explore our video content showcasing the impact of our programs and the stories of those we serve. These videos highlight our initiatives and the positive changes in the community.
+                </p>
+                {activeCard === 'video' && (
+                  <div className="mt-4">
+                    <p>More detailed information about our video content...</p>
+                    <a 
+                      href="https://www.youtube.com/@pamojatwaweza9454" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-500 underline"
+                    >
+                      Visit our YouTube Channel
+                    </a>
+                  </div>
+                )}
+              </motion.div>
+
+              {/* Peace Program Card */}
+              <motion.div 
+                className="md:col-span-3 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                onClick={() => handleCardClick('peace')}
+              ><div className="relative h-48 mb-4">
+                  <Image
+                    src="/images/Peace.jpeg"
+                    alt="Peace"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-lg"
+                  />
+                </div>
+               
+                <h3 className="text-xl font-bold mb-2">Peace</h3>
+                
+                <p>
+                  Our peace programs aim to foster harmony and understanding within diverse communities. We conduct workshops, dialogues, and activities that promote peaceful coexistence and conflict resolution.
+                </p>
+                {activeCard === 'peace' && (
+                  <div className="mt-4">
+                    <p>More detailed information about our peace programs...</p>
+                  </div>
+                )}
+              </motion.div>
+            </div>
           </section>
 
           {/* Vision and Mission Section */}
           <section className="py-16 bg-gray-100 text-center">
             <div className="container mx-auto flex flex-col md:flex-row justify-center items-center gap-8">
               {/* Vision Card */}
-              <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
+              <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
                 <div className="text-4xl mb-4">
                   <i className="fas fa-eye"></i> {/* Vision Icon */}
                 </div>
@@ -124,7 +236,7 @@ export default function Home() {
               </div>
 
               {/* Mission Card */}
-              <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center">
+              <div className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center hover:scale-105 transition-transform">
                 <div className="text-4xl mb-4">
                   <i className="fas fa-bullseye"></i> {/* Mission Icon */}
                 </div>
@@ -166,10 +278,14 @@ export default function Home() {
                   description: "Ensuring equitable and inclusive communities as well as responsible resource management for long-term economic resilience.",
                 },
               ].map((value, index) => (
-                <div key={index} className={styles.coreValueCard}>
+                <motion.div 
+                  key={index} 
+                  className={styles.coreValueCard}
+                  whileHover={{ scale: 1.05 }}
+                >
                   <h3 className={styles.coreValueTitle}>{value.title}</h3>
                   <p className={styles.coreValueText}>{value.description}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           </section>
@@ -283,33 +399,6 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
-                {/* New Layout for Advocacy, Video, and Peace */}
-                <div className="grid grid-cols-12 gap-4 w-full">
-                  {/* Advocacy Program Card */}
-                  <div className="col-span-3 bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-2">Advocacy</h3>
-                    <p>
-                      We engage in advocacy to promote the rights and well-being of refugees and marginalized communities.
-                    </p>
-                  </div>
-
-                  {/* Video Placeholder Card */}
-                  <div className="col-span-6 bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-2">Video Placeholder</h3>
-                    <div className="bg-gray-200 h-48 flex items-center justify-center">
-                      <span className="text-gray-500">Video Content</span>
-                    </div>
-                  </div>
-
-                  {/* Peace Program Card */}
-                  <div className="col-span-3 bg-white p-4 rounded-lg shadow-md">
-                    <h3 className="text-xl font-bold mb-2">Peace</h3>
-                    <p>
-                      Our peace programs aim to foster harmony and understanding within diverse communities.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </section>
@@ -320,7 +409,11 @@ export default function Home() {
               <h2 className={styles.sectionTitle}>Meet the Team</h2>
               <div className={styles.teamGrid}>
                 {teamMembers.map((member) => (
-                  <div key={member.id} className={styles.teamMemberCard}>
+                  <motion.div 
+                    key={member.id} 
+                    className={styles.teamMemberCard}
+                    whileHover={{ scale: 1.05 }}
+                  >
                     <div className="relative aspect-square overflow-hidden">
                       <Image
                         src={member.image}
@@ -347,7 +440,7 @@ export default function Home() {
                       <p className="text-[var(--primary-blue)] font-medium mb-3">{member.role}</p>
                       <p className={styles.heroText}>{member.bio}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </div>
