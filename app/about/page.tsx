@@ -168,7 +168,7 @@ export default function About() {
             />
             <div className="absolute inset-0 bg-black/50" />
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-white text-center px-4">
+              <div className="impactText text-center px-4">
                 <h2 className="text-4xl font-bold mb-4">3+ Years of Impact</h2>
                 <p className="text-xl max-w-2xl">Transforming communities through unity and action</p>
               </div>
@@ -357,6 +357,32 @@ export default function About() {
                 </motion.div>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* New section for Education and Mental Health cards */}
+        <section className={styles.aboutSection}>
+          <div className={styles.card}>
+            <Image
+              src="/images/education.jpg"
+              alt="Education"
+              className={styles.cardImage}
+              width={300}
+              height={200}
+            />
+            <h2>Education</h2>
+            <p>English literacy classes for refugees to enhance their communication skills and integration.</p>
+          </div>
+          <div className={styles.card}>
+            <Image
+              src="/images/mental-health.jpg"
+              alt="Mental Health"
+              className={styles.cardImage}
+              width={300}
+              height={200}
+            />
+            <h2>Mental Health</h2>
+            <p>Providing mental health support to help refugees cope with trauma and stress.</p>
           </div>
         </section>
       </main>

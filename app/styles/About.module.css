@@ -128,3 +128,66 @@
   font-size: 1.125rem;
   color: #4a5568;
 }
+
+.topText {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.topText h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.topText p {
+  font-size: 1rem;
+  color: #333;
+}
+
+.card {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.cardImage {
+  border-radius: 8px;
+  width: 100%;
+  height: auto;
+}
+
+.card h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 5px;
+}
+
+.impactText {
+  color: rgb(238, 231, 230);
+}
+
+.impactText h2,
+.impactText p {
+  color: inherit;
+}
+
+.impactSection {
+  color: white;
+}
+
+.impactSection h2 {
+  color: inherit;
+}
+
+.impactSection p {
+  color: inherit;
+}

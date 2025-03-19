@@ -12,7 +12,7 @@ const teamMembers = [
     id: 1,
     name: "Eric Kimararungu", 
     role: "Founder and Executive Director",
-    image: "/images/eric.jpeg",
+    image: "/images/eri.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
       linkedin: "",
@@ -23,7 +23,7 @@ const teamMembers = [
     id: 2,
     name: "Annled Karimi",
     role: "Program Manager",
-    image: "/images/Annled.jpg",
+    image: "/images/ann.jpg",  
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
     socialLinks: {
       linkedin: ""
@@ -33,7 +33,7 @@ const teamMembers = [
     id: 3,
     name: "Ramazani Mulisho",
     role: "Finance Lead",
-    image: "/images/mwalisho.jpg",
+    image: "/images/Ramazani.jpg",
     bio: "Ramazani, the organization's Finance lead, oversees all financial matters. He also supports advocacy and resource mobilization.",
     socialLinks: {
       linkedin: ""
@@ -109,7 +109,7 @@ export default function Home() {
               </div>
               <div className={styles.imageContainer}>
                 <Image
-                  src="/images/Pamoj1.jpeg"
+                  src="/images/HeroImage.jpeg"
                   alt="Community Impact"
                   layout="responsive"
                   width={500}
@@ -184,7 +184,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="text-blue-500 underline"
                     >
-                      Visit our YouTube Channel
+                      Explore more content on our YouTube Channel
                     </a>
                   </div>
                 )}
@@ -200,6 +200,7 @@ export default function Home() {
                 <div className="relative h-48 mb-4">
                   <Image
                     src="/images/Peace.jpeg"
+
                     alt="Peace"
                     layout="fill"
                     objectFit="cover"

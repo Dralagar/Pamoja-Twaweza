@@ -12,7 +12,7 @@
 
   /* System Colors */
   --background: var(--background-white);
-  --foreground: var(--text-black);
+  --foreground: var(--text-black); /* Ensure this is set to a visible color */
   --error: #dc2626;
   --success: #16a34a;
   --warning: #ca8a04;
@@ -29,7 +29,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #1e293b;
-    --foreground: #f8fafc;
+    --foreground: #f8fafc; /* Ensure this is set to a visible color in dark mode */
     --text-primary: #f8fafc;
     --text-secondary: #c0c601;
   }
