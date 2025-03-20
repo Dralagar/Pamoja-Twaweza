@@ -105,6 +105,7 @@
 
 .metricsSection {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   padding: 2rem 0;
@@ -113,8 +114,9 @@
 }
 
 .metric {
-  flex: 1;
-  margin: 0 1rem;
+  flex: 1 1 200px;
+  margin: 1rem;
+  min-width: 150px;
 }
 
 .metricValue {
@@ -190,4 +192,14 @@
 
 .impactSection p {
   color: inherit;
+}
+
+@media (max-width: 768px) {
+  .metricsSection {
+    flex-direction: column;
+  }
+
+  .metric {
+    margin: 0.5rem 0;
+  }
 }
