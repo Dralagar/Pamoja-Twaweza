@@ -23,7 +23,7 @@ const teamMembers = [
     id: 2,
     name: "Annled Karimi",
     role: "Programs and Communications",
-    image: "/images/Ann.jpg",
+    image: "/images/ann.jpg",
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
 
     socialLinks: {
