@@ -11,8 +11,8 @@ const teamMembers = [
   {
     id: 1,  
     name: "Eric Kimararungu",
-    role: "Founder and CEO",
-    image: "/images/eric.jpeg",
+    role: "Founder and Executive Director",
+    image: "/images/eri.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
       linkedin: "https://linkedin.com/in/eric-kimararungu",
@@ -23,7 +23,7 @@ const teamMembers = [
     id: 2,
     name: "Annled Karimi",
     role: "Programs and Communications",
-    image: "/images/Annled.jpg",
+    image: "/images/Ann.jpg",
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
 
     socialLinks: {
@@ -34,7 +34,7 @@ const teamMembers = [
     id: 3,
     name: "Ramazani Mulisho",
     role: "Finance Lead",
-    image: "/images/mwalisho.jpg",
+    image: "/images/Ramazani.jpg",
     bio: "Ramazani, the organization's Finance lead, oversees all organization's financial matters. He also supports Advocacy and resource mobilization.",
     socialLinks: {
       linkedin: "https://linkedin.com/in/ramazani-mulisho",
