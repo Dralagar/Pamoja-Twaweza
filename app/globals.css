@@ -9,6 +9,8 @@
   --accent-orange: #F26522; /* From the girl's dress */
   --text-black: #000000; /* Text and star */
   --background-white: #FFFFFF; /* White */
+  --background-gray: #f9fafb;
+  --text-gray: #6b7280;
 
   /* System Colors */
   --background: var(--background-white);
@@ -44,7 +46,7 @@ body {
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
   color: var(--foreground);
-  background: var(--background);
+  background: var(--background-gray);
   font-family: var(--font-sans);
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
@@ -52,7 +54,12 @@ body {
   padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: bold;
   letter-spacing: -0.015em;
   margin: 0;
@@ -61,7 +68,8 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin: 0 0 1em;
-  color: var(--foreground); /* Ensure paragraphs are visible */
+  line-height: 1.6;
+  color: var(--text-gray);
 }
 
 a {

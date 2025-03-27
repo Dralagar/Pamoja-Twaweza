@@ -6,6 +6,9 @@ import Image from 'next/image';
 import styles from './styles/Home.module.css';
 import OpportunititieSectionl from './components/OpportunititieSectionl';
 import { motion } from 'framer-motion';
+import { useEffect } from "react";
+import Link from "next/link";
+import { fetchPosts } from "../lib/sanity"; // Adjust path based on your folder structure
 
 const teamMembers = [
   {
@@ -53,8 +56,39 @@ type TeamMember = {
   };
 };
 
+interface Post {
+  _id: string;
+  title: string;
+  slug: { current: string };
+  mainImage?: {
+    asset: {
+      url: string;
+    };
+  };
+  publishedAt: string;
+  excerpt: string;
+}
+
 export default function Home() {
   const [activeCard, setActiveCard] = useState<string | null>(null);
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const data = await fetchPosts();
+        console.log("Fetched posts:", data);
+        if (data.length === 0) {
+          console.warn("No posts found.");
+        }
+        setPosts(data);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    };
+
+    loadPosts();
+  }, []);
 
   const handleNavigation = (path: string) => {
     if (typeof window !== 'undefined') {
