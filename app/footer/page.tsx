@@ -149,14 +149,6 @@ const Footer = () => {
           <p suppressHydrationWarning>
             © {year} Pamoja Twaweza. All rights reserved.
           </p>
-          <div className={styles.legalLinks}>
-            <Link href="/privacy" className={styles.legalLink}>
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className={styles.legalLink}>
-              Terms of Service
-            </Link>
-          </div>
         </div>
       </div>
     </footer>

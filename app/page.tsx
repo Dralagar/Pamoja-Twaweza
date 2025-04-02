@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import styles from './styles/Home.module.css';
+import dynamic from 'next/dynamic';
 import OpportunititieSectionl from './components/OpportunititieSectionl';
 import { motion } from 'framer-motion';
-import { useEffect } from "react";
 import Link from "next/link";
-import { fetchPosts } from "../lib/sanity"; // Adjust path based on your folder structure
+import { fetchPosts } from "./lib/sanity";
+import styles from './styles/Home.module.css';
+import stylesModule from './styles/Home.module.css';
 
 const teamMembers = [
   {
@@ -72,6 +73,11 @@ interface Post {
 export default function Home() {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -100,6 +106,10 @@ export default function Home() {
     setActiveCard(card === activeCard ? null : card);
   }
 
+  if (!isClient) {
+    return null;
+  }
+
   return (
     <>
       <Head>
@@ -108,7 +118,7 @@ export default function Home() {
         <meta name="keywords" content="Refugee-led organization in Kitengela, Refugee empowerment, Sustainable development for refugees, Refugee education and skills training, Mental health support for refugees, Digital skills training for refugees" />
         <meta property="og:title" content="Pamoja Twaweza - Empowering Refugees in Kitengela" />
         <meta property="og:description" content="Empowering communities through sustainable development and education." />
-        <meta property="og:image" content="/images/pamoj1.jpeg" />
+        <meta property="og:image" content="/images/pamoj2.jpeg" />
         <meta property="og:url" content="https://pamojatwaweza.org" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
@@ -143,13 +153,14 @@ export default function Home() {
               </div>
               <div className={styles.imageContainer}>
                 <Image
-                  src="/images/HeroImage.jpeg"
-                  alt="Community Impact"
-                  layout="responsive"
-                  width={500}
-                  height={500}
-                  objectFit="cover"
-                  className="rounded-3xl shadow-2xl"
+                  src="/images/pamoj2.jpeg"
+                  alt="Pamoja Twaweza Community Impact - Refugee-led organization in Kitengela"
+                  width={1200}
+                  height={630}
+                  priority
+                  className="w-full h-full object-cover rounded-2xl shadow-xl"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                  quality={90}
                 />
               </div>
             </div>
@@ -191,19 +202,36 @@ export default function Home() {
                 onClick={() => handleCardClick('video')}
               >
                 <h3 className="text-xl font-bold mb-2">Video Content</h3>
-                <div className="bg-gray-200 h-48 flex items-center justify-center mb-4">
+                <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
                   {activeCard === 'video' ? (
                     <iframe
                       width="100%"
                       height="100%"
-                      src="https://www.youtube.com/embed/x3_XElV6fbU"
+                      src="https://www.youtube.com/embed/x3_XElV6fbU?autoplay=1"
                       title="YouTube video player"
                       frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowFullScreen
                     ></iframe>
                   ) : (
-                    <span className="text-gray-500">Video Placeholder</span>
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/images/Pamoj5.jpeg"
+                        alt="Pamoja Twaweza Livelihoods Program - Digital skills training and entrepreneurship"
+                        width={800}
+                        height={600}
+                        className="w-full h-full object-cover rounded-2xl shadow-xl"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                        quality={90}
+                      />
+                      <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center group">
+                        <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
                   )}
                 </div>
                 <p>
@@ -211,14 +239,16 @@ export default function Home() {
                 </p>
                 {activeCard === 'video' && (
                   <div className="mt-4">
-                    <p>More detailed information about our video content...</p>
                     <a 
                       href="https://www.youtube.com/@pamojatwaweza9454" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-blue-500 underline"
+                      className="text-blue-500 hover:text-blue-700 underline inline-flex items-center mt-2"
                     >
                       Explore more content on our YouTube Channel
+                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
                     </a>
                   </div>
                 )}
@@ -234,7 +264,6 @@ export default function Home() {
                 <div className="relative h-48 mb-4">
                   <Image
                     src="/images/Peace.jpeg"
-
                     alt="Peace"
                     layout="fill"
                     objectFit="cover"
@@ -377,11 +406,9 @@ export default function Home() {
                       />
                     </div>
                     <div className="p-8">
-                      <h3 className={styles.sectionTitle}>Livelihoods</h3>
+                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Livelihoods</h3>
                       <p className={styles.heroText}>
-                        We offer digital skills training for youth, tailoring and dressmaking
-                        courses, entrepreneurship training, and promote financial inclusion
-                        through savings and loans associations.
+                        Digital skills training, tailoring courses, and entrepreneurship programs to empower youth and promote financial inclusion.
                       </p>
                     </div>
                   </div>
@@ -391,21 +418,21 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {/* Mental Health Program */}
                   <div className={styles.programCard}>
-                    <div className="relative aspect-video">
+                    <div className={styles.programImage}>
                       <Image
                         src="/images/Pamoj6.jpeg"
-                        alt="Mental Health Programs"
-                        layout="fill"
-                        objectFit="cover"
-                        sizes="(max-width: 768px) 100vw, 25vw"
-                        className="object-cover"
+                        alt="Pamoja Twaweza Mental Health Support - Community counseling and awareness programs"
+                        width={800}
+                        height={600}
+                        className="w-full h-full object-cover rounded-2xl shadow-xl"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                        quality={90}
                       />
                     </div>
                     <div className="p-8">
                       <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Mental Health</h3>
                       <p className={styles.heroText}>
-                        We conduct awareness programs to support mental health within
-                        the community.
+                        Awareness programs and counseling services to support emotional well-being and community resilience.
                       </p>
                     </div>
                   </div>
@@ -415,18 +442,18 @@ export default function Home() {
                     <div className={styles.programImage}>
                       <Image
                         src="/images/education.jpg"
-                        alt="Education Programs"
-                        layout="fill"
-                        objectFit="cover"
-                        sizes="(max-width: 768px) 100vw, 25vw"
-                        className="object-cover"
+                        alt="Pamoja Twaweza Education Programs - English literacy and vocational training"
+                        width={800}
+                        height={600}
+                        className="w-full h-full object-cover rounded-2xl shadow-xl"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+                        quality={90}
                       />
                     </div>
-                    <div className={styles.programContent}>
-                      <h3 className={styles.programTitle}>Education</h3>
-                      <p className={styles.programText}>
-                        English literacy classes for refugees to enhance their
-                        communication skills and integration.
+                    <div className="p-8">
+                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Education</h3>
+                      <p className={styles.heroText}>
+                        English literacy classes and vocational training to enhance communication skills and community integration.
                       </p>
                     </div>
                   </div>
