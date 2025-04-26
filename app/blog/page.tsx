@@ -1,19 +1,14 @@
-
-
-
 "use client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { fetchPosts } from "../lib/sanity";
-import { formatDate } from "../lib/utils";
 import styles from "../styles/Blog.module.css";
 import { format } from 'date-fns';
-import { urlFor } from '../../lib/sanity.client';
 import { PortableText } from '@portabletext/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Comment from '../components/Comment';
 import CommentList from '../components/CommentList';
+import Image from "next/image";
+import { client } from "@/sanity/lib/client";
+import { urlFor } from "@/sanity/lib/image";
 
 interface Comment {
   id: string;
@@ -56,16 +51,54 @@ const BlogPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
 
+  const fetchPosts = async () => {
+    try {
+      const query = `*[_type == "post" && defined(publishedAt)] | order(publishedAt desc) {
+        _id,
+        title,
+        slug,
+        mainImage {
+          asset-> {
+            _ref,
+            url
+          }
+        },
+        publishedAt,
+        body[] {
+          _type,
+          children[] {
+            _type,
+            text,
+            marks
+          }
+        }
+      }`;
+      
+      const fetchedPosts = await client.fetch(query);
+      console.log('Fetched posts:', fetchedPosts); // Debug log
+      return fetchedPosts || [];
+    } catch (err) {
+      console.error('Error fetching posts:', err);
+      setError('Failed to load blog posts');
+      return [];
+    }
+  };
+
   useEffect(() => {
     const loadPosts = async () => {
+      setLoading(true);
       try {
         const fetchedPosts = await fetchPosts();
         console.log('Posts loaded:', fetchedPosts);
-        setPosts(fetchedPosts);
-        setLoading(false);
+        if (fetchedPosts && fetchedPosts.length > 0) {
+          setPosts(fetchedPosts);
+        } else {
+          setError('No posts found');
+        }
       } catch (err) {
         console.error('Error loading posts:', err);
         setError('Failed to load blog posts');
+      } finally {
         setLoading(false);
       }
     };
@@ -196,11 +229,10 @@ const BlogPage = () => {
             {posts.map((post, index) => (
               <motion.article
                 key={post._id}
-                layout
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                className={`bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1 ${
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`bg-white rounded-lg shadow-md overflow-hidden ${
                   viewMode === 'list' ? 'flex' : ''
                 }`}
                 onClick={() => openPostModal(post)}
@@ -209,11 +241,11 @@ const BlogPage = () => {
                   <div className={`relative ${viewMode === 'list' ? 'w-1/3' : 'w-full h-64'}`}>
                     <Image
                       src={urlFor(post.mainImage).url()}
-                      alt={`${post.title} - Pamoja Twaweza Blog Post`}
-                      fill
-                      className="object-cover"
+                      alt={`${post.title} - Our impact stories`}
+                      className="object-cover w-full h-full"
                       sizes={viewMode === 'list' ? '33vw' : '100vw'}
-                      priority={index < 3}
+                      loading={index < 3 ? 'eager' : 'lazy'}
+                      fill
                     />
                   </div>
                 )}

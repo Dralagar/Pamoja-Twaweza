@@ -7,9 +7,8 @@ import dynamic from 'next/dynamic';
 import OpportunititieSectionl from './components/OpportunititieSectionl';
 import { motion } from 'framer-motion';
 import Link from "next/link";
-import { fetchPosts } from "./lib/sanity";
+import { client } from "../sanity/lib/client";
 import styles from './styles/Home.module.css';
-import stylesModule from './styles/Home.module.css';
 
 const teamMembers = [
   {
@@ -70,30 +69,64 @@ interface Post {
   excerpt: string;
 }
 
+const ImageWithFallback = ({ src, alt, ...props }: { src: string; alt: string; [key: string]: any }) => {
+  const [error, setError] = useState(false);
+  
+  if (error) {
+    return (
+      <div className="bg-gray-200 flex items-center justify-center">
+        <span>Image not available</span>
+      </div>
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      onError={() => setError(true)}
+      {...props}
+    />
+  );
+};
+
 export default function Home() {
   const [activeCard, setActiveCard] = useState<string | null>(null);
   const [posts, setPosts] = useState<Post[]>([]);
   const [isClient, setIsClient] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setIsClient(true);
   }, []);
 
   useEffect(() => {
-    const loadPosts = async () => {
+    const fetchPosts = async () => {
       try {
-        const data = await fetchPosts();
-        console.log("Fetched posts:", data);
-        if (data.length === 0) {
-          console.warn("No posts found.");
+        // Simplest possible query to test connection
+        const query = `*[_type == "post"]`;
+        
+        const fetchedPosts = await client.fetch(query);
+        console.log('Raw Sanity Response:', fetchedPosts); // Debug log
+        
+        if (!fetchedPosts || fetchedPosts.length === 0) {
+          console.log('No posts in response');
+          setError('No posts available');
+          return;
         }
-        setPosts(data);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
+
+        console.log('Number of posts found:', fetchedPosts.length);
+        setPosts(fetchedPosts);
+      } catch (err) {
+        console.error('Fetch error details:', err);
+        setError('Failed to load blog posts');
+      } finally {
+        setLoading(false);
       }
     };
 
-    loadPosts();
+    fetchPosts();
   }, []);
 
   const handleNavigation = (path: string) => {

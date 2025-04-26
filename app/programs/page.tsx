@@ -22,7 +22,7 @@ const programs: Program[] = [
     id: 1,
     title: "Digital Skills Training",
     category: "Livelihoods",
-    image: "/images/pamoj5.jpeg",
+    image: "/images/Pamoj5.jpeg",
     description: "Comprehensive training in digital literacy, computer skills, and online tools for youth empowerment.",
     details: [
       "Basic computer operations",
@@ -36,7 +36,7 @@ const programs: Program[] = [
     id: 2,
     title: "Mental Health Support",
     category: "Health & Wellness",
-    image: "/images/pamoj6.jpeg",
+    image: "/images/Pamoj6.jpeg",
     description: "Community-based mental health awareness and support programs.",
     details: [
       "Counseling services",
@@ -50,7 +50,7 @@ const programs: Program[] = [
     id: 3,
     title: "English Literacy",
     category: "Education",
-    image: "/images/pamoj4.jpeg",
+    image: "/images/Pamoj4.jpeg",
     description: "English language courses for refugees and community members to enhance communication skills.",
     details: [
       "Basic English conversation",
@@ -64,7 +64,7 @@ const programs: Program[] = [
     id: 4,
     title: "Entrepreneurship Training",
     category: "Livelihoods",
-    image: "/images/pamoj8.jpeg",
+    image: "/images/Pamoj8.jpeg",
     description: "Business skills development and entrepreneurship support for community members.",
     details: [
       "Business plan development",
@@ -79,7 +79,7 @@ const programs: Program[] = [
     title: "Livelihood and Economic Empowerment",
     category: "Livelihoods",
     description: "Implementing skills development programs tailored to local market demands. Supporting entrepreneurship initiatives through training, mentorship, and access to resources. Facilitating training to enhance self-sufficiency and income generation.",
-    image: "/images/pamoj7.jpeg",
+    image: "/images/Pamoj7.jpeg",
     details: [
       "Skills development training",
       "Business mentorship",
@@ -93,7 +93,7 @@ const programs: Program[] = [
     title: "Advocacy and Rights Awareness", 
     category: "Advocacy",
     description: "Amplifying the voices of refugees and vulnerable groups through policy advocacy. Promoting the inclusion and participation of marginalized groups in decision-making processes. Educating communities on their rights and available resources.",
-    image: "/images/pamoj1.jpeg",
+    image: "/images/Pamoj1.jpeg",
     details: [
       "Policy advocacy training",
       "Community rights education",
@@ -178,14 +178,14 @@ const programAreas = [
   },
   { 
     title: "Youth Empowerment",
-    icon: "/images/empowerement.jpeg",
+    icon: "/images/empowerment.jpeg",
     details: [
       "Engaging youth in leadership, education, and skills development activities."
     ]
   },
   {
     title: "Support for Persons with Disability",
-    icon: "/images/ pwd.jpg",
+    icon: "/images/pwd.jpg",
     details: [
       "Ensuring accessibility and inclusivity in all organizational programs."
     ]
@@ -315,7 +315,7 @@ export default function Programs() {
         <meta name="keywords" content="Refugee vocational training Kitengela, Mental health support for refugees, Digital skills training for refugees, Vocational training programs for refugees in Kenya, How refugee-led organizations empower communities in Kenya" />
         <meta property="og:title" content="Programs - Pamoja Twaweza" />
         <meta property="og:description" content="Empowering refugees in Kitengela through vocational training and mental health support." />
-        <meta property="og:image" content="/images/pamoj5.jpeg" />
+        <meta property="og:image" content="/images/Pamoj5.jpeg" />
         <meta property="og:url" content="https://pamojatwaweza.org/programs" />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
@@ -330,13 +330,17 @@ export default function Programs() {
             <div className={styles.programGrid}>
               {programs.map((program) => (
                 <div key={program.id} className={styles.programCard}>
-                  <div className="relative w-full h-64"> {/* Set a height to the container */}
+                  <div className="relative w-full h-64">
                     <Image
                       src={program.image}
                       alt={program.title}
                       layout="fill"
                       objectFit="cover"
                       className="object-cover rounded-t-lg"
+                      onError={(e: any) => {
+                        console.error(`Error loading image: ${program.image}`);
+                        e.currentTarget.src = "/images/fallback.jpg";
+                      }}
                     />
                   </div>
                   <div className="p-6">
@@ -375,7 +379,18 @@ export default function Programs() {
               {programAreas.map((area, index) => (
                 <div key={index} className={`${styles.programAreaCard} ${index === 0 ? styles.fullRow : index === 1 ? styles.halfRow : styles.singleRow}`}>
                   <div className="flex items-center mb-4">
-                    <Image src={area.icon || ''} alt={`${area.title} icon`} width={24} height={24} className="mr-2" />
+                    {area.icon ? (
+                      <Image 
+                        src={area.icon}
+                        alt={`${area.title} icon`}
+                        width={24}
+                        height={24}
+                        className="mr-2"
+                        onError={(e: any) => {
+                          e.currentTarget.style.display = 'none';
+                        }}
+                      />
+                    ) : null}
                     <h3 className="text-xl font-bold text-[var(--primary-blue)]">{area.title}</h3>
                   </div>
                   <ul className="list-disc list-inside text-lg text-[var(--text-secondary)]">
