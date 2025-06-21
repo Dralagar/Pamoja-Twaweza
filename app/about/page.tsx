@@ -557,11 +557,12 @@ export default function About() {
                 height={200}
               />
               <h2>Education</h2>
+              
               <p>English literacy classes for refugees to enhance their communication skills and integration.</p>
             </div>
             <div className={styles.card}>
               <Image
-                src="/images/mental-health.jpg"
+                src="/images/MentalHealth.png"
                 alt="Mental Health"
                 className={styles.cardImage}
                 width={300}

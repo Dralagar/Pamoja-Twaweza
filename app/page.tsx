@@ -181,12 +181,14 @@ export default function Home() {
                     });
                   }}
                 >
+                  <a href="/partner">
                   Get Involved
+                  </a>
                 </button>
               </div>
               <div className={styles.imageContainer}>
                 <Image
-                  src="/images/pamoj2.jpeg"
+                  src="/images/Pamoj2.jpeg"
                   alt="Pamoja Twaweza Community Impact - Refugee-led organization in Kitengela"
                   width={1200}
                   height={630}
@@ -234,7 +236,7 @@ export default function Home() {
                 whileHover={{ scale: 1.05 }}
                 onClick={() => handleCardClick('video')}
               >
-                <h3 className="text-xl font-bold mb-2">Video Content</h3>
+                <h3 className="text-xl font-bold mb-2">Community Stories</h3>
                 <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
                   {activeCard === 'video' ? (
                     <iframe
@@ -249,7 +251,7 @@ export default function Home() {
                   ) : (
                     <div className="relative w-full h-full">
                       <Image
-                        src="/images/Pamoj5.jpeg"
+                        src="/images/Pamoj6.jpeg"
                         alt="Pamoja Twaweza Livelihoods Program - Digital skills training and entrepreneurship"
                         width={800}
                         height={600}
