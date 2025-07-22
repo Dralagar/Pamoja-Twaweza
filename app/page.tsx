@@ -1,36 +1,36 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
-import Image from 'next/image';
-import dynamic from 'next/dynamic';
-import OpportunititieSectionl from './components/OpportunititieSectionl';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import Head from "next/head";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import OpportunititieSectionl from "./components/OpportunititieSectionl";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { client } from "../sanity/lib/client";
-import styles from './styles/Home.module.css';
+import { client } from "../pamoja-twaweza/lib/client";
+import styles from "./styles/Home.module.css";
 
 const teamMembers = [
   {
     id: 1,
-    name: "Eric Kimararungu", 
+    name: "Eric Kimararungu",
     role: "Founder and Executive Director",
     image: "/images/eri.jpeg",
     bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
     socialLinks: {
       linkedin: "",
-      twitter: ""
-    }
+      twitter: "",
+    },
   },
   {
     id: 2,
     name: "Annled Karimi",
     role: "Program Manager",
-    image: "/images/ann.jpg",  
+    image: "/images/ann.jpg",
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
     socialLinks: {
-      linkedin: ""
-    }
+      linkedin: "",
+    },
   },
   {
     id: 3,
@@ -39,9 +39,9 @@ const teamMembers = [
     image: "/images/Ramazani.jpg",
     bio: "Ramazani, the organization's Finance lead, oversees all financial matters. He also supports advocacy and resource mobilization.",
     socialLinks: {
-      linkedin: ""
-    }
-  }
+      linkedin: "",
+    },
+  },
 ] satisfies TeamMember[];
 
 type TeamMember = {
@@ -69,9 +69,17 @@ interface Post {
   excerpt: string;
 }
 
-const ImageWithFallback = ({ src, alt, ...props }: { src: string; alt: string; [key: string]: any }) => {
+const ImageWithFallback = ({
+  src,
+  alt,
+  ...props
+}: {
+  src: string;
+  alt: string;
+  [key: string]: any;
+}) => {
   const [error, setError] = useState(false);
-  
+
   if (error) {
     return (
       <div className="bg-gray-200 flex items-center justify-center">
@@ -81,12 +89,7 @@ const ImageWithFallback = ({ src, alt, ...props }: { src: string; alt: string; [
   }
 
   return (
-    <Image
-      src={src}
-      alt={alt}
-      onError={() => setError(true)}
-      {...props}
-    />
+    <Image src={src} alt={alt} onError={() => setError(true)} {...props} />
   );
 };
 
@@ -106,21 +109,21 @@ export default function Home() {
       try {
         // Simplest possible query to test connection
         const query = `*[_type == "post"]`;
-        
+
         const fetchedPosts = await client.fetch(query);
-        console.log('Raw Sanity Response:', fetchedPosts); // Debug log
-        
+        console.log("Raw Sanity Response:", fetchedPosts); // Debug log
+
         if (!fetchedPosts || fetchedPosts.length === 0) {
-          console.log('No posts in response');
-          setError('No posts available');
+          console.log("No posts in response");
+          setError("No posts available");
           return;
         }
 
-        console.log('Number of posts found:', fetchedPosts.length);
+        console.log("Number of posts found:", fetchedPosts.length);
         setPosts(fetchedPosts);
       } catch (err) {
-        console.error('Fetch error details:', err);
-        setError('Failed to load blog posts');
+        console.error("Fetch error details:", err);
+        setError("Failed to load blog posts");
       } finally {
         setLoading(false);
       }
@@ -130,14 +133,14 @@ export default function Home() {
   }, []);
 
   const handleNavigation = (path: string) => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       window.location.href = path;
     }
-  }
+  };
 
   const handleCardClick = (card: string) => {
     setActiveCard(card === activeCard ? null : card);
-  }
+  };
 
   if (!isClient) {
     return null;
@@ -147,10 +150,22 @@ export default function Home() {
     <>
       <Head>
         <title>Pamoja Twaweza - Empowering Refugees in Kitengela</title>
-        <meta name="description" content="Discover how Pamoja Twaweza, a refugee-led organization in Kitengela, empowers communities through sustainable development and education." />
-        <meta name="keywords" content="Refugee-led organization in Kitengela, Refugee empowerment, Sustainable development for refugees, Refugee education and skills training, Mental health support for refugees, Digital skills training for refugees" />
-        <meta property="og:title" content="Pamoja Twaweza - Empowering Refugees in Kitengela" />
-        <meta property="og:description" content="Empowering communities through sustainable development and education." />
+        <meta
+          name="description"
+          content="Discover how Pamoja Twaweza, a refugee-led organization in Kitengela, empowers communities through sustainable development and education."
+        />
+        <meta
+          name="keywords"
+          content="Refugee-led organization in Kitengela, Refugee empowerment, Sustainable development for refugees, Refugee education and skills training, Mental health support for refugees, Digital skills training for refugees"
+        />
+        <meta
+          property="og:title"
+          content="Pamoja Twaweza - Empowering Refugees in Kitengela"
+        />
+        <meta
+          property="og:description"
+          content="Empowering communities through sustainable development and education."
+        />
         <meta property="og:image" content="/images/pamoj2.jpeg" />
         <meta property="og:url" content="https://pamojatwaweza.org" />
         <meta name="twitter:card" content="summary_large_image" />
@@ -158,7 +173,7 @@ export default function Home() {
       <div className={styles.mainContainer} suppressHydrationWarning>
         <div className={styles.content}>
           {/* Hero Section */}
-          <motion.section 
+          <motion.section
             className={styles.heroSection}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -170,20 +185,19 @@ export default function Home() {
                   Transforming Lives Through Community Action
                 </h1>
                 <p className={styles.heroText}>
-                  At Pamoja Twaweza, we believe in the power of unity and collective action
-                  to create lasting positive change in our communities.
+                  At Pamoja Twaweza, we believe in the power of unity and
+                  collective action to create lasting positive change in our
+                  communities.
                 </p>
-                <button 
+                <button
                   className={styles.heroButton}
                   onClick={() => {
-                    document.querySelector('#contact-section')?.scrollIntoView({ 
-                      behavior: 'smooth' 
+                    document.querySelector("#contact-section")?.scrollIntoView({
+                      behavior: "smooth",
                     });
                   }}
                 >
-                  <a href="/partner">
-                  Get Involved
-                  </a>
+                  <a href="/partner">Get Involved</a>
                 </button>
               </div>
               <div className={styles.imageContainer}>
@@ -205,10 +219,10 @@ export default function Home() {
           <section className="py-16">
             <div className="container mx-auto grid grid-cols-1 md:grid-cols-12 gap-4">
               {/* Advocacy Program Card */}
-              <motion.div 
+              <motion.div
                 className="md:col-span-3 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
                 whileHover={{ scale: 1.05 }}
-                onClick={() => handleCardClick('advocacy')}
+                onClick={() => handleCardClick("advocacy")}
               >
                 <h3 className="text-xl font-bold mb-2">Advocacy</h3>
                 <div className="relative h-48 mb-4">
@@ -221,24 +235,29 @@ export default function Home() {
                   />
                 </div>
                 <p>
-                  We engage in advocacy to promote the rights and well-being of refugees and marginalized communities. Our efforts include policy influence, community mobilization, and awareness campaigns.
+                  We engage in advocacy to promote the rights and well-being of
+                  refugees and marginalized communities. Our efforts include
+                  policy influence, community mobilization, and awareness
+                  campaigns.
                 </p>
-                {activeCard === 'advocacy' && (
+                {activeCard === "advocacy" && (
                   <div className="mt-4">
-                    <p>More detailed information about our advocacy efforts...</p>
+                    <p>
+                      More detailed information about our advocacy efforts...
+                    </p>
                   </div>
                 )}
               </motion.div>
 
               {/* Video Content Card */}
-              <motion.div 
+              <motion.div
                 className="md:col-span-6 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
                 whileHover={{ scale: 1.05 }}
-                onClick={() => handleCardClick('video')}
+                onClick={() => handleCardClick("video")}
               >
                 <h3 className="text-xl font-bold mb-2">Community Stories</h3>
                 <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
-                  {activeCard === 'video' ? (
+                  {activeCard === "video" ? (
                     <iframe
                       width="100%"
                       height="100%"
@@ -261,8 +280,16 @@ export default function Home() {
                       />
                       <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center group">
                         <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                          <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+                          <svg
+                            className="w-8 h-8 text-blue-600"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+                              clipRule="evenodd"
+                            />
                           </svg>
                         </div>
                       </div>
@@ -270,19 +297,32 @@ export default function Home() {
                   )}
                 </div>
                 <p>
-                  Explore our video content showcasing the impact of our programs and the stories of those we serve. These videos highlight our initiatives and the positive changes in the community.
+                  Explore our video content showcasing the impact of our
+                  programs and the stories of those we serve. These videos
+                  highlight our initiatives and the positive changes in the
+                  community.
                 </p>
-                {activeCard === 'video' && (
+                {activeCard === "video" && (
                   <div className="mt-4">
-                    <a 
-                      href="https://www.youtube.com/@pamojatwaweza9454" 
-                      target="_blank" 
+                    <a
+                      href="https://www.youtube.com/@pamojatwaweza9454"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-500 hover:text-blue-700 underline inline-flex items-center mt-2"
                     >
                       Explore more content on our YouTube Channel
-                      <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      <svg
+                        className="w-4 h-4 ml-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
                       </svg>
                     </a>
                   </div>
@@ -290,10 +330,10 @@ export default function Home() {
               </motion.div>
 
               {/* Peace Program Card */}
-              <motion.div 
+              <motion.div
                 className="md:col-span-3 bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer"
                 whileHover={{ scale: 1.05 }}
-                onClick={() => handleCardClick('peace')}
+                onClick={() => handleCardClick("peace")}
               >
                 <h3 className="text-xl font-bold mb-2">Peace</h3>
                 <div className="relative h-48 mb-4">
@@ -306,9 +346,12 @@ export default function Home() {
                   />
                 </div>
                 <p>
-                  Our peace programs aim to foster harmony and understanding within diverse communities. We conduct workshops, dialogues, and activities that promote peaceful coexistence and conflict resolution.
+                  Our peace programs aim to foster harmony and understanding
+                  within diverse communities. We conduct workshops, dialogues,
+                  and activities that promote peaceful coexistence and conflict
+                  resolution.
                 </p>
-                {activeCard === 'peace' && (
+                {activeCard === "peace" && (
                   <div className="mt-4">
                     <p>More detailed information about our peace programs...</p>
                   </div>
@@ -327,7 +370,9 @@ export default function Home() {
                 </div>
                 <h1 className="text-2xl font-bold mb-4">Our Vision</h1>
                 <p className="text-lg">
-                  To ensure all marginalized, and vulnerable persons with disability and youth in our community have access to quality vocational training, resulting in self-reliance.
+                  To ensure all marginalized, and vulnerable persons with
+                  disability and youth in our community have access to quality
+                  vocational training, resulting in self-reliance.
                 </p>
               </div>
 
@@ -338,7 +383,10 @@ export default function Home() {
                 </div>
                 <h1 className="text-2xl font-bold mb-4">Our Mission</h1>
                 <p className="text-lg">
-                  To identify and support marginalized, and vulnerable persons with disability and youth in our community become self-reliant through facilitating timely access to quality vocational skills and livelihood opportunities.
+                  To identify and support marginalized, and vulnerable persons
+                  with disability and youth in our community become self-reliant
+                  through facilitating timely access to quality vocational
+                  skills and livelihood opportunities.
                 </p>
               </div>
             </div>
@@ -351,11 +399,13 @@ export default function Home() {
               {[
                 {
                   title: "Integrity and Ethics",
-                  description: "Valuing honesty and openness and taking responsibility and accountability for our actions.",
+                  description:
+                    "Valuing honesty and openness and taking responsibility and accountability for our actions.",
                 },
                 {
                   title: "Inclusion",
-                  description: "Supporting beneficiaries without discrimination.",
+                  description:
+                    "Supporting beneficiaries without discrimination.",
                 },
                 {
                   title: "Transparency",
@@ -367,15 +417,17 @@ export default function Home() {
                 },
                 {
                   title: "Teamwork",
-                  description: "Collaboration, open communication coordinated by a leader who motivates and initiates connections rather than dictates.",
+                  description:
+                    "Collaboration, open communication coordinated by a leader who motivates and initiates connections rather than dictates.",
                 },
                 {
                   title: "Sustainability",
-                  description: "Ensuring equitable and inclusive communities as well as responsible resource management for long-term economic resilience.",
+                  description:
+                    "Ensuring equitable and inclusive communities as well as responsible resource management for long-term economic resilience.",
                 },
               ].map((value, index) => (
-                <motion.div 
-                  key={index} 
+                <motion.div
+                  key={index}
                   className={styles.coreValueCard}
                   whileHover={{ scale: 1.05 }}
                 >
@@ -398,7 +450,8 @@ export default function Home() {
             <div className={styles.container}>
               <h2 className={styles.impactTitle}>Our Impact Stories</h2>
               <p className={styles.heroText}>
-                Making a difference in our community through sustainable development and empowerment.
+                Making a difference in our community through sustainable
+                development and empowerment.
               </p>
             </div>
           </section>
@@ -409,13 +462,13 @@ export default function Home() {
             <div className={styles.whoWeAreContent}>
               <h2 className={styles.whoWeAreTitle}>Who We Are</h2>
               <p className={styles.whoWeAreText}>
-                Pamoja Twaweza is a community-based organization dedicated to empowering
-                communities through sustainable development initiatives, mental health
-                support, and educational programs.
+                Pamoja Twaweza is a community-based organization dedicated to
+                empowering communities through sustainable development
+                initiatives, mental health support, and educational programs.
               </p>
-              <button 
+              <button
                 className={styles.heroButton}
-                onClick={() => handleNavigation('/about')}
+                onClick={() => handleNavigation("/about")}
               >
                 Learn More About Our Mission
               </button>
@@ -441,13 +494,17 @@ export default function Home() {
                       />
                     </div>
                     <div className="p-8">
-                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Livelihoods</h3>
+                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>
+                        Livelihoods
+                      </h3>
                       <p className={styles.heroText}>
-                        Digital skills training, tailoring courses, and entrepreneurship programs to empower youth and promote financial inclusion.
+                        Digital skills training, tailoring courses, and
+                        entrepreneurship programs to empower youth and promote
+                        financial inclusion.
                       </p>
                     </div>
                   </div>
-                </div> 
+                </div>
 
                 {/* Secondary Programs */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -465,9 +522,12 @@ export default function Home() {
                       />
                     </div>
                     <div className="p-8">
-                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Mental Health</h3>
+                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>
+                        Mental Health
+                      </h3>
                       <p className={styles.heroText}>
-                        Awareness programs and counseling services to support emotional well-being and community resilience.
+                        Awareness programs and counseling services to support
+                        emotional well-being and community resilience.
                       </p>
                     </div>
                   </div>
@@ -486,9 +546,12 @@ export default function Home() {
                       />
                     </div>
                     <div className="p-8">
-                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>Education</h3>
+                      <h3 className={`text-2xl font-bold mb-4 ${styles.title}`}>
+                        Education
+                      </h3>
                       <p className={styles.heroText}>
-                        English literacy classes and vocational training to enhance communication skills and community integration.
+                        English literacy classes and vocational training to
+                        enhance communication skills and community integration.
                       </p>
                     </div>
                   </div>
@@ -503,8 +566,8 @@ export default function Home() {
               <h2 className={styles.sectionTitle}>Meet the Team</h2>
               <div className={styles.teamGrid}>
                 {teamMembers.map((member) => (
-                  <motion.div 
-                    key={member.id} 
+                  <motion.div
+                    key={member.id}
                     className={styles.teamMemberCard}
                     whileHover={{ scale: 1.05 }}
                   >
@@ -520,10 +583,18 @@ export default function Home() {
                       <div className={styles.impactOverlay} />
                       <div className={styles.socialLinks}>
                         {member.socialLinks.linkedin && (
-                          <a href={member.socialLinks.linkedin} target="_blank" rel="noopener noreferrer" 
-                             className={styles.socialIcon}>
-                            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                          <a
+                            href={member.socialLinks.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.socialIcon}
+                          >
+                            <svg
+                              className="w-6 h-6"
+                              fill="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                             </svg>
                           </a>
                         )}
@@ -531,7 +602,9 @@ export default function Home() {
                     </div>
                     <div className="p-6">
                       <h3 className={styles.title}>{member.name}</h3>
-                      <p className="text-[var(--primary-blue)] font-medium mb-3">{member.role}</p>
+                      <p className="text-[var(--primary-blue)] font-medium mb-3">
+                        {member.role}
+                      </p>
                       <p className={styles.heroText}>{member.bio}</p>
                     </div>
                   </motion.div>
@@ -541,33 +614,43 @@ export default function Home() {
           </section>
 
           {/* Contact Section */}
-          <section className={`${styles.section} container mx-auto px-4 py-24 text-center`}>
+          <section
+            className={`${styles.section} container mx-auto px-4 py-24 text-center`}
+          >
             <h2 className={styles.sectionTitle}>Get in Touch</h2>
             <div className="max-w-md mx-auto">
               <p className={styles.heroText}>
-                Pamoja Twaweza CBO<br />
-                Chairman Road, Next to Best Lady<br />
+                Pamoja Twaweza CBO
+                <br />
+                Chairman Road, Next to Best Lady
+                <br />
                 Kajiado East, Kitengela, , Kenya,
               </p>
-              <button 
+              <button
                 className={styles.heroButton}
-                onClick={() => handleNavigation('/contact')}
+                onClick={() => handleNavigation("/contact")}
               >
                 Contact Us
               </button>
             </div>
           </section>
 
-          <section className={`${styles.creatingChangeSection} ${styles.section}`}>
-            <h2 className={styles.creatingChangeTitle}>Creating Lasting Change</h2>
+          <section
+            className={`${styles.creatingChangeSection} ${styles.section}`}
+          >
+            <h2 className={styles.creatingChangeTitle}>
+              Creating Lasting Change
+            </h2>
             <p className={styles.creatingChangeText}>
-              Through dedicated community engagement and sustainable programs, we&apos;re building a brighter future for all.
+              Through dedicated community engagement and sustainable programs,
+              we&apos;re building a brighter future for all.
             </p>
           </section>
           <section className={styles.impactSection}>
             <h2 className={styles.sectionTitle}>Our Impact</h2>
             <p className={styles.heroText}>
-              Making a difference in our community through sustainable development and empowerment.
+              Making a difference in our community through sustainable
+              development and empowerment.
             </p>
           </section>
         </div>
