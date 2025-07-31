@@ -5,6 +5,21 @@ export default {
   type: 'document',
   fields: [
     {
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    },
+    {
+      name: 'mainImage',
+      title: 'Main Image',
+      type: 'image',
+    },
+    {
+      name: 'text',
+      title: 'Text',
+      type: 'text',
+    },
+    {
       name: 'authorName',
       title: 'Author Name',
       type: 'string',
@@ -13,21 +28,6 @@ export default {
       name: 'authorImage',
       title: 'Author Image',
       type: 'image',
-    },
-    {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    },
-    {
-      name: 'text',
-      title: 'Text',
-      type: 'text',
-    },
-    {
-      name: 'uploadDate',
-      title: 'Upload Date',
-      type: 'datetime',
     },
     {
       name: 'publishedAt',

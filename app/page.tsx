@@ -20,7 +20,7 @@ const teamMembers = [
     socialLinks: {
       linkedin: "",
       twitter: "",
-    },
+    }
   },
   {
     id: 2,
@@ -30,7 +30,8 @@ const teamMembers = [
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
     socialLinks: {
       linkedin: "",
-    },
+      twitter: "",
+    }
   },
   {
     id: 3,
@@ -40,9 +41,10 @@ const teamMembers = [
     bio: "Ramazani, the organization's Finance lead, oversees all financial matters. He also supports advocacy and resource mobilization.",
     socialLinks: {
       linkedin: "",
-    },
-  },
-] satisfies TeamMember[];
+      twitter: "",
+    }
+  }
+];
 
 type TeamMember = {
   id: number;
@@ -52,7 +54,7 @@ type TeamMember = {
   bio: string;
   socialLinks: {
     linkedin: string;
-    twitter?: string;
+    twitter: string;
   };
 };
 
