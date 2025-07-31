@@ -1,13 +1,32 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-import Image from "next/image"
-import styles from '../styles/About.module.css';
+import Image from "next/image";
+import styles from '@/app/styles/About.module.css';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Head from 'next/head';
 
-const teamMembers = [
+interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  image: string;
+  bio: string;
+  socialLinks: {
+    linkedin: string;
+    twitter?: string;
+  };
+}
+
+interface Opportunity {
+  title: string;
+  description: string;
+  link: string;
+  image: string;
+}
+
+const teamMembers: TeamMember[] = [
   {
     id: 1,  
     name: "Eric Kimararungu", 
@@ -17,7 +36,6 @@ const teamMembers = [
     socialLinks: {
       linkedin: "https://linkedin.com/in/eric-kimararungu",
     }
-
   },
   {
     id: 2,
@@ -25,7 +43,6 @@ const teamMembers = [
     role: "Programs and Communications",
     image: "/images/ann.jpg",
     bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
-
     socialLinks: {
       linkedin: "https://linkedin.com/in/Annled-karimi",
     }
@@ -40,26 +57,7 @@ const teamMembers = [
       linkedin: "https://linkedin.com/in/ramazani-mulisho",
     }
   },
-] satisfies TeamMember[];
-
-type TeamMember = {
-  id: number;
-  name: string;
-  role: string;
-  image: string;
-  bio: string;
-  socialLinks: {
-    linkedin: string;
-    twitter?: string;
-  };
-};
-
-type Opportunity = {
-  title: string;
-  description: string;
-  link: string;
-  image: string;
-}
+];
 
 const opportunities: Opportunity[] = [
   {
@@ -75,47 +73,6 @@ const opportunities: Opportunity[] = [
     image: "/images/partnership.jpg"
   }
 ];
-
-// Define IntersectionObserver types if needed
-type IntersectionObserverInit = {
-  root?: Element | Document | null;
-  rootMargin?: string;
-  threshold?: number | number[];
-};
-
-const options: IntersectionObserverInit = {
-  root: null,
-  rootMargin: "0px",
-  threshold: 0.1,
-};
-
-const callback = (entries: IntersectionObserverEntry[]) => {
-  entries.forEach((entry) => {
-    if (entry.isIntersecting) {
-      const target = entry.target as HTMLElement;
-      const targetValue = parseInt(target.getAttribute("data-target") || "0", 10);
-
-      if (isNaN(targetValue)) {
-        console.error(`Invalid target value for element: ${target.textContent}`);
-        return;
-      }
-
-      const increment = Math.ceil(targetValue / 100);
-
-      const updateCount = () => {
-        const currentValue = parseInt(target.innerText, 10);
-        if (currentValue < targetValue) {
-          target.innerText = `${currentValue + increment}`;
-          setTimeout(updateCount, 10);
-        } else {
-          target.innerText = `${targetValue}`;
-        }
-      };
-
-      updateCount();
-    }
-  });
-};
 
 const AnimatedHeader = () => {
   const [text, setText] = useState('');
@@ -150,7 +107,6 @@ const AnimatedHeader = () => {
 
   return (
     <div className="relative min-h-[40vh] flex items-center justify-center bg-gradient-to-b from-blue-50 via-white to-white overflow-hidden">
-      {/* Animated background elements */}
       <motion.div
         initial={{ opacity: 0, scale: 1.2 }}
         animate={{ opacity: 0.1, scale: 1 }}
@@ -158,7 +114,6 @@ const AnimatedHeader = () => {
         className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500"
       />
       
-      {/* Floating shapes */}
       <motion.div
         animate={{
           y: [0, -20, 0],
@@ -215,7 +170,6 @@ const AnimatedHeader = () => {
           </motion.p>
         </motion.div>
 
-        {/* Decorative elements */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -233,8 +187,6 @@ const AnimatedHeader = () => {
 
 export default function About() {
   useEffect(() => {
-    console.log("useEffect is running");
-
     const metrics = document.querySelectorAll<HTMLElement>(".metricValue");
 
     if (metrics.length === 0) {
@@ -242,13 +194,46 @@ export default function About() {
       return;
     }
 
+    const options: IntersectionObserverInit = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const callback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target as HTMLElement;
+          const targetValue = parseInt(target.getAttribute("data-target") || "0", 10);
+
+          if (isNaN(targetValue)) {
+            console.error(`Invalid target value for element: ${target.textContent}`);
+            return;
+          }
+
+          const increment = Math.ceil(targetValue / 100);
+
+          const updateCount = () => {
+            const currentValue = parseInt(target.innerText, 10);
+            if (currentValue < targetValue) {
+              target.innerText = `${currentValue + increment}`;
+              setTimeout(updateCount, 10);
+            } else {
+              target.innerText = `${targetValue}`;
+            }
+          };
+
+          updateCount();
+        }
+      });
+    };
+
     const observer = new IntersectionObserver(callback, options);
 
     metrics.forEach((metric) => {
       observer.observe(metric);
     });
 
-    // Cleanup function to disconnect the observer when the component unmounts
     return () => {
       metrics.forEach((metric) => observer.unobserve(metric));
     };
@@ -262,7 +247,7 @@ export default function About() {
       </Head>
       <div className="min-h-screen">
         <AnimatedHeader />
-        <main className={styles.heroSection} suppressHydrationWarning>
+        <main className={styles.heroSection}>
           {/* About Hero */}
           <section className="container mx-auto px-4 py-24">
             <div className="max-w-4xl mx-auto text-center mb-16">
@@ -355,7 +340,7 @@ export default function About() {
             </div>
           </section>
 
-          {/* Mission & Vision - Enhanced layout */}
+          {/* Mission & Vision */}
           <section className="bg-gray-50 py-24">
             <div className="container mx-auto px-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -379,7 +364,7 @@ export default function About() {
             </div>
           </section>
 
-          {/* Impact Numbers - New section */}
+          {/* Impact Numbers */}
           <section className="container mx-auto px-4 py-24">
             <h2 className="text-4xl font-bold text-center mb-16">Our Impact in Numbers</h2>
             <div className={styles.metricsSection}>
@@ -444,7 +429,7 @@ export default function About() {
             </div>
           </section>
 
-          {/* Join Us Section - New call to action */}
+          {/* Join Us Section */}
           <section className="container mx-auto px-4 py-24 text-center">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -496,7 +481,6 @@ export default function About() {
                 </Link>
               </motion.div>
 
-              {/* Decorative elements */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -527,7 +511,6 @@ export default function About() {
                         alt={item.title}
                         fill
                         className="object-cover"
-
                       />
                     </div>
                     <div className="p-8">
@@ -546,7 +529,7 @@ export default function About() {
             </div>
           </section>
 
-          {/* New section for Education and Mental Health cards */}
+          {/* Education and Mental Health cards */}
           <section className={styles.aboutSection}>
             <div className={styles.card}>
               <Image
@@ -557,7 +540,6 @@ export default function About() {
                 height={200}
               />
               <h2>Education</h2>
-              
               <p>English literacy classes for refugees to enhance their communication skills and integration.</p>
             </div>
             <div className={styles.card}>
@@ -573,7 +555,7 @@ export default function About() {
             </div>
           </section>
 
-          {/* Contact Section - New interactive section */}
+          {/* Contact Section */}
           <section className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-24 bg-gradient-to-b from-blue-50 to-white">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -604,7 +586,7 @@ export default function About() {
                 transition={{ duration: 0.6, delay: 0.4 }}
                 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-800 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed px-4"
               >
-                We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+                We&apos;d love to hear from you. Send us a message and we&apos;ll respond as soon as possible.
               </motion.p>
 
               <motion.div
