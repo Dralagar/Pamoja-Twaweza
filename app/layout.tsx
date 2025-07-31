@@ -1,6 +1,8 @@
+// app/layout.tsx
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./styles/globals.css";
+import './globals.css'; 
 import Navbar from "./components/Navbar";
 import Footer from "./footer/page";
 import { Analytics } from "@vercel/analytics/react";
@@ -80,14 +82,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body suppressHydrationWarning className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning>
         <Navbar />
         <main>{children}</main>
         <Footer />
         <Analytics />
         <GoogleAnalyticsClient />
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+          defer
+        ></script>
       </body>
     </html>
   );
 }
+// export default About;
