@@ -1,33 +1,48 @@
-import {UserIcon} from '@sanity/icons'
-import {defineField, defineType} from 'sanity'
+// /sanity/schemas/postType.ts
+import { defineType } from 'sanity';
 
-export const authorType = defineType({
-  name: 'author',
-  title: 'Author',
+export const postType = defineType({
+  name: 'post',
+  title: 'Post',
   type: 'document',
-  icon: UserIcon,
   fields: [
-    defineField({
-      name: 'name',
+    {
+      name: 'title',
+      title: 'Title',
       type: 'string',
-      validation: Rule => Rule.required()
-    }),
-    defineField({
+    },
+    {
       name: 'slug',
+      title: 'Slug',
       type: 'slug',
-      options: { source: 'name' },
-      validation: Rule => Rule.required()
-    }),
-    defineField({
-      name: 'bio',
-      type: 'text',
-      rows: 3,
-      description: 'Short author bio (optional)'
-    })
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+    },
+    {
+      name: 'mainImage',
+      title: 'Main Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    },
+    {
+      name: 'body',
+      title: 'Body',
+      type: 'array',
+      of: [{ type: 'block' }],
+    },
+    {
+      name: 'publishedAt',
+      title: 'Published At',
+      type: 'datetime',
+    },
+    {
+      name: 'authorName',
+      title: 'Author Name',
+      type: 'string',
+    },
   ],
-  preview: {
-    select: {
-      title: 'name',
-    }
-  }
-})
+});

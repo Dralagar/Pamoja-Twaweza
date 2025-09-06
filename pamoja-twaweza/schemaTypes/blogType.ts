@@ -15,5 +15,10 @@ export const blogType = defineType({
       title: 'Text',
       type: 'text',
     }),
+    defineField({
+      name: 'progress',
+      title: 'Progress',
+      type: 'string',
+    }),
   ],
 })

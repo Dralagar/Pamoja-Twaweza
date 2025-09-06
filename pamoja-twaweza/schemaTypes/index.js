@@ -1,3 +1,11 @@
-import blog from './blog';
+import post from './post';
+import comment from './comment';
+import categoryType from './categoryType';
+import blockContentType from './blockContentType';
 
-export const schemaTypes = [blog];
+export const schemaTypes = [
+  post,
+  comment,
+  categoryType,
+  blockContentType,
+];
