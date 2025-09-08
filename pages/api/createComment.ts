@@ -1,16 +1,6 @@
 // pages/api/createComment.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import sanityClient from "@sanity/client";
-
-const config = {
-  dataset: "production",
-  projectId: "boxgqwv2", // Replace with your Sanity project ID
-  useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
-  apiVersion: "2023-01-01",
-};
-
-const client = sanityClient(config);
+import { client } from "@/lib/sanity/client"; // Use your existing client
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") return res.status(405).end();
@@ -18,7 +8,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   try {
     const { name, comment, postId } = req.body;
 
-    await client.create({
+    // IMPORTANT: For write operations, you need to create a client with write permissions
+    const writeClient = client.withConfig({
+      token: process.env.SANITY_API_TOKEN, // Add write token specifically for this operation
+    });
+
+    await writeClient.create({
       _type: "comment",
       name,
       comment,
