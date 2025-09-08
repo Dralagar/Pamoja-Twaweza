@@ -1,4 +1,4 @@
-import { client } from "../../../lib/sanityClient";
+import { client } from '../../../lib/sanity/client';
 import Image from "next/image";
 
 async function getPost(slug: string) {

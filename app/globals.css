@@ -1,20 +1,20 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   /* Primary Colors */
-  --primary-blue: #0089C7; /* From the person on the right */
-  --accent-yellow: #FFE66D; /* Background of the logo */
-  --accent-orange: #F26522; /* From the girl's dress */
-  --text-black: #000000; /* Text and star */
-  --background-white: #FFFFFF; /* White */
+  --primary-blue: #0089C7;
+  --accent-yellow: #FFE66D;
+  --accent-orange: #F26522;
+  --text-black: #000000;
+  --background-white: #FFFFFF;
   --background-gray: #f9fafb;
   --text-gray: #6b7280;
 
   /* System Colors */
   --background: var(--background-white);
-  --foreground: var(--text-black); /* Ensure this is set to a visible color */
+  --foreground: var(--text-black);
   --error: #dc2626;
   --success: #16a34a;
   --warning: #ca8a04;
@@ -31,76 +31,80 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #1e293b;
-    --foreground: #f8fafc; /* Ensure this is set to a visible color in dark mode */
+    --foreground: #f8fafc;
     --text-primary: #f8fafc;
     --text-secondary: #c0c601;
   }
 }
 
-* {
-  box-sizing: border-box;
-  border-color: var(--text-black);
+@layer base {
+  * {
+    box-sizing: border-box;
+    border-color: var(--text-black);
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+    color: var(--foreground);
+    background: var(--background-gray);
+    font-family: var(--font-sans);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    margin: 0;
+    padding: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: bold;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--foreground);
+  }
+
+  p {
+    margin: 0 0 1em;
+    line-height: 1.6;
+    color: var(--text-gray);
+  }
+
+  a {
+    color: var(--primary-blue);
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  a:hover {
+    color: var(--accent-orange);
+  }
+
+  button {
+    font-family: var(--font-sans);
+    transition: background-color var(--transition), transform var(--transition);
+  }
+
+  button:hover {
+    transform: translateY(-2px);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
 }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  color: var(--foreground);
-  background: var(--background-gray);
-  font-family: var(--font-sans);
-  font-size: var(--font-size-base);
-  line-height: var(--line-height-base);
-  margin: 0;
-  padding: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: bold;
-  letter-spacing: -0.015em;
-  margin: 0;
-  color: var(--foreground); /* Ensure headings are visible */
-}
-
-p {
-  margin: 0 0 1em;
-  line-height: 1.6;
-  color: var(--text-gray);
-}
-
-a {
-  color: var(--primary-blue);
-  text-decoration: none;
-  transition: color var(--transition);
-}
-
-a:hover {
-  color: var(--accent-orange);
-}
-
-button {
-  font-family: var(--font-sans);
-  transition: background-color var(--transition), transform var(--transition);
-}
-
-button:hover {
-  transform: translateY(-2px);
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+@layer components {
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 768px) {
