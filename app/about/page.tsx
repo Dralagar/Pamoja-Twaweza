@@ -5,7 +5,6 @@ import Image from "next/image"
 import styles from '../styles/About.module.css';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Head from 'next/head';
 
 const teamMembers = [
   {
@@ -255,12 +254,7 @@ export default function About() {
   }, []);
 
   return (
-    <>
-      <Head>
-        <title>About Us - Pamoja Twaweza</title>
-        <meta name="description" content="Learn more about Pamoja Twaweza, our mission, vision, and the team dedicated to making a difference." />
-      </Head>
-      <div className="min-h-screen">
+    <div className="min-h-screen">
         <AnimatedHeader />
         <main className={styles.heroSection} suppressHydrationWarning>
           {/* About Hero */}
@@ -696,6 +690,5 @@ export default function About() {
           </section>
         </main>
       </div>
-    </>
   );
 }

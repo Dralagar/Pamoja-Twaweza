@@ -32,9 +32,8 @@ export default function Contact() {
         <Image
           src="/images/image.jpg"
           alt="Background"
-          layout="fill"
-          objectFit="cover"
-          className="opacity-20"
+          fill
+          className="opacity-20 object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-blue-900/50 to-purple-900/50" />
       </div>

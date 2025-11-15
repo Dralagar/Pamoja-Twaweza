@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Image from "next/image";
-import Head from 'next/head';
 import styles from '../styles/Program.module.css';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -308,18 +307,7 @@ const AnimatedHeader = () => {
 
 export default function Programs() {
   return (
-    <>
-      <Head>
-        <title>Programs - Pamoja Twaweza</title>
-        <meta name="description" content="Explore our diverse programs aimed at empowering refugees in Kitengela through vocational training, mental health support, and digital education." />
-        <meta name="keywords" content="Refugee vocational training Kitengela, Mental health support for refugees, Digital skills training for refugees, Vocational training programs for refugees in Kenya, How refugee-led organizations empower communities in Kenya" />
-        <meta property="og:title" content="Programs - Pamoja Twaweza" />
-        <meta property="og:description" content="Empowering refugees in Kitengela through vocational training and mental health support." />
-        <meta property="og:image" content="/images/Pamoj5.jpeg" />
-        <meta property="og:url" content="https://pamojatwaweza.org/programs" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <div className="min-h-screen">
+    <div className="min-h-screen">
         <AnimatedHeader />
         <main className="bg-gray-100">
           <section className="container mx-auto px-4 py-24">
@@ -334,8 +322,7 @@ export default function Programs() {
                     <Image
                       src={program.image}
                       alt={program.title}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
                       className="object-cover rounded-t-lg"
                       onError={(e: any) => {
                         console.error(`Error loading image: ${program.image}`);
@@ -404,6 +391,5 @@ export default function Programs() {
           </section>
         </main>
       </div>
-    </>
   );
 }

@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Head from 'next/head';
 import styles from '../styles/Partner.module.css';
 
 type Partner = {
@@ -104,12 +103,7 @@ export default function Partner() {
   };
 
   return (
-    <>
-      <Head>
-        <title>Partner with Us</title>
-        <meta name="description" content="Join us as a partner and collaborate to make a difference." />
-      </Head>
-      <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100">
         <div className={styles.container}>
           <div className={styles.header}>
             <h1 className={styles.title}>Partner with Us</h1>
@@ -314,6 +308,5 @@ export default function Partner() {
           </section>
         </div>
       </div>
-    </>
   );
 }

@@ -1,9 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import Head from 'next/head';
 import Image from 'next/image';
-import dynamic from 'next/dynamic';
 import OpportunititieSectionl from './components/OpportunititieSectionl';
 import { motion } from 'framer-motion';
 import Link from "next/link";
@@ -144,18 +142,7 @@ export default function Home() {
   }
 
   return (
-    <>
-      <Head>
-        <title>Pamoja Twaweza - Empowering Refugees in Kitengela</title>
-        <meta name="description" content="Discover how Pamoja Twaweza, a refugee-led organization in Kitengela, empowers communities through sustainable development and education." />
-        <meta name="keywords" content="Refugee-led organization in Kitengela, Refugee empowerment, Sustainable development for refugees, Refugee education and skills training, Mental health support for refugees, Digital skills training for refugees" />
-        <meta property="og:title" content="Pamoja Twaweza - Empowering Refugees in Kitengela" />
-        <meta property="og:description" content="Empowering communities through sustainable development and education." />
-        <meta property="og:image" content="/images/pamoj2.jpeg" />
-        <meta property="og:url" content="https://pamojatwaweza.org" />
-        <meta name="twitter:card" content="summary_large_image" />
-      </Head>
-      <div className={styles.mainContainer} suppressHydrationWarning>
+    <div className={styles.mainContainer} suppressHydrationWarning>
         <div className={styles.content}>
           {/* Hero Section */}
           <motion.section 
@@ -215,9 +202,8 @@ export default function Home() {
                   <Image
                     src="/images/Advocacy.png"
                     alt="Advocacy"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg"
+                    fill
+                    className="rounded-lg object-cover"
                   />
                 </div>
                 <p>
@@ -300,9 +286,8 @@ export default function Home() {
                   <Image
                     src="/images/Peace.jpeg"
                     alt="Peace"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-lg"
+                    fill
+                    className="rounded-lg object-cover"
                   />
                 </div>
                 <p>
@@ -434,8 +419,7 @@ export default function Home() {
                       <Image
                         src="/images/Pamoj5.jpeg"
                         alt="Livelihoods Program"
-                        layout="fill"
-                        objectFit="cover"
+                        fill
                         sizes="(max-width: 1024px) 100vw, 50vw"
                         className="rounded-2xl object-cover shadow-xl"
                       />
@@ -512,8 +496,7 @@ export default function Home() {
                       <Image
                         src={member.image}
                         alt={member.name}
-                        layout="fill"
-                        objectFit="cover"
+                        fill
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 320px"
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                       />
@@ -572,6 +555,5 @@ export default function Home() {
           </section>
         </div>
       </div>
-    </>
   );
 }
