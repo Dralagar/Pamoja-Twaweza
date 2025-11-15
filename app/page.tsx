@@ -5,7 +5,7 @@ import Image from "next/image";
 import OpportunititieSectionl from "./components/OpportunititieSectionl";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { client } from "../pamoja-twaweza/lib/client";
+import { client } from "../lib/sanity/client";
 import styles from "./styles/Home.module.css";
 
 const teamMembers = [

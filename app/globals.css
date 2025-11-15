@@ -12,6 +12,14 @@
   --background-gray: #f9fafb;
   --text-gray: #6b7280;
 
+  /* Modern overrides */
+  --modern-primary: #0f172a;
+  --modern-mid: #1d4ed8;
+  --modern-soft: #e0f2ff;
+  --modern-accent: #f97316;
+  --modern-border: rgba(15, 23, 42, 0.1);
+  --modern-glass: rgba(255, 255, 255, 0.85);
+
   /* System Colors */
   --background: var(--background-white);
   --foreground: var(--text-black);
@@ -46,8 +54,8 @@
   body {
     -webkit-font-smoothing: antialiased;
     min-height: 100vh;
-    color: var(--foreground);
-    background: var(--background-gray);
+    color: var(--modern-primary);
+    background: radial-gradient(circle at top, #e0f2ff 0%, #fefce8 45%, #fefefe 100%);
     font-family: var(--font-sans);
     font-size: var(--font-size-base);
     line-height: var(--line-height-base);
@@ -110,5 +118,12 @@
 @media (max-width: 768px) {
   :root {
     --font-size-base: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition-duration: 0 !important;
+    animation-duration: 0 !important;
   }
 }
