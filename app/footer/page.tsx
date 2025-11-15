@@ -4,8 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { FaLinkedin, FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa';
-import styles from '../styles/Footer.module.css';
-// Define types for better maintainability
+import styles from '@/app/styles/Footer.module.css';
+
 type SocialLink = {
   id: string;
   platform: string;
@@ -20,13 +20,12 @@ type NavigationLink = {
   href: string;
 };
 
-// Configuration objects for easy updates
 const SOCIAL_LINKS: SocialLink[] = [
   {
     id: 'linkedin',
     platform: 'LinkedIn',
     url: 'https://www.linkedin.com/in/pamoja-twaweza-6146232a2/?originalSubdomain=ke',
-    icon: <FaLinkedin className="w-6 h-6" />,
+    icon: <FaLinkedin />,
     ariaLabel: 'Visit our LinkedIn page'
   },
   {
@@ -40,21 +39,21 @@ const SOCIAL_LINKS: SocialLink[] = [
     id: 'facebook',
     platform: 'Facebook',
     url: 'https://web.facebook.com/profile.php?id=100095464061098&_rdc=1&_rdr#',
-    icon: <FaFacebook className="w-6 h-6" />,
+    icon: <FaFacebook />,
     ariaLabel: 'Visit our Facebook page'
   },
   {
     id: 'youtube',
     platform: 'YouTube',
     url: 'https://www.youtube.com/channel/UCsBqWgvlTqposqFuwF5zUpg',
-    icon: <FaYoutube className="w-6 h-6" />,
+    icon: <FaYoutube />,
     ariaLabel: 'Subscribe to our YouTube channel'
   },
   {
     id: 'instagram',
     platform: 'Instagram',
     url: 'https://www.instagram.com/pamojatwawezacbo?igsh=YzljYTk1ODg3Zg==',
-    icon: <FaInstagram className="w-6 h-6" />,
+    icon: <FaInstagram />,
     ariaLabel: 'Follow us on Instagram'
   }
 ];
@@ -65,8 +64,12 @@ const NAV_LINKS: NavigationLink[] = [
   { id: 'contact', label: 'Contact', href: '/contact' }
 ];
 
+const LEGAL_LINKS: NavigationLink[] = [
+  { id: 'privacy', label: 'Privacy Policy', href: '/privacy' },
+  { id: 'terms', label: 'Terms of Service', href: '/terms' }
+];
+
 const Footer = () => {
-  // Use state to handle client-side rendering
   const [year, setYear] = useState<number>();
   const [mounted, setMounted] = useState(false);
 
@@ -75,20 +78,18 @@ const Footer = () => {
     setMounted(true);
   }, []);
 
-  // Don't render anything until mounted
   if (!mounted) {
     return null;
   }
 
   return (
-    <footer className={styles.footer} role="contentinfo" suppressHydrationWarning>
+    <footer className={styles.footer}>
       <div className={styles.container}>
-        {/* Grid Container */}
         <div className={styles.gridContainer}>
-          {/* Organization Info Grid */}
+          {/* Organization Info */}
           <div className={styles.gridItem}>
             <div className={styles.logoWrapper}>
-              <Link href="/" aria-label="Pamoja Twaweza - Return to homepage">
+              <Link href="/">
                 <Image
                   src="/images/Logo.png"
                   alt="Pamoja Twaweza Logo"
@@ -105,10 +106,10 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Navigation Grid */}
+          {/* Navigation Links */}
           <div className={styles.gridItem}>
             <h2 className={styles.gridTitle}>Quick Links</h2>
-            <nav aria-label="Footer Navigation">
+            <nav aria-label="Footer navigation">
               <ul className={styles.navList}>
                 {NAV_LINKS.map(link => (
                   <li key={link.id}>
@@ -121,7 +122,7 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* Social Links Grid */}
+          {/* Social Links */}
           <div className={styles.gridItem}>
             <h2 className={styles.gridTitle}>Connect With Us</h2>
             <div className={styles.socialLinks}>
@@ -141,14 +142,17 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Divider */}
         <div className={styles.divider} />
 
-        {/* Copyright Section */}
         <div className={styles.copyright}>
-          <p suppressHydrationWarning>
-            © {year} Pamoja Twaweza. All rights reserved.
-          </p>
+          <p>© {year} Pamoja Twaweza. All rights reserved.</p>
+          <div className={styles.legalLinks}>
+            {LEGAL_LINKS.map(link => (
+              <Link key={link.id} href={link.href} className={styles.legalLink}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </footer>

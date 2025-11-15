@@ -29,8 +29,8 @@
         "name": "next"
       }
     ],
-    "types": [],
-    "typeRoots": ["./node_modules/@types"]
+    "typeRoots": ["./node_modules/@types"],
+    "types": [] // Add this to ignore implicit type libraries
   },
   "include": [
     "**/*.ts",
