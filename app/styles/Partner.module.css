@@ -14,24 +14,26 @@
   text-align: center;
   margin-bottom: 3rem;
   padding: 2rem 0;
-  background-color: #e2e8f0;
+  background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+  width: 100%;
 }
 
 .title {
   font-size: 2.5rem;
   font-weight: bold;
-  color: #2b6cb0;
   margin-bottom: 0.5rem;
+  color: white;
 }
 
 .subtitle {
   font-size: 1.125rem;
-  color: #4a5568;
   margin-top: 1rem;
   max-width: 800px;
   margin: 0 auto;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Vision and Mission Section */
@@ -39,6 +41,7 @@
   padding: 4rem 0;
   background-color: #f7fafc;
   text-align: center;
+  width: 100%;
 }
 
 .visionMissionContainer {
@@ -59,6 +62,7 @@
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid #3182ce;
 }
 
 .visionMissionCard:hover {
@@ -77,6 +81,36 @@
   font-size: 1rem;
   color: #4a5568;
   line-height: 1.5;
+}
+
+/* Program Areas Section */
+.section {
+  width: 100%;
+  padding: 2rem;
+  margin: 2rem 0;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.list li {
+  padding: 0.75rem;
+  background-color: #ebf8ff;
+  border-radius: 0.25rem;
+  transition: transform 0.2s ease;
+}
+
+.list li:hover {
+  transform: translateX(5px);
+  background-color: #bee3f8;
 }
 
 /* Grid layout for image and form */
@@ -104,10 +138,13 @@
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
 }
 
 .image:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -118,6 +155,7 @@
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 4px solid #3182ce;
 }
 
 .formWrapper:hover {
@@ -154,6 +192,12 @@
 .textarea:focus {
   border-color: #3182ce;
   box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.5);
+  outline: none;
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 .button {
@@ -163,58 +207,145 @@
   padding: 0.75rem;
   border-radius: 0.375rem;
   font-weight: bold;
-  transition: background-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .button:hover {
   background-color: #2b6cb0;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Partners Section */
+/* Enhanced Partners Section */
 .partnersSection {
   padding: 4rem 0;
   background-color: #f7fafc;
   text-align: center;
-}
-
-.partnersSection h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #2b6cb0;
-  margin-bottom: 2rem;
+  width: 100%;
 }
 
 .partnersList {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 2rem;
-  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 .partnerItem {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  max-width: 150px;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.partnerItem img {
+.partnerItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.partnerItem.active {
+  background-color: #ebf8ff;
+  box-shadow: 0 0 0 2px #3182ce;
+}
+
+.partnerLogoContainer {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background-color: white;
+  border-radius: 50%;
+  padding: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.partnerLogo {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
+  transition: transform 0.3s ease;
+}
+
+.partnerItem:hover .partnerLogo {
+  transform: scale(1.1);
+}
+
+.partnerName {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4a5568;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+
+.partnerDetail {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 0.5rem;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.3s ease;
 }
 
-.partnerItem img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+.partnerDetailTitle {
+  font-size: 1.5rem;
+  color: #2b6cb0;
+  margin-bottom: 1rem;
 }
 
-.partnerItem span {
-  font-size: 1rem;
+.partnerDetailDescription {
   color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.partnerLink {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #3182ce;
+  color: white;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.partnerLink:hover {
+  background-color: #2b6cb0;
+  transform: translateY(-2px);
+}
+
+/* Loading spinner */
+.loadingSpinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #ebf8ff;
+  border-top-color: #3182ce;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
 }
 
 /* Contact Information Section */
@@ -222,33 +353,32 @@
   padding: 4rem 0;
   background-color: #ffffff;
   text-align: center;
+  width: 100%;
 }
 
-.contactSection h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #2b6cb0;
-  margin-bottom: 2rem;
-}
-
-.contactList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.socialLinks {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 2rem 0;
 }
 
-.contactList a {
+.socialLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: #ebf8ff;
+  border-radius: 2rem;
   color: #3182ce;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-.contactList a:hover {
-  color: #2b6cb0;
+.socialLink:hover {
+  background-color: #bee3f8;
+  transform: translateY(-2px);
 }
 
 .contactEmail {
@@ -265,6 +395,25 @@
 
 .contactEmail a:hover {
   color: #2b6cb0;
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Responsive design */
@@ -279,5 +428,39 @@
 
   .formTitle {
     font-size: 1.25rem;
+  }
+
+  .partnersList {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+  }
+
+  .partnerLogoContainer {
+    width: 80px;
+    height: 80px;
+  }
+
+  .socialLinks {
+    gap: 1rem;
+  }
+
+  .socialLink {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .visionMissionCard {
+    min-width: 100%;
+  }
+
+  .partnersList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .socialLinks {
+    flex-direction: column;
+    align-items: center;
   }
 }

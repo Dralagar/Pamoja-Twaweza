@@ -1,124 +1,142 @@
-"use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { fetchPosts } from "../../lib/sanity";
-import { formatDate } from "../../lib/utils"; // Import the date formatting utility
-import styles from "../styles/Blog.module.css";
+// app/blog/page.tsx
+import { client, urlFor } from '../../lib/sanity/client';
+import { PortableText } from '@portabletext/react';
+import Image from 'next/image';
 
-// Define the Post interface
-interface Post {
-  _id: string;
-  title: string;
-  slug: string;
-  mainImage?: string;
-  publishedAt: string;
-  excerpt: string;
-  isFeatured?: boolean;
-  category?: string;
-  author?: { name: string }; // Include author if needed
-}
-
-export default function Blog() {
-  const [posts, setPosts] = useState<Post[]>([]);
-
-  useEffect(() => {
-    const loadPosts = async () => {
-      try {
-        const data = await fetchPosts();
-        // Mark first post as featured
-        const postsWithFeatured = data.map((post: Post, index: number) => ({
-          ...post,
-          isFeatured: index === 0
-        }));
-        setPosts(postsWithFeatured);
-      } catch (error) {
-        console.error("Error fetching posts:", error);
+// Custom components for PortableText to handle images
+const portableTextComponents = {
+  types: {
+    image: ({ value }: any) => {
+      if (!value?.asset?._ref) {
+        return null;
       }
-    };
-    loadPosts();
-  }, []);
-
-  if (posts.length === 0) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center p-8 max-w-2xl">
-          <h2 className="text-2xl font-medium text-gray-600 mb-4">
-            Our stories are brewing...
-          </h2>
-          <p className="text-gray-500">
-            We're preparing some amazing content for you. Check back soon!
-          </p>
+      return (
+        <div className="my-6 flex justify-center">
+          <Image
+            src={urlFor(value).width(800).height(500).url()}
+            alt={value.alt || 'Blog image'}
+            width={800}
+            height={500}
+            className="rounded-lg shadow-md"
+          />
+          {value.caption && (
+            <p className="text-center text-sm text-gray-600 mt-2">{value.caption}</p>
+          )}
         </div>
-      </div>
-    );
-  }
+      );
+    },
+  },
+};
+
+export default async function BlogPage() {
+  const posts = await client.fetch(`*[_type == "post"] | order(publishedAt desc){
+    _id,
+    title,
+    slug,
+    excerpt,
+    publishedAt,
+    body,
+    mainImage,
+    author->{
+      name,
+      image
+    },
+    categories[]->{
+      title
+    }
+  }`);
 
   return (
-    <main className="min-h-screen bg-gray-50">
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        {/* Enhanced Header */}
-        <header className="text-center mb-12 md:mb-16">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Impact Stories
-          </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
-            Discover transformative voices and insights that shape our community
-          </p>
-        </header>
-
-        {/* Dynamic Grid */}
-        <div className={styles["blog-grid"]}>
-          {posts.map((post) => (
-            <article
-              key={post._id}
-              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 ${
-                post.isFeatured ? "featured-post" : ""
-              }`}
-            >
+    <div className="container mx-auto px-4 py-8 max-w-4xl">
+      <h1 className="text-4xl font-bold mb-8 text-center text-blue-900">Latest Blog Posts</h1>
+      
+      {posts.length === 0 ? (
+        <p className="text-center text-gray-600 text-lg">No blog posts available yet.</p>
+      ) : (
+        <div className="space-y-12">
+          {posts.map((post: any) => (
+            <article key={post._id} className="bg-white rounded-xl shadow-lg p-8">
+              
+              {/* Main Featured Image */}
               {post.mainImage && (
-                <div className={`relative ${post.isFeatured ? "md:h-full" : "h-48 sm:h-56"}`}>
+                <div className="mb-6">
                   <Image
-                    src={post.mainImage}
+                    src={urlFor(post.mainImage).width(1200).height(600).url()}
                     alt={post.title}
-                    fill
-                    sizes={post.isFeatured ? "(min-width: 1024px) 50vw, 100vw" : "(max-width: 768px) 100vw, 33vw"}
-                    className="object-cover transition-transform duration-500 hover:scale-105"
-                    priority={post.isFeatured}
+                    width={1200}
+                    height={600}
+                    className="w-full h-64 md:h-80 object-cover rounded-lg"
                   />
                 </div>
               )}
-
-              <div className={`p-6 ${post.isFeatured ? "md:p-8" : ""}`}>
-                {post.category && (
-                  <span className="inline-block px-3 py-1 text-xs font-semibold text-blue-600 bg-blue-50 rounded-full mb-2">
-                    {post.category}
-                  </span>
+              
+              {/* Title */}
+              <h2 className="text-3xl font-bold mb-4 text-gray-900">{post.title}</h2>
+              
+              {/* Metadata */}
+              <div className="flex flex-wrap items-center gap-4 mb-6 text-sm text-gray-600">
+                {post.publishedAt && (
+                  <span>Published: {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}</span>
                 )}
-                <h2 className={`font-semibold ${post.isFeatured ? "text-2xl md:text-3xl" : "text-xl"}`}>
-                  {post.title}
-                </h2>
-                <time className="block text-sm text-gray-500 mt-1 mb-3">
-                  {formatDate(post.publishedAt)}
-                </time>
-                <p className={`text-gray-600 ${post.isFeatured ? "text-lg" : ""}`}>
+                
+                {post.author && (
+                  <span>By: {post.author.name}</span>
+                )}
+                
+                {post.categories && post.categories.length > 0 && (
+                  <div className="flex gap-2">
+                    {post.categories.map((category: any, index: number) => (
+                      <span key={index} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">
+                        {category.title}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              {/* Excerpt */}
+              {post.excerpt && (
+                <p className="text-lg text-gray-700 italic mb-6 border-l-4 border-blue-500 pl-4">
                   {post.excerpt}
                 </p>
-                <Link 
-                  href={`/blog/${post.slug}`}
-                  className="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800 transition-colors"
-                  aria-label={`Read more about ${post.title}`}
-                >
-                  Read more
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </Link>
-              </div>
+              )}
+              
+              {/* Main Content Body */}
+              {post.body ? (
+                <div className="prose prose-lg max-w-none">
+                  <PortableText 
+                    value={post.body} 
+                    components={portableTextComponents}
+                  />
+                </div>
+              ) : (
+                <p className="text-gray-500 text-center py-8">Content coming soon...</p>
+              )}
+              
+              {/* Author Info */}
+              {post.author && post.author.image && (
+                <div className="flex items-center mt-8 pt-6 border-t border-gray-200">
+                  <Image
+                    src={urlFor(post.author.image).width(100).height(100).url()}
+                    alt={post.author.name}
+                    width={60}
+                    height={60}
+                    className="rounded-full mr-4"
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-900">{post.author.name}</p>
+                    <p className="text-sm text-gray-600">Author</p>
+                  </div>
+                </div>
+              )}
             </article>
           ))}
         </div>
-      </section>
-    </main>
+      )}
+    </div>
   );
 }

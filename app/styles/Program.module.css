@@ -1,155 +1,274 @@
-.Body {
-background-color: rgb(138, 138, 12);
+/* Base Styles */
+.pageContainer {
+  min-height: 100vh;
+  background-color: #f8fafc;
 }
+
+.mainContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+/* Program Grid */
 .programGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2.5rem;
-  padding: 2rem;
-  justify-items: stretch;
-  align-items: start;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
 }
 
 .programCard {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--background-white);
-  border-radius: 1rem;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .programCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
 }
 
-.programCard .relative {
+.programImageContainer {
   position: relative;
-  height: 18rem;
+  width: 100%;
+  height: 200px;
 }
 
-.programCard .content {
+.programImage {
+  object-fit: cover;
+}
+
+.programContent {
   padding: 1.5rem;
+}
+
+.programHeader {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-}
-
-.programCard h2 {
-  font-size: 1.75rem;
-  font-weight: bold;
+  align-items: flex-start;
   margin-bottom: 1rem;
-  color: var(--primary-blue);
-  line-height: 1.3;
 }
 
-.programCard p {
-  color: var(--text-secondary);
-  font-size: 1rem;
-  line-height: 1.6;
+.programTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-right: 0.5rem;
 }
 
-.programCard ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-  margin: 1rem 0;
+.programCategory {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+  background-color: #3b82f6;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
 }
 
-.programCard .details {
-  margin-top: 1rem;
-  font-size: 0.875rem;
-  color: var(--text-muted);
+.programDescription {
+  color: #4b5563;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
-.programCard button {
-  align-self: flex-start;
-  margin-top: auto;
-  background-color: var(--primary-blue);
-  color: var(--background-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+.readMoreButton {
+  color: #3b82f6;
+  font-weight: 600;
+  background: none;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  padding: 0;
+  margin-top: 0.5rem;
 }
 
-.programCard button:hover {
-  background-color: var(--accent-orange);
-  transform: translateY(-2px);
+.readMoreButton:hover {
+  text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .programGrid {
-    grid-template-columns: 1fr;
-  }
+.programDetails {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.programDetails h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+}
+
+.programDetails ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.programDetails li {
+  color: #4b5563;
+  margin-bottom: 0.25rem;
+}
+
+.duration, .eligibility {
+  margin-top: 1rem;
+}
+
+/* Program Areas Section */
+.programAreasSection {
+  padding: 4rem 2rem;
+  background-color: #f8fafc;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+  font-size: 1.125rem;
+  color: #4b5563;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .programAreasGrid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 2rem;
-  background-color: var(--background-light);
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .programAreaCard {
-  background-color: var(--background-white);
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 1.5rem;
-  text-align: left;
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .programAreaCard:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 
-.programAreaCard h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: var(--primary-blue);
+.areaHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
 }
 
-.programAreaCard ul {
+.areaIconContainer {
+  background-color: #dbeafe;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.areaIcon {
+  color: #1e40af;
+}
+
+.areaTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.areaDescription {
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.areaDetails {
+  margin-bottom: 1.5rem;
+}
+
+.detailsTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.detailsList {
   list-style-type: disc;
-  padding-left: 1.5rem;
-  color: var(--text-secondary);
+  padding-left: 1.25rem;
+  color: #4b5563;
 }
 
-.programAreaCard li {
+.detailsList li {
   margin-bottom: 0.5rem;
+  line-height: 1.5;
 }
 
-.fullRow {
-  grid-column: span 12;
+.areaStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
 }
 
-.halfRow {
-  grid-column: span 3;
-  grid-row: span 2;
+.statItem {
+  text-align: center;
 }
 
-.singleRow {
-  grid-column: span 3;
+.statValue {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1e40af;
+  margin-bottom: 0.25rem;
 }
 
+.statLabel {
+  display: block;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
+  .programAreasSection {
+    padding: 3rem 1rem;
+  }
+  
+  .sectionTitle {
+    font-size: 1.875rem;
+  }
+  
   .programAreasGrid {
     grid-template-columns: 1fr;
   }
-
-  .fullRow,
-  .halfRow,
-  .singleRow {
-    grid-column: span 1;
-    grid-row: auto;
+  
+  .areaHeader {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .areaIconContainer {
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
 }

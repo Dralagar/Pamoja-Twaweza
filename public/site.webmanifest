@@ -1,0 +1,21 @@
+{
+  "name": "Pamoja Twaweza",
+  "short_name": "Pamoja Twaweza",
+  "description": "Refugee Led Community Based Organisation, in Kajiado South Kenya",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/images/Logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/Logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 

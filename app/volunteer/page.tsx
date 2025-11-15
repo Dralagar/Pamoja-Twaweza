@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import Head from 'next/head';
 
 export default function Volunteer() {
   const [formData, setFormData] = useState({
@@ -25,12 +24,7 @@ export default function Volunteer() {
   };
 
   return (
-    <>
-      <Head>
-        <title>Volunteer with Us</title>
-        <meta name="description" content="Join us as a volunteer and make a difference in the community." />
-      </Head>
-      <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100">
         <div className="container mx-auto px-4 py-16">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold text-blue-600">Volunteer with Us</h1>
@@ -111,6 +105,5 @@ export default function Volunteer() {
           </div>
         </div>
       </div>
-    </>
   );
 }
