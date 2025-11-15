@@ -7,7 +7,7 @@ import { Analytics } from '@vercel/analytics/react';
 import React from "react";
 import GoogleAnalyticsClient from './components/GoogleAnalyticsClient';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin' ] })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.pamojatwaweza.org'),

@@ -396,8 +396,8 @@ export default function About() {
                 <p>Years of Service</p>
               </div>
               <div className={styles.metric}>
-                <span className="metricValue" data-target="5">0</span>+
-                <p>Community Partners</p>
+                <span className="metricValue" data-target="10">0</span>
+                <p>Partner Organizations</p>
               </div>
             </div>
           </section>
