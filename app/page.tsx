@@ -467,7 +467,7 @@ export default function ModernPamojaHome() {
       </section>
 
       {/* Footer Info */}
-      <section className="py-16 bg-[#000000] text-white">
+      <section className="py-16 bg-[#333] text-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
