@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import React, { useState, type FormEvent } from 'react';
 
 export default function CommentForm({ postId }: { postId: string }) {
   const [name, setName] = useState('');

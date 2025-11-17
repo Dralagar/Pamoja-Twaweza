@@ -1,7 +1,7 @@
 import React, { useState, type FormEvent } from 'react';
 
 interface CommentProps {
-  onCommentSubmit: (comment: { name: string; email: string; content: string }) => void;
+  onCommentSubmit: ({ name, email, content }: { name: string; email: string; content: string }) => void;
 }
 
 const Comment: React.FC<CommentProps> = ({ onCommentSubmit }) => {

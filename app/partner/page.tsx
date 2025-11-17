@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import styles from '../styles/Partner.module.css';
 
-type PartnerType = {
+type PartnerData = {
   id: number;
   name: string;
   logo: string;
@@ -20,9 +20,9 @@ export default function Partner() {
     message: ''
   });
 
-  const [partners, setPartners] = useState<PartnerType[]>([]);
+  const [partners, setPartners] = useState<PartnerData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [activePartner, setActivePartner] = useState<PartnerType | null>(null);
+  const [activePartner, setActivePartner] = useState<PartnerData | null>(null);
 
   useEffect(() => {
     // Simulate API fetch
@@ -30,7 +30,7 @@ export default function Partner() {
       setIsLoading(true);
       try {
         // In a real app, this would be an API call
-        const mockPartners: PartnerType[] = [
+        const mockPartners: PartnerData[] = [
           {
             id: 1,
             name: "Youth Voices Community",
@@ -98,7 +98,7 @@ export default function Partner() {
     // Add form submission logic here
   };
 
-  const handlePartnerClick = (partner: PartnerType) => {
+  const handlePartnerClick = (partner: PartnerData) => {
     setActivePartner(activePartner?.id === partner.id ? null : partner);
   };
 
