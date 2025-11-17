@@ -56,7 +56,7 @@ export default function ModernPamojaHome() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/images/Pamoj2.jpeg"
+            src="/images/pamoj2.jpeg" 
             alt="Pamoja Twaweza Community Impact"
             className="w-full h-full object-cover"
           />
