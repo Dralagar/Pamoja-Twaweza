@@ -223,9 +223,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* Decorative Element */}
-      <div className="h-2 bg-gradient-to-r from-[#0089C7] via-[#FFE66D] to-[#F26522]"></div>
     </footer>
   );
 };
