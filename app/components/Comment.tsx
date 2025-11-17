@@ -1,18 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, type FormEvent } from 'react';
 
 interface CommentProps {
   postId: string;
-  onCommentSubmit: (comment: { name: string; email: string; content: string }) => void;
+  onCommentSubmit: (payload: { name: string; email: string; content: string }) => void;
 }
 
-const Comment: React.FC<CommentProps> = ({ postId, onCommentSubmit }) => {
+const Comment: React.FC<CommentProps> = ({ onCommentSubmit }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [content, setContent] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');

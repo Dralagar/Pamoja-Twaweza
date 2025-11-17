@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type FormEvent } from 'react';
 
 export default function CommentForm({ postId }: { postId: string }) {
   const [name, setName] = useState('');
@@ -8,7 +8,7 @@ export default function CommentForm({ postId }: { postId: string }) {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError('');
     try {
