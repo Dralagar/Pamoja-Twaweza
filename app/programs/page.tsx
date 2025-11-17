@@ -152,7 +152,7 @@ const programs = [
 ];
 
 export default function ModernProgramsPage() {
-  const [selectedProgram, setSelectedProgram] = useState(null);
+  const [selectedProgram, setSelectedProgram] = useState<typeof programs[0] | null>(null);
   const [activeCategory, setActiveCategory] = useState("All");
 
   const categories = ["All", "Livelihoods", "Health & Wellness", "Education", "Advocacy", "Youth Development", "Inclusion"];

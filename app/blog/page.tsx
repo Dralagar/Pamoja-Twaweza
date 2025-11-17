@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Calendar, User, Tag, Clock, ArrowRight } from 'lucide-react';
+import { ChevronDown, Calendar, User, Clock, ArrowRight } from 'lucide-react';
 
 // Mock blog posts data
 const blogPosts = [
@@ -117,9 +117,9 @@ const blogPosts = [
 ];
 
 export default function ModernBlogPage() {
-  const [expandedPost, setExpandedPost] = useState(null);
+  const [expandedPost, setExpandedPost] = useState<number | null>(null);
 
-  const togglePost = (postId) => {
+  const togglePost = (postId: number | null) => {
     setExpandedPost(expandedPost === postId ? null : postId);
   };
 

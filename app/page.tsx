@@ -1,32 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Play, ArrowRight, Users, Heart, BookOpen, Sparkles, MapPin, Mail, Phone } from "lucide-react";
-
-const teamMembers = [
-  {
-    id: 1,
-    name: "Eric Kimararungu",
-    role: "Founder and Executive Director",
-    image: "/images/eri.jpeg",
-    bio: "Eric is the founder and CEO of Pamoja Twaweza Organization. A dedicated member of the refugee community leadership team in Kitengela, he is instrumental in partnerships, resource mobilization, and overseeing the strategic growth of the organization.",
-  },
-  {
-    id: 2,
-    name: "Annled Karimi",
-    role: "Program Manager",
-    image: "/images/ann.jpg",
-    bio: "Annled joined Pamoja Twaweza organization in 2021. She is in charge of programs and also supports communications and resource mobilization.",
-  },
-  {
-    id: 3,
-    name: "Ramazani Mulisho",
-    role: "Finance Lead",
-    image: "/images/Ramazani.jpg",
-    bio: "Ramazani, the organization's Finance lead, oversees all financial matters. He also supports advocacy and resource mobilization.",
-  }
-];
 
 const programs = [
   {
@@ -63,16 +39,9 @@ const programs = [
   }
 ];
 
-const stats = [
-  { value: "500+", label: "Lives Impacted" },
-  { value: "12+", label: "Active Programs" },
-  { value: "50+", label: "Community Partners" },
-  { value: "8+", label: "Years of Service" }
-];
-
 export default function ModernPamojaHome() {
   const [activeVideo, setActiveVideo] = useState(false);
-  const [hoveredProgram, setHoveredProgram] = useState(null);
+  const [hoveredProgram, setHoveredProgram] = useState<number | null>(null);
   const { scrollYProgress } = useScroll();
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.3], [1, 0.98]);

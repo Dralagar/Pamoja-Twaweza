@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Menu, Search, ChevronDown } from 'lucide-react';
 
@@ -10,7 +11,7 @@ export default function ModernNavbar() {
   const [programsOpen, setProgramsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [pathname, setPathname] = useState('/');
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -40,7 +41,7 @@ export default function ModernNavbar() {
     { href: "/programs#peace", title: "Peace", desc: "Dialogue and conflict resolution" }
   ];
 
-  const isActive = (href) => pathname === href;
+  const isActive = (href: string) => pathname === href;
 
   return (
     <>
