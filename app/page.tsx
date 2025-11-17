@@ -472,7 +472,7 @@ export default function ModernPamojaHome() {
           <div className="grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
               <h3 className="text-2xl font-bold mb-4 text-[#FFE66D]">Pamoja Twaweza CBO</h3>
-              <p className="text-white/80">Empowering communities through collective action since 2016</p>
+              <p className="text-white">Empowering communities through collective action since 2016</p>
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-[#FFE66D]">Location</h4>
@@ -483,7 +483,7 @@ export default function ModernPamojaHome() {
             </div>
             <div>
               <h4 className="font-semibold mb-4 text-[#FFE66D]">Connect</h4>
-              <div className="space-y-2 text-white/80">
+              <div className="space-y-2 text-white">
                 <p className="flex items-center gap-2 justify-center md:justify-start">
                   <Mail className="w-5 h-5" />
                   <span>info@pamojatwaweza.org</span>
