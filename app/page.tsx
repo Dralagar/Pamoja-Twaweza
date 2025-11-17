@@ -124,7 +124,7 @@ export default function ModernPamojaHome() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                image: "/images/Pamoj5.jpeg",
+                image: "/images/pamoj5.jpeg",
                 title: "Skills Development",
                 description: "Equipping youth with digital and vocational skills for sustainable employment and entrepreneurship opportunities."
               },
